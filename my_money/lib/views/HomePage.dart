@@ -18,7 +18,7 @@ class _HomepageState extends State<Homepage> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          backgroundColor: const Color(0xFF4F4D8C),
+          backgroundColor: const Color(0xFF5F5DA6),
           title: const Text('Muito Importante'),
           content: const Text("Todas as Informações estão corretas?"),
           actions: [
@@ -40,7 +40,7 @@ class _HomepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       //passagem de cor em HexaDecimal.
-      backgroundColor: Color(0xFF4F4D8C),
+      backgroundColor: Color(0xFF5F5DA6),
       body: SizedBox(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
@@ -83,7 +83,7 @@ class _HomepageState extends State<Homepage> {
                   style: GoogleFonts.fredoka(
                       textStyle: TextStyle(
                     fontSize: 30,
-                    color: Color(0xFF4F4D8C),
+                    color: Color(0xFF5F5DA6),
                     fontWeight: FontWeight.bold,
                   ))),
             ),
