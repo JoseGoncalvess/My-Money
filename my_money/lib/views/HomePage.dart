@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_money/views/user.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -13,28 +14,6 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
 //ALERT DIALOG
-  void _showdialog(BuildContext context) async {
-    return showDialog<void>(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          backgroundColor: const Color(0xFF5F5DA6),
-          title: const Text('Muito Importante'),
-          content: const Text("Todas as Informações estão corretas?"),
-          actions: [
-            MaterialButton(
-              onPressed: () {},
-              child: const Text('Sim!'),
-            ),
-            MaterialButton(
-              onPressed: () {},
-              child: const Text('Ops, Vou Ajustar!'),
-            )
-          ],
-        );
-      },
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +52,10 @@ class _HomepageState extends State<Homepage> {
               ),
             ),
             ElevatedButton(
-              onPressed: () => _showdialog(context),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: ((context) => UserCard())));
+              },
               style: ElevatedButton.styleFrom(
                 fixedSize: const Size(240, 80),
                 shape: StadiumBorder(),
