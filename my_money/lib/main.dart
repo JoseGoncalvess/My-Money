@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_money/views/HomePage.dart';
+import 'package:my_money/views/MyPage.dart';
 import 'package:my_money/views/user.dart';
 
 void main() {

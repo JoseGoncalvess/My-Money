@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_money/views/MyPage.dart';
 
 class UserCard extends StatefulWidget {
   const UserCard({super.key});
@@ -19,7 +20,10 @@ class _UserCardState extends State<UserCard> {
           content: const Text("Todas as Informações estão corretas?"),
           actions: [
             MaterialButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: ((context) => MyPage())));
+              },
               child: const Text('Sim!'),
             ),
             MaterialButton(
