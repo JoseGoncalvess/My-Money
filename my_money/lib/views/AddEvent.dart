@@ -206,13 +206,19 @@ class _AddEventState extends State<AddEvent> {
                                 child: Column(
                               children: [
                                 Container(
-                                  height: 80,
-                                  width: 80,
-                                  decoration: BoxDecoration(
-                                      color: Color(0xFF5F5DA6),
-                                      borderRadius: BorderRadius.circular(50)),
-                                  child: Icon(Icons.medical_services_rounded),
-                                ),
+                                    height: 80,
+                                    width: 80,
+                                    decoration: BoxDecoration(
+                                        color: const Color(0xFF5F5DA6),
+                                        borderRadius:
+                                            BorderRadius.circular(50)),
+                                    child: IconButton(
+                                      onPressed: () {},
+                                      icon: const Icon(
+                                        Icons.medical_services_rounded,
+                                        size: 40,
+                                      ),
+                                    )),
                                 Text("saúde",
                                     style: GoogleFonts.fredoka(
                                         textStyle: const TextStyle(
@@ -229,12 +235,19 @@ class _AddEventState extends State<AddEvent> {
                                 child: Column(
                               children: [
                                 Container(
-                                  height: 80,
-                                  width: 80,
-                                  decoration: BoxDecoration(
-                                      color: Color(0xFF5F5DA6),
-                                      borderRadius: BorderRadius.circular(50)),
-                                ),
+                                    height: 80,
+                                    width: 80,
+                                    decoration: BoxDecoration(
+                                        color: const Color(0xFF5F5DA6),
+                                        borderRadius:
+                                            BorderRadius.circular(50)),
+                                    child: IconButton(
+                                      onPressed: () {},
+                                      icon: const Icon(
+                                        Icons.medical_services_rounded,
+                                        size: 40,
+                                      ),
+                                    )),
                                 Text("Tag:",
                                     style: GoogleFonts.fredoka(
                                         textStyle: const TextStyle(
