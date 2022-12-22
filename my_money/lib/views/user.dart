@@ -119,7 +119,7 @@ class _UserCardState extends State<UserCard> {
                     SizedBox(
                       width: 300,
                       child: TextField(
-                          textAlign: TextAlign.justify,
+                          textAlign: TextAlign.center,
                           decoration: InputDecoration(
                               filled: true,
                               fillColor: Colors.white,
@@ -151,7 +151,7 @@ class _UserCardState extends State<UserCard> {
                     SizedBox(
                       width: 180,
                       child: TextField(
-                          textAlign: TextAlign.justify,
+                          textAlign: TextAlign.center,
                           decoration: InputDecoration(
                               filled: true,
                               fillColor: Colors.white,

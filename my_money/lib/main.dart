@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_money/views/AddEvent.dart';
 import 'package:my_money/views/HomePage.dart';
 import 'package:my_money/views/MyPage.dart';
 import 'package:my_money/views/user.dart';
@@ -15,7 +16,7 @@ class AppWidget extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
-      home: const Homepage(),
+      home: const AddEvent(),
     );
   }
 }
