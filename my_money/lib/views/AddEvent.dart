@@ -14,6 +14,7 @@ class _AddEventState extends State<AddEvent> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFF2E4159),
       //importante para teclado que transborda
       resizeToAvoidBottomInset: false,
       body: SizedBox(
@@ -127,13 +128,13 @@ class _AddEventState extends State<AddEvent> {
                                           FloatingLabelAlignment.center,
                                       floatingLabelBehavior:
                                           FloatingLabelBehavior.never,
-                                      hintText: "Ex: Churrasco em Família",
+                                      hintText: "DD/MM/AA",
                                       hintStyle: const TextStyle(
                                         color: Colors.white,
                                         fontSize: 15,
                                         fontWeight: FontWeight.bold,
                                       ),
-                                      labelText: 'Ex: Churrasco em Família',
+                                      labelText: 'DD/MM/AA',
                                       labelStyle: const TextStyle(
                                           color: Colors.white,
                                           fontSize: 10,
@@ -166,13 +167,13 @@ class _AddEventState extends State<AddEvent> {
                                           FloatingLabelAlignment.center,
                                       floatingLabelBehavior:
                                           FloatingLabelBehavior.never,
-                                      hintText: "Ex: Churrasco em Família",
+                                      hintText: "R\$100,00",
                                       hintStyle: const TextStyle(
                                         color: Colors.white,
                                         fontSize: 15,
                                         fontWeight: FontWeight.bold,
                                       ),
-                                      labelText: 'Ex: Churrasco em Família',
+                                      labelText: 'R\$100,00',
                                       labelStyle: const TextStyle(
                                           color: Colors.white,
                                           fontSize: 10,
@@ -185,7 +186,7 @@ class _AddEventState extends State<AddEvent> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 5),
-                      child: Text("Alimentação",
+                      child: Text("Tag",
                           style: GoogleFonts.fredoka(
                               textStyle: const TextStyle(
                             fontSize: 30,
@@ -244,11 +245,11 @@ class _AddEventState extends State<AddEvent> {
                                     child: IconButton(
                                       onPressed: () {},
                                       icon: const Icon(
-                                        Icons.medical_services_rounded,
+                                        Icons.restaurant_rounded,
                                         size: 40,
                                       ),
                                     )),
-                                Text("Tag:",
+                                Text("Alimentação",
                                     style: GoogleFonts.fredoka(
                                         textStyle: const TextStyle(
                                       fontSize: 20,
@@ -264,13 +265,20 @@ class _AddEventState extends State<AddEvent> {
                                 child: Column(
                               children: [
                                 Container(
-                                  height: 80,
-                                  width: 80,
-                                  decoration: BoxDecoration(
-                                      color: Color(0xFF5F5DA6),
-                                      borderRadius: BorderRadius.circular(50)),
-                                ),
-                                Text("Tag:",
+                                    height: 80,
+                                    width: 80,
+                                    decoration: BoxDecoration(
+                                        color: Color(0xFF5F5DA6),
+                                        borderRadius:
+                                            BorderRadius.circular(50)),
+                                    child: IconButton(
+                                      onPressed: () {},
+                                      icon: const Icon(
+                                        Icons.park_rounded,
+                                        size: 40,
+                                      ),
+                                    )),
+                                Text("Lazer",
                                     style: GoogleFonts.fredoka(
                                         textStyle: const TextStyle(
                                       fontSize: 20,
@@ -286,13 +294,20 @@ class _AddEventState extends State<AddEvent> {
                                 child: Column(
                               children: [
                                 Container(
-                                  height: 80,
-                                  width: 80,
-                                  decoration: BoxDecoration(
-                                      color: Color(0xFF5F5DA6),
-                                      borderRadius: BorderRadius.circular(50)),
-                                ),
-                                Text("Tag:",
+                                    height: 80,
+                                    width: 80,
+                                    decoration: BoxDecoration(
+                                        color: Color(0xFF5F5DA6),
+                                        borderRadius:
+                                            BorderRadius.circular(50)),
+                                    child: IconButton(
+                                      onPressed: () {},
+                                      icon: const Icon(
+                                        Icons.work,
+                                        size: 40,
+                                      ),
+                                    )),
+                                Text("Trabalho",
                                     style: GoogleFonts.fredoka(
                                         textStyle: const TextStyle(
                                       fontSize: 20,
@@ -308,13 +323,20 @@ class _AddEventState extends State<AddEvent> {
                                 child: Column(
                               children: [
                                 Container(
-                                  height: 80,
-                                  width: 80,
-                                  decoration: BoxDecoration(
-                                      color: Color(0xFF5F5DA6),
-                                      borderRadius: BorderRadius.circular(50)),
-                                ),
-                                Text("Tag:",
+                                    height: 80,
+                                    width: 80,
+                                    decoration: BoxDecoration(
+                                        color: Color(0xFF5F5DA6),
+                                        borderRadius:
+                                            BorderRadius.circular(50)),
+                                    child: IconButton(
+                                      onPressed: () {},
+                                      icon: const Icon(
+                                        Icons.luggage_rounded,
+                                        size: 40,
+                                      ),
+                                    )),
+                                Text("Ferias",
                                     style: GoogleFonts.fredoka(
                                         textStyle: const TextStyle(
                                       fontSize: 20,
@@ -330,23 +352,102 @@ class _AddEventState extends State<AddEvent> {
                                 child: Column(
                               children: [
                                 Container(
-                                  height: 80,
-                                  width: 80,
-                                  decoration: BoxDecoration(
-                                      color: Color(0xFF5F5DA6),
-                                      borderRadius: BorderRadius.circular(50)),
-                                ),
-                                Text("Tag:",
+                                    height: 80,
+                                    width: 80,
+                                    decoration: BoxDecoration(
+                                        color: Color(0xFF5F5DA6),
+                                        borderRadius:
+                                            BorderRadius.circular(50)),
+                                    child: IconButton(
+                                      onPressed: () {},
+                                      icon: const Icon(
+                                        Icons.flight_rounded,
+                                        size: 40,
+                                      ),
+                                    )),
+                                Text("Viagem",
                                     style: GoogleFonts.fredoka(
                                         textStyle: const TextStyle(
-                                      fontSize: 20,
+                                      fontSize: 15,
                                       color: Color(0xFF2E4159),
                                       fontWeight: FontWeight.bold,
                                     ))),
                               ],
                             ))
                           ],
-                        ))
+                        )),
+                    Row(
+                      children: [
+                        Column(
+                          children: [
+                            Text("Pagamento:",
+                                style: GoogleFonts.fredoka(
+                                    textStyle: const TextStyle(
+                                  fontSize: 30,
+                                  color: Color(0xFF2E4159),
+                                  fontWeight: FontWeight.bold,
+                                ))),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                SizedBox(
+                                    child: Column(
+                                  children: [
+                                    Container(
+                                        height: 50,
+                                        width: 50,
+                                        decoration: BoxDecoration(
+                                            color: Color(0xFF5F5DA6),
+                                            borderRadius:
+                                                BorderRadius.circular(20)),
+                                        child: IconButton(
+                                          onPressed: () {},
+                                          icon: const Icon(
+                                            Icons.payments_rounded,
+                                            size: 25,
+                                          ),
+                                        )),
+                                    Text("Dinheiro",
+                                        style: GoogleFonts.fredoka(
+                                            textStyle: const TextStyle(
+                                          fontSize: 15,
+                                          color: Color(0xFF2E4159),
+                                          fontWeight: FontWeight.w400,
+                                        ))),
+                                  ],
+                                )),
+                                SizedBox(
+                                    child: Column(
+                                  children: [
+                                    Container(
+                                        height: 50,
+                                        width: 50,
+                                        decoration: BoxDecoration(
+                                            color: Color(0xFF5F5DA6),
+                                            borderRadius:
+                                                BorderRadius.circular(20)),
+                                        child: IconButton(
+                                          onPressed: () {},
+                                          icon: const Icon(
+                                            Icons.credit_card_rounded,
+                                            size: 25,
+                                          ),
+                                        )),
+                                    Text("Cartão",
+                                        style: GoogleFonts.fredoka(
+                                            textStyle: const TextStyle(
+                                          fontSize: 20,
+                                          color: Color(0xFF2E4159),
+                                          fontWeight: FontWeight.w400,
+                                        ))),
+                                  ],
+                                ))
+                              ],
+                            )
+                          ],
+                        )
+                      ],
+                    )
                   ],
                 ),
               )
