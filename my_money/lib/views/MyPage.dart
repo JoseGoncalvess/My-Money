@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_money/views/AddEvent.dart';
 import 'package:my_money/views/HomePage.dart';
 
 class MyPage extends StatefulWidget {
@@ -26,8 +27,8 @@ class _MyPageState extends State<MyPage> {
     return Scaffold(
       backgroundColor: Color(0xFF2E4159),
       body: SizedBox(
-        height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
         child: Column(
           children: [
             Container(
@@ -298,6 +299,7 @@ class _MyPageState extends State<MyPage> {
                             color: Color(0xFF2E4159),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 SizedBox(
                                   width: 50,
@@ -343,8 +345,12 @@ class _MyPageState extends State<MyPage> {
                     );
                   }),
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [],
+            ),
             Container(
-              color: Color(0xFF5F5DA6),
+              color: const Color(0xFF5F5DA6),
               height: 70,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -392,6 +398,19 @@ class _MyPageState extends State<MyPage> {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (() {
+          Navigator.push(
+              context, MaterialPageRoute(builder: ((context) => AddEvent())));
+        }),
+        child: Icon(
+          Icons.add_card_rounded,
+          color: Color(0xFF5F5DA6),
+          size: 20,
+        ),
+        backgroundColor: Colors.white,
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }

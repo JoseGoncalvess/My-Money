@@ -16,7 +16,7 @@ class AppWidget extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
-      home: const AddEvent(),
+      home: const Homepage(),
     );
   }
 }
