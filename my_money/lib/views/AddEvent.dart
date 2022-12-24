@@ -4,6 +4,21 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/views/MyPage.dart';
 
+final List<String> listParcelas = <String>[
+  "1x",
+  "2",
+  "3x",
+  "4",
+  "5x",
+  "6x",
+  "7x",
+  "8",
+  "9x",
+  "10",
+  "11x",
+  "12x"
+];
+
 class AddEvent extends StatefulWidget {
   const AddEvent({super.key});
 
@@ -12,21 +27,7 @@ class AddEvent extends StatefulWidget {
 }
 
 class _AddEventState extends State<AddEvent> {
-  final List<String> listParcelas = <String>[
-    "1x",
-    "2",
-    "3x",
-    "4",
-    "5x",
-    "6",
-    "7x",
-    "8",
-    "9x",
-    "10",
-    "11x",
-    "12x"
-  ];
-
+  String dropDowValue = listParcelas.first;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -487,38 +488,38 @@ class _AddEventState extends State<AddEvent> {
                                             color: Color(0xFF2E4159),
                                             fontWeight: FontWeight.bold,
                                           ))),
-                                      SizedBox(
-                                        width: 120,
-                                        height: 30,
-                                        child: TextField(
-                                            textAlign: TextAlign.center,
-                                            decoration: InputDecoration(
-                                                filled: true,
-                                                fillColor:
-                                                    const Color(0xFF8F8EBF),
-                                                border: OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(30),
-                                                ),
-                                                floatingLabelAlignment:
-                                                    FloatingLabelAlignment
-                                                        .center,
-                                                floatingLabelBehavior:
-                                                    FloatingLabelBehavior.never,
-                                                hintText: "3x",
-                                                hintStyle: const TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                                labelText: '3x',
-                                                labelStyle: const TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 5,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                                disabledBorder:
-                                                    InputBorder.none)),
+                                      Container(
+                                        alignment: Alignment.center,
+                                        height: 25,
+                                        width: 100,
+                                        decoration: BoxDecoration(
+                                            color: const Color(0xFF2E4159),
+                                            borderRadius:
+                                                BorderRadius.circular(20)),
+                                        child: DropdownButton(
+                                          underline: Container(),
+                                          style: GoogleFonts.fredoka(
+                                              textStyle: const TextStyle(
+                                            fontSize: 20,
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                          )),
+                                          items: listParcelas
+                                              .map<DropdownMenuItem<String>>(
+                                                  (String value) {
+                                            return DropdownMenuItem<String>(
+                                              value: value,
+                                              child: Text(value),
+                                            );
+                                          }).toList(),
+                                          value: dropDowValue,
+                                          onChanged: (String? value) {
+                                            // This is called when the user selects an item.
+                                            setState(() {
+                                              dropDowValue = value!;
+                                            });
+                                          },
+                                        ),
                                       ),
                                       Row(
                                         children: [
@@ -577,7 +578,7 @@ class _AddEventState extends State<AddEvent> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: ((context) => MyPage())));
+                                      builder: ((context) => const MyPage())));
                             },
                             style: ElevatedButton.styleFrom(
                               fixedSize: const Size(215, 40),
