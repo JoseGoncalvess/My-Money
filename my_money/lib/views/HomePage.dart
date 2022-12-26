@@ -1,9 +1,15 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_money/app/valores/preference_keys.dart';
 import 'package:my_money/views/user.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../app/user_info.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -30,52 +36,63 @@ class _HomepageState extends State<Homepage> {
             Padding(
               padding:
                   const EdgeInsets.only(top: 20, bottom: 0, left: 0, right: 0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Image.asset(
-                      "img/logo.png",
-                      height: 200,
-                      width: 200,
+              child: SizedBox(
+                height: MediaQuery.of(context).size.height * 0.40,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Image.asset(
+                        "img/logo.png",
+                        height: 200,
+                        width: 200,
+                      ),
                     ),
-                  ),
-                  Text('My Money',
-                      style: GoogleFonts.fredoka(
-                          textStyle: TextStyle(
-                        fontSize: 55,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ))),
-                ],
+                    Text('My Money',
+                        style: GoogleFonts.fredoka(
+                            textStyle: const TextStyle(
+                          fontSize: 55,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ))),
+                  ],
+                ),
               ),
             ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: ((context) => UserCard())));
-              },
-              style: ElevatedButton.styleFrom(
-                fixedSize: const Size(240, 80),
-                shape: StadiumBorder(),
-                backgroundColor: Colors.white,
+            SizedBox(
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                          builder: ((context) => const UserCard())));
+                },
+                style: ElevatedButton.styleFrom(
+                  fixedSize: const Size(240, 80),
+                  shape: StadiumBorder(),
+                  backgroundColor: Colors.white,
+                ),
+                child: Text('Começar',
+                    style: GoogleFonts.fredoka(
+                        textStyle: const TextStyle(
+                      fontSize: 30,
+                      color: Color(0xFF5F5DA6),
+                      fontWeight: FontWeight.bold,
+                    ))),
               ),
-              child: Text('Começar',
-                  style: GoogleFonts.fredoka(
-                      textStyle: TextStyle(
-                    fontSize: 30,
-                    color: Color(0xFF5F5DA6),
-                    fontWeight: FontWeight.bold,
-                  ))),
             ),
-            Text(
-              'Você no controle do seu Dinheiro!',
-              style: GoogleFonts.fredoka(
-                  textStyle: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 20,
-              )),
+            Container(
+              alignment: Alignment.center,
+              height: MediaQuery.of(context).size.height * 0.20,
+              child: Text(
+                'Você no controle do seu Dinheiro!',
+                style: GoogleFonts.fredoka(
+                    textStyle: const TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 20,
+                )),
+              ),
             )
           ],
         ),
