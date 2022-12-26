@@ -4,12 +4,13 @@ class UserDatePreference {
   String name = '';
   String patrimonio = '';
 
-  saveUserDate() async {
+  saveUserDate(name, patrimonio) async {
     final prefs = await SharedPreferences.getInstance();
 
     prefs.setString('name', name);
     prefs.setString('name', patrimonio);
-    print('name:');
+    print(name);
+    print(patrimonio);
   }
 
   loadUsarDate() async {

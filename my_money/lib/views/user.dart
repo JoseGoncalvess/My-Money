@@ -1,9 +1,8 @@
-import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/app/user_info.dart';
+import 'package:my_money/views/MyPage.dart';
 
 class UserCard extends StatefulWidget {
   const UserCard({super.key});
@@ -23,11 +22,19 @@ class _UserCardState extends State<UserCard> {
           content: const Text("Todas as Informações estão corretas?"),
           actions: [
             MaterialButton(
-              onPressed: () => UserDatePreference().saveUserDate(),
+              onPressed: () => {
+                UserDatePreference().saveUserDate(
+                    _nameInputController.text, _patInputController.text),
+                Navigator.push(context,
+                    CupertinoPageRoute(builder: ((context) => const MyPage())))
+              },
               child: const Text('Sim!'),
             ),
             MaterialButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context,
+                    CupertinoPageRoute(builder: ((context) => const MyPage())));
+              },
               child: const Text('Ops, Vou Ajustar!'),
             )
           ],

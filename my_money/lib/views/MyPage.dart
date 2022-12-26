@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_money/app/user_info.dart';
 import 'package:my_money/views/AddEvent.dart';
 import 'package:my_money/views/HomePage.dart';
 
@@ -22,6 +23,14 @@ class _MyPageState extends State<MyPage> {
     "Celular",
     "Cartão Nubank"
   ];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+
+    UserDatePreference().loadUsarDate();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,7 +98,7 @@ class _MyPageState extends State<MyPage> {
                                                 fontWeight: FontWeight.w600,
                                                 fontSize: 8,
                                                 color: Colors.white))),
-                                    Text("Gonçalves",
+                                    Text(UserDatePreference().name,
                                         style: GoogleFonts.fredoka(
                                             textStyle: const TextStyle(
                                                 fontWeight: FontWeight.w600,
@@ -115,7 +124,8 @@ class _MyPageState extends State<MyPage> {
                                 decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(20)),
-                                child: Text('R\$ ' "50,00",
+                                child: Text(
+                                    'R\$ ' + UserDatePreference().patrimonio,
                                     style: GoogleFonts.fredoka(
                                         textStyle: const TextStyle(
                                             fontWeight: FontWeight.w600,
@@ -344,10 +354,6 @@ class _MyPageState extends State<MyPage> {
                       ),
                     );
                   }),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [],
             ),
             Container(
               color: const Color(0xFF5F5DA6),
