@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/app/user_info.dart';
 import 'package:my_money/views/MyPage.dart';
@@ -32,8 +33,7 @@ class _UserCardState extends State<UserCard> {
             ),
             MaterialButton(
               onPressed: () {
-                Navigator.push(context,
-                    CupertinoPageRoute(builder: ((context) => const MyPage())));
+                Navigator.pop(context);
               },
               child: const Text('Ops, Vou Ajustar!'),
             )
@@ -193,7 +193,56 @@ class _UserCardState extends State<UserCard> {
                         ],
                       ),
                       ElevatedButton(
-                        onPressed: () => _showdialog(context),
+                        onPressed: () => {
+                          showAnimatedDialog(
+                            barrierColor: Color.fromARGB(164, 95, 93, 166),
+                            context: context,
+                            barrierDismissible: true,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                backgroundColor: const Color(0xFF5F5DA6),
+                                icon: Icon(
+                                  Icons.warning_amber_rounded,
+                                  size: 30,
+                                ),
+                                title: const Text(
+                                  'Muito Importante',
+                                ),
+                                content: const Text(
+                                  "Olá, Seja Muito ebm vindo, antes de seguirmos, todas as Informações estão corretas?",
+                                  textAlign: TextAlign.center,
+                                ),
+                                actions: [
+                                  MaterialButton(
+                                    onPressed: () => {
+                                      UserDatePreference().saveUserDate(
+                                          _nameInputController.text,
+                                          _patInputController.text),
+                                      Navigator.push(
+                                          context,
+                                          CupertinoPageRoute(
+                                              builder: ((context) =>
+                                                  const MyPage())))
+                                    },
+                                    child: const Text(
+                                      'Sim!',
+                                      textAlign: TextAlign.left,
+                                    ),
+                                  ),
+                                  MaterialButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: const Text('Ops, Vou Ajustar!'),
+                                  )
+                                ],
+                              );
+                            },
+                            animationType: DialogTransitionType.fade,
+                            curve: Curves.fastOutSlowIn,
+                            duration: const Duration(milliseconds: 400),
+                          )
+                        },
                         style: ElevatedButton.styleFrom(
                           fixedSize: const Size(215, 40),
                           shape: const StadiumBorder(),
