@@ -310,7 +310,7 @@ class _MyPageState extends State<MyPage> {
                         children: [
                           Container(
                             height: 100,
-                            color: const Color(0xFF2E4159),
+                            color: Color(0xFF2E4159),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.center,
@@ -359,68 +359,48 @@ class _MyPageState extends State<MyPage> {
                     );
                   }),
             ),
-            SizedBox(
+            Container(
+              color: const Color(0xFF5F5DA6),
               height: 70,
-              width: MediaQuery.of(context).size.width,
               child: Padding(
-                padding: const EdgeInsets.all(2.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Expanded(
-                      child: Container(
-                        decoration: const BoxDecoration(
-                          color: Color(0xFF5F5DA6),
-                        ),
-                        height: 70,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text('Saldo Livre',
-                                style: GoogleFonts.fredoka(
-                                    textStyle: const TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 20,
-                                ))),
-                            Text('Total pago',
-                                style: GoogleFonts.fredoka(
-                                    textStyle: const TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 20,
-                                ))),
-                          ],
-                        ),
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('Saldo Livre',
+                            style: GoogleFonts.fredoka(
+                                textStyle: const TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 20,
+                            ))),
+                        Text('R\$ ' "50,00",
+                            style: GoogleFonts.fredoka(
+                                textStyle: const TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 20,
+                            )))
+                      ],
                     ),
-                    Container(
-                      height: 70,
-                      width: MediaQuery.of(context).size.width * 0.333,
-                      decoration: BoxDecoration(
-                        color: Color(0xFF5F5DA6),
-                      ),
-                    ),
-                    Expanded(
-                      child: Container(
-                        color: Color(0xFF5F5DA6),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text("R\$ " "200,00",
-                                style: GoogleFonts.fredoka(
-                                    textStyle: const TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 20,
-                                ))),
-                            Text('R\$ ' "50,00",
-                                style: GoogleFonts.fredoka(
-                                    textStyle: const TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 20,
-                                )))
-                          ],
-                        ),
-                      ),
-                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('Total pago',
+                            style: GoogleFonts.fredoka(
+                                textStyle: const TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 20,
+                            ))),
+                        Text("R\$ " "200,00",
+                            style: GoogleFonts.fredoka(
+                                textStyle: const TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 20,
+                            )))
+                      ],
+                    )
                   ],
                 ),
               ),
@@ -430,12 +410,10 @@ class _MyPageState extends State<MyPage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: (() {
-          Navigator.push(context,
-              MaterialPageRoute(builder: ((context) => const AddEvent())));
+          Navigator.push(
+              context, MaterialPageRoute(builder: ((context) => AddEvent())));
         }),
-
-        // ignore: sort_child_properties_last
-        child: const Icon(
+        child: Icon(
           Icons.add_card_rounded,
           color: Color(0xFF5F5DA6),
           size: 20,

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/app/user_info.dart';
 import 'package:my_money/views/MyPage.dart';
-import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 
 class UserCard extends StatefulWidget {
   const UserCard({super.key});
@@ -13,6 +12,37 @@ class UserCard extends StatefulWidget {
 }
 
 class _UserCardState extends State<UserCard> {
+  void _showdialog(BuildContext context) async {
+    return showDialog<void>(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          backgroundColor: const Color(0xFF5F5DA6),
+          title: const Text('Muito Importante'),
+          content: const Text("Todas as Informações estão corretas?"),
+          actions: [
+            MaterialButton(
+              onPressed: () => {
+                UserDatePreference().saveUserDate(
+                    _nameInputController.text, _patInputController.text),
+                Navigator.push(context,
+                    CupertinoPageRoute(builder: ((context) => const MyPage())))
+              },
+              child: const Text('Sim!'),
+            ),
+            MaterialButton(
+              onPressed: () {
+                Navigator.push(context,
+                    CupertinoPageRoute(builder: ((context) => const MyPage())));
+              },
+              child: const Text('Ops, Vou Ajustar!'),
+            )
+          ],
+        );
+      },
+    );
+  }
+
   //controllers
   final TextEditingController _nameInputController = TextEditingController();
   final TextEditingController _patInputController = TextEditingController();
@@ -163,52 +193,7 @@ class _UserCardState extends State<UserCard> {
                         ],
                       ),
                       ElevatedButton(
-                        onPressed: () => {
-                          //_showdialog(context)
-                          showAnimatedDialog(
-                            context: context,
-                            barrierDismissible: true,
-                            barrierColor: Color.fromARGB(147, 95, 93, 166),
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-                                alignment: Alignment.center,
-                                backgroundColor: const Color(0xFF5F5DA6),
-                                title: const Text('Muito Importante'),
-                                content: const Text(
-                                  "Olá,Seja muito bem vindo, antes de continuar, todas as Informações estão corretas?",
-                                  textAlign: TextAlign.center,
-                                ),
-                                icon: const Icon(
-                                  Icons.warning_amber_rounded,
-                                  size: 30,
-                                ),
-                                actions: [
-                                  MaterialButton(
-                                    onPressed: () => {
-                                      UserDatePreference().saveUserDate(
-                                          _nameInputController.text,
-                                          _patInputController.text),
-                                      Navigator.push(
-                                          context,
-                                          CupertinoPageRoute(
-                                              builder: ((context) =>
-                                                  const MyPage())))
-                                    },
-                                    child: const Text('Sim!'),
-                                  ),
-                                  MaterialButton(
-                                    onPressed: () {
-                                      Navigator.pop(context, 'Cancel');
-                                    },
-                                    child: const Text('Ops, Vou Ajustar!'),
-                                  )
-                                ],
-                              );
-                            },
-                            duration: const Duration(milliseconds: 800),
-                            animationType: DialogTransitionType.fadeScale,
-                          )
-                        },
+                        onPressed: () => _showdialog(context),
                         style: ElevatedButton.styleFrom(
                           fixedSize: const Size(215, 40),
                           shape: const StadiumBorder(),

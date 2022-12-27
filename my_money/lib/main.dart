@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:my_money/views/AddEvent.dart';
 import 'package:my_money/views/HomePage.dart';
 import 'package:my_money/views/MyPage.dart';
-import 'package:my_money/views/select_avatar.dart';
 import 'package:my_money/views/user.dart';
 
 void main() {
@@ -17,7 +16,7 @@ class AppWidget extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
-      home: const AvatarSelected(),
+      home: const Homepage(),
     );
   }
 }
