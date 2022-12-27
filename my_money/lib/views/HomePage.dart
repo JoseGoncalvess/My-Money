@@ -6,6 +6,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/app/valores/preference_keys.dart';
+import 'package:my_money/views/MyPage.dart';
 import 'package:my_money/views/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -20,6 +21,17 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
 //ALERT DIALOG
+
+  UserData _userData = UserData(name: 'name', patrimonio: 'patrimonio');
+
+  void initState() {
+    DataUser().loadUserData().then((value) => {
+          setState(() {
+            _userData = value;
+          })
+        });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,10 +75,17 @@ class _HomepageState extends State<Homepage> {
             SizedBox(
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      CupertinoPageRoute(
-                          builder: ((context) => const UserCard())));
+                  if (_userData.name != '' && _userData.patrimonio != '') {
+                    Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                            builder: ((context) => const MyPage())));
+                  } else {
+                    Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                            builder: ((context) => const UserCard())));
+                  }
                 },
                 style: ElevatedButton.styleFrom(
                   fixedSize: const Size(240, 80),

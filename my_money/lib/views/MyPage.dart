@@ -24,11 +24,16 @@ class _MyPageState extends State<MyPage> {
     "Cartão Nubank"
   ];
 
+  UserData _userData = UserData(name: 'name', patrimonio: 'patrimonio');
+
   @override
   void initState() {
-    // TODO: implement initState
-
-    UserDatePreference().loadUsarDate();
+    DataUser().loadUserData().then((value) => {
+          setState(() {
+            _userData = value;
+          })
+        });
+    super.initState();
   }
 
   @override
@@ -98,7 +103,7 @@ class _MyPageState extends State<MyPage> {
                                                 fontWeight: FontWeight.w600,
                                                 fontSize: 8,
                                                 color: Colors.white))),
-                                    Text(UserDatePreference().name,
+                                    Text(_userData.name,
                                         style: GoogleFonts.fredoka(
                                             textStyle: const TextStyle(
                                                 fontWeight: FontWeight.w600,
@@ -124,8 +129,7 @@ class _MyPageState extends State<MyPage> {
                                 decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(20)),
-                                child: Text(
-                                    'R\$ ' + UserDatePreference().patrimonio,
+                                child: Text('R\$ ' + _userData.patrimonio,
                                     style: GoogleFonts.fredoka(
                                         textStyle: const TextStyle(
                                             fontWeight: FontWeight.w600,

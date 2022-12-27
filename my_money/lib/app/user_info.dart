@@ -8,14 +8,25 @@ class UserDatePreference {
     final prefs = await SharedPreferences.getInstance();
 
     prefs.setString('name', name);
-    prefs.setString('name', patrimonio);
+    prefs.setString('patrimonio', patrimonio);
     print(name);
     print(patrimonio);
   }
+}
 
-  loadUsarDate() async {
+class DataUser {
+  Future<UserData> loadUserData() async {
     final prefs = await SharedPreferences.getInstance();
-    name = prefs.getString('name') ?? '';
-    patrimonio = prefs.getString('patrimonio') ?? '';
+    String name = prefs.getString('name') ?? "";
+    String patrimonio = prefs.getString('patrimonio') ?? "";
+
+    return UserData(name: name, patrimonio: patrimonio);
   }
+}
+
+class UserData {
+  final String name;
+  final String patrimonio;
+
+  UserData({required this.name, required this.patrimonio});
 }
