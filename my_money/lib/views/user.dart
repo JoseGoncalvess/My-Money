@@ -201,7 +201,7 @@ class _UserCardState extends State<UserCard> {
                             builder: (BuildContext context) {
                               return AlertDialog(
                                 backgroundColor: const Color(0xFF5F5DA6),
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.warning_amber_rounded,
                                   size: 30,
                                 ),
