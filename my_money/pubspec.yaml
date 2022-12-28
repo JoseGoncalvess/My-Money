@@ -52,6 +52,18 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
 
+flutter_native_splash:
+  color: '#4F4D8c'
+  image: img/logo_splash.png
+  color_dark: '#4F4D8c'
+  image_dark: img/logo_splash.png
+
+  android_12:
+    image: img/logo_splash.png
+    icon_background_color: '#4F4D8c'
+    image_darck: img/logo_splash.png
+    icon_background_color_darck: '#4F4D8c'
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
