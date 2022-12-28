@@ -273,7 +273,7 @@ class _MyPageState extends State<MyPage> {
                                   size: 30)),
                           Column(
                             children: [
-                              Text('mês',
+                              Text('Mês',
                                   style: GoogleFonts.fredoka(
                                       textStyle: const TextStyle(
                                     fontWeight: FontWeight.w600,
@@ -416,7 +416,7 @@ class _MyPageState extends State<MyPage> {
         child: Icon(
           Icons.add_card_rounded,
           color: Color(0xFF5F5DA6),
-          size: 20,
+          size: 25,
         ),
         backgroundColor: Colors.white,
       ),

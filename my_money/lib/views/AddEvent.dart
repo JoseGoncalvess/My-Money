@@ -5,18 +5,18 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/views/MyPage.dart';
 
 final List<String> listParcelas = <String>[
-  "1x",
+  "1",
   "2",
-  "3x",
+  "3",
   "4",
-  "5x",
-  "6x",
-  "7x",
+  "5",
+  "6",
+  "7",
   "8",
-  "9x",
+  "9",
   "10",
-  "11x",
-  "12x"
+  "11",
+  "12"
 ];
 
 class AddEvent extends StatefulWidget {
@@ -530,21 +530,26 @@ class _AddEventState extends State<AddEvent> {
                                                 color: Color(0xFF2E4159),
                                                 fontWeight: FontWeight.bold,
                                               ))),
-                                          IconButton(
-                                            onPressed: () {},
-                                            icon: const Icon(
-                                              Icons.notifications_none_rounded,
-                                              size: 20,
-                                              color: Color(0xFF5F5DA6),
+                                          Container(
+                                            child: IconButton(
+                                              onPressed: () {},
+                                              icon: const Icon(
+                                                Icons
+                                                    .notifications_none_rounded,
+                                                size: 20,
+                                                color: Color(0xFF5F5DA6),
+                                              ),
                                             ),
                                           ),
-                                          IconButton(
-                                            onPressed: () {},
-                                            icon: const Icon(
-                                              Icons
-                                                  .notifications_active_rounded,
-                                              size: 20,
-                                              color: Color(0xFF5F5DA6),
+                                          Container(
+                                            child: IconButton(
+                                              onPressed: () {},
+                                              icon: const Icon(
+                                                Icons
+                                                    .notifications_active_rounded,
+                                                size: 20,
+                                                color: Color(0xFF5F5DA6),
+                                              ),
                                             ),
                                           )
                                         ],
@@ -555,43 +560,47 @@ class _AddEventState extends State<AddEvent> {
                               ],
                             ),
                           ),
-                          ElevatedButton(
-                            onPressed: () => {},
-                            style: ElevatedButton.styleFrom(
-                              fixedSize: const Size(270, 50),
-                              shape: const StadiumBorder(),
-                              backgroundColor: const Color(0xFF5F5DA6),
+                          Container(
+                            child: Column(
+                              children: [
+                                ElevatedButton(
+                                  onPressed: () => {},
+                                  style: ElevatedButton.styleFrom(
+                                    fixedSize: const Size(255, 45),
+                                    shape: const StadiumBorder(),
+                                    backgroundColor: const Color(0xFF5F5DA6),
+                                  ),
+                                  child: Text('SALVAR',
+                                      style: GoogleFonts.fredoka(
+                                          textStyle: const TextStyle(
+                                        fontSize: 30,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                      ))),
+                                ),
+                                ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: ((context) =>
+                                                const MyPage())));
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    fixedSize: const Size(150, 40),
+                                    shape: const StadiumBorder(),
+                                    backgroundColor: const Color(0xFF2E4159),
+                                  ),
+                                  child: Text('CANCELAR',
+                                      style: GoogleFonts.fredoka(
+                                          textStyle: const TextStyle(
+                                        fontSize: 20,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                      ))),
+                                ),
+                              ],
                             ),
-                            child: Text('SALVAR',
-                                style: GoogleFonts.fredoka(
-                                    textStyle: const TextStyle(
-                                  fontSize: 30,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ))),
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          ElevatedButton(
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: ((context) => const MyPage())));
-                            },
-                            style: ElevatedButton.styleFrom(
-                              fixedSize: const Size(215, 40),
-                              shape: const StadiumBorder(),
-                              backgroundColor: const Color(0xFF2E4159),
-                            ),
-                            child: Text('CANCELAR',
-                                style: GoogleFonts.fredoka(
-                                    textStyle: const TextStyle(
-                                  fontSize: 30,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ))),
                           ),
                         ],
                       ),
