@@ -7,6 +7,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/app/valores/cod_Fiture.dart';
 import 'package:my_money/views/MyPage.dart';
+import 'package:my_money/views/selected_avatar.dart';
 import 'package:my_money/views/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -36,6 +37,13 @@ class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(context,
+              CupertinoPageRoute(builder: ((context) => AvatarUser())));
+        },
+        child: Icon(Icons.account_tree_rounded),
+      ),
       //passagem de cor em HexaDecimal.
       backgroundColor: Color(0xFF5F5DA6),
       body: SizedBox(

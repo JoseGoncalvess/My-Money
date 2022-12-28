@@ -27,37 +27,30 @@ class _SelectedAvatrState extends State<SelectedAvatr> {
   late double altura;
   late double largura;
 
-  bool toquei = false;
+  bool toqueii = false;
+  bool _toquei = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF5F5DA6),
+        title: Center(
+          child: Text('Selecione seu avatar',
+              style: GoogleFonts.fredoka(
+                  textStyle: const TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 25,
+                      color: Colors.white))),
+        ),
+      ),
       body: Scaffold(
         body: SingleChildScrollView(
             child: Column(
           children: [
-            Center(
-              child: GestureDetector(
-                onTap: () {
-                  setState(() {
-                    toquei = !toquei;
-                  });
-                },
-                child: AnimatedContainer(
-                  duration: Duration(milliseconds: 500),
-                  curve: Curves.easeInCirc,
-                  height: !toquei ? altura = 500 : altura = 100,
-                  width: !toquei ? largura = 200 : largura = 100,
-                  color: !toquei ? Colors.red : Colors.amber[900],
-                  child: Text(toquei ? 'não toquei' : 'tocou agora',
-                      style: GoogleFonts.fredoka(
-                          textStyle: const TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 25,
-                              color: Colors.white))),
-                ),
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [],
             )
           ],
         )),
