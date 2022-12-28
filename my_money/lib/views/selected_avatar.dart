@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -24,11 +25,15 @@ class SelectedAvatr extends StatefulWidget {
 }
 
 class _SelectedAvatrState extends State<SelectedAvatr> {
-  late double altura;
-  late double largura;
-
-  bool toqueii = false;
-  bool _toquei = false;
+  final List<String> imagesA = [
+    'assets/img/boi.png',
+    'assets/img/cap.png',
+    'assets/img/peralta.png',
+    'assets/img/julius.png',
+    'assets/img/rosa.png',
+    'assets/img/sargento.png',
+    'assets/img/sirigueijo.png'
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -48,9 +53,47 @@ class _SelectedAvatrState extends State<SelectedAvatr> {
         body: SingleChildScrollView(
             child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [],
+            CarouselSlider.builder(
+              itemCount: imagesA.length,
+              options: CarouselOptions(
+                height: 500,
+                scrollDirection: Axis.vertical,
+                autoPlay: false,
+                enlargeCenterPage: true,
+                autoPlayCurve: Curves.easeInOutQuart,
+                enableInfiniteScroll: false,
+                initialPage: 0,
+              ),
+              itemBuilder: (context, index, realIndex) {
+                return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        Container(
+                            height: 300,
+                            width: 500,
+                            margin: const EdgeInsets.symmetric(vertical: 21),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(30)),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(20),
+                              child: Image.asset(
+                                imagesA[index],
+                                fit: BoxFit.cover,
+                                width: 500,
+                              ),
+                            )),
+                        Text(
+                          'nome',
+                          style: GoogleFonts.fredoka(
+                              textStyle: const TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 25,
+                                  color: Colors.white)),
+                        )
+                      ],
+                    ));
+              },
             )
           ],
         )),
