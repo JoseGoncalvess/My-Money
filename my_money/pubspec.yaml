@@ -41,6 +41,7 @@ dependencies:
   shared_preferences: ^2.0.15
   flutter_animated_dialog: ^2.0.1
   carousel_slider: ^4.2.1
+  swipe_deck: ^1.1.0
 
 dev_dependencies:
   flutter_test:
