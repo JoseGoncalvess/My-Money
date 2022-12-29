@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:my_money/app/valores/cod_Fiture.dart';
 import 'package:my_money/views/MyPage.dart';
 import 'package:my_money/views/selected_avatar.dart';
 import 'package:my_money/views/user.dart';
@@ -23,15 +22,19 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage> {
 //ALERT DIALOG
 
-  UserData _userData = UserData(name: 'name', patrimonio: 'patrimonio');
+  UserData _userData = UserData(
+    name: 'name',
+    patrimonio: 'patrimonio',
+  );
 
+  @override
   void initState() {
+    super.initState();
     DataUser().loadUserData().then((value) => {
           setState(() {
             _userData = value;
           })
         });
-    super.initState();
   }
 
   @override
@@ -40,12 +43,12 @@ class _HomepageState extends State<Homepage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(context,
-              CupertinoPageRoute(builder: ((context) => AvatarUser())));
+              CupertinoPageRoute(builder: ((context) => const AvatarUser())));
         },
-        child: Icon(Icons.account_tree_rounded),
+        child: const Icon(Icons.account_tree_rounded),
       ),
       //passagem de cor em HexaDecimal.
-      backgroundColor: Color(0xFF5F5DA6),
+      backgroundColor: const Color(0xFF5F5DA6),
       body: SizedBox(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,

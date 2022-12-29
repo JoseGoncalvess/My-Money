@@ -10,16 +10,14 @@ import 'package:my_money/views/HomePage.dart';
 import 'package:my_money/views/user.dart';
 import 'package:swipe_deck/swipe_deck.dart';
 
+import '../app/user_info.dart';
+
 class AvatarUser extends StatelessWidget {
   const AvatarUser({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(),
-      home: const SelectedAvatr(),
-    );
+    return SelectedAvatr();
   }
 }
 
@@ -138,7 +136,8 @@ class _SelectedAvatrState extends State<SelectedAvatr> {
                           children: [
                             GestureDetector(
                               onTap: () {
-                                var foto = AvatarInfo().imagesA[index];
+                                foto = AvatarInfo().imagesA[index];
+                                UserDatePreference().saveFotoDate(foto);
                                 print(foto);
                                 Navigator.push(
                                     context,

@@ -9,7 +9,7 @@ import 'package:my_money/views/selected_avatar.dart';
 import 'package:my_money/views/user.dart';
 
 class MyPage extends StatefulWidget {
-  MyPage({super.key});
+  const MyPage({super.key});
 
   @override
   State<MyPage> createState() => _MyPageState();
@@ -28,14 +28,21 @@ class _MyPageState extends State<MyPage> {
 
   UserData _userData = UserData(name: 'name', patrimonio: 'patrimonio');
 
+  FotoData _userFoto = FotoData(foto: 'foto');
+
   @override
   void initState() {
+    super.initState();
+    FotoUser().loadFotoDate().then((value) => {
+          setState(() {
+            _userFoto = value;
+          })
+        });
     DataUser().loadUserData().then((value) => {
           setState(() {
             _userData = value;
           })
         });
-    super.initState();
   }
 
   @override
@@ -85,10 +92,8 @@ class _MyPageState extends State<MyPage> {
                                     decoration: BoxDecoration(
                                         color: Colors.white,
                                         borderRadius: BorderRadius.circular(50),
-                                        image: const DecorationImage(
-                                          image: AssetImage(
-                                            "assets/img/cap.png",
-                                          ),
+                                        image: DecorationImage(
+                                          image: AssetImage(_userFoto.foto),
                                         )),
                                   ),
                                 ],

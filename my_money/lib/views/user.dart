@@ -25,8 +25,6 @@ class _UserCardState extends State<UserCard> {
           actions: [
             MaterialButton(
               onPressed: () => {
-                UserDatePreference().saveUserDate(
-                    _nameInputController.text, _patInputController.text),
                 Navigator.push(context,
                     CupertinoPageRoute(builder: ((context) => MyPage())))
               },
