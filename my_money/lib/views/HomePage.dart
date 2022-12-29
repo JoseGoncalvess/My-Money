@@ -84,15 +84,11 @@ class _HomepageState extends State<Homepage> {
               child: ElevatedButton(
                 onPressed: () {
                   if (_userData.name != '' && _userData.patrimonio != '') {
-                    Navigator.push(
-                        context,
-                        CupertinoPageRoute(
-                            builder: ((context) => const MyPage())));
+                    Navigator.push(context,
+                        CupertinoPageRoute(builder: ((context) => MyPage())));
                   } else {
-                    Navigator.push(
-                        context,
-                        CupertinoPageRoute(
-                            builder: ((context) => const UserCard())));
+                    Navigator.push(context,
+                        CupertinoPageRoute(builder: ((context) => UserCard())));
                   }
                 },
                 style: ElevatedButton.styleFrom(
