@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:carousel_slider/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -42,53 +43,67 @@ class _SelectedAvatrState extends State<SelectedAvatr> {
                       fontSize: 25,
                       color: Colors.white))),
         ),
-        actions: [
-          IconButton(
-              onPressed: () {
-                showAnimatedDialog(
-                  barrierColor: Color.fromARGB(164, 95, 93, 166),
-                  context: context,
-                  barrierDismissible: true,
-                  builder: (BuildContext context) {
-                    return AlertDialog(
-                      backgroundColor: const Color(0xFF5F5DA6),
-                      icon: const Icon(
-                        Icons.warning_amber_rounded,
-                        size: 30,
-                      ),
-                      title: const Text(
-                        'Muito Importante',
-                      ),
-                      content: const Text(
-                        "Olá, Seja Muito ebm vindo, antes de seguirmos, todas as Informações estão corretas?",
-                        textAlign: TextAlign.center,
-                      ),
-                      actions: [
-                        MaterialButton(
-                          onPressed: () => {},
-                          child: const Text(
-                            'Sim!',
-                            textAlign: TextAlign.left,
-                          ),
-                        ),
-                      ],
-                    );
-                  },
-                  animationType: DialogTransitionType.fade,
-                  curve: Curves.fastOutSlowIn,
-                  duration: const Duration(milliseconds: 400),
-                );
-              },
-              icon: const Icon(
-                Icons.help_outline_rounded,
-                size: 30,
-              ))
-        ],
       ),
       body: Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: (() {
+            showAnimatedDialog(
+              barrierColor: Color.fromARGB(164, 95, 93, 166),
+              context: context,
+              barrierDismissible: true,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  backgroundColor: const Color(0xFF5F5DA6),
+                  icon: const Icon(
+                    Icons.person_pin_rounded,
+                    size: 60,
+                  ),
+                  title: Text('Perssonalidade',
+                      style: GoogleFonts.fredoka(
+                          textStyle: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 25,
+                              color: Colors.white))),
+                  content: Text(
+                      "Uma Seleção Exclusiva de Avatar para te melhor representa sua perssonalidade!",
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.fredoka(
+                          textStyle: const TextStyle(
+                              fontWeight: FontWeight.w300,
+                              fontSize: 19,
+                              color: Colors.white))),
+                  actions: [
+                    Align(
+                      alignment: Alignment.center,
+                      child: MaterialButton(
+                        onPressed: () => {},
+                        child: Text('ok',
+                            textAlign: TextAlign.left,
+                            style: GoogleFonts.fredoka(
+                                textStyle: const TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 30,
+                                    color: Colors.white))),
+                      ),
+                    ),
+                  ],
+                );
+              },
+              animationType: DialogTransitionType.slideFromTop,
+              curve: Curves.fastOutSlowIn,
+              duration: const Duration(milliseconds: 400),
+            );
+          }),
+          child: Icon(
+            Icons.help_outline_rounded,
+            color: Colors.white,
+            size: 35,
+          ),
+          backgroundColor: const Color(0xFF5F5DA6),
+        ),
         body: SingleChildScrollView(
             child: Container(
-          decoration: BoxDecoration(color: Color(0xFF2E4159)),
+          decoration: const BoxDecoration(color: Color(0xFF2E4159)),
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           child: Column(
