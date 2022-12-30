@@ -4,12 +4,17 @@ import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/app/user_info.dart';
 import 'package:my_money/views/MyPage.dart';
+import 'package:my_money/views/selected_avatar.dart';
 
 class UserCard extends StatefulWidget {
   const UserCard({super.key});
 
   @override
   State<UserCard> createState() => _UserCardState();
+}
+
+class LoginPerfil {
+  String fotoperfil = AvatarImg().perfil;
 }
 
 class _UserCardState extends State<UserCard> {
@@ -86,21 +91,32 @@ class _UserCardState extends State<UserCard> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Container(
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                            color: const Color(0xFF8F8EBF),
-                            borderRadius: BorderRadius.circular(100)),
                         height: 110,
                         width: 110,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            image: LoginPerfil().fotoperfil.isEmpty
+                                ? DecorationImage(
+                                    image:
+                                        AssetImage('assets/img/sem_logo.jpg'))
+                                : DecorationImage(
+                                    image:
+                                        AssetImage(LoginPerfil().fotoperfil)),
+                            color: const Color(0xFF8F8EBF),
+                            borderRadius: BorderRadius.circular(100)),
                         child: Column(
                           children: [
                             IconButton(
                               icon: const Icon(
                                 Icons.add_a_photo_outlined,
                                 size: 50,
+                                color: const Color(0xFF8F8EBF),
                               ),
                               onPressed: () {
-                                Navigator.pop(context);
+                                Navigator.push(
+                                    context,
+                                    CupertinoPageRoute(
+                                        builder: ((context) => AvatarUser())));
                               },
                               iconSize: 70,
                             ),
@@ -109,7 +125,7 @@ class _UserCardState extends State<UserCard> {
                               style: GoogleFonts.fredoka(
                                   textStyle: const TextStyle(
                                 fontSize: 15,
-                                color: Colors.white,
+                                color: const Color(0xFF8F8EBF),
                                 fontWeight: FontWeight.bold,
                               )),
                             ),
@@ -229,6 +245,7 @@ class _UserCardState extends State<UserCard> {
                                   ),
                                   MaterialButton(
                                     onPressed: () {
+                                      print(LoginPerfil().fotoperfil);
                                       Navigator.pop(context);
                                     },
                                     child: const Text('Ops, Vou Ajustar!'),

@@ -27,6 +27,10 @@ class SelectedAvatr extends StatefulWidget {
   State<SelectedAvatr> createState() => _SelectedAvatrState();
 }
 
+class AvatarImg {
+  String perfil = '';
+}
+
 class _SelectedAvatrState extends State<SelectedAvatr> {
   @override
   Widget build(BuildContext context) {
@@ -75,7 +79,9 @@ class _SelectedAvatrState extends State<SelectedAvatr> {
                     Align(
                       alignment: Alignment.center,
                       child: MaterialButton(
-                        onPressed: () => {},
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
                         child: Text('ok',
                             textAlign: TextAlign.left,
                             style: GoogleFonts.fredoka(
@@ -130,7 +136,11 @@ class _SelectedAvatrState extends State<SelectedAvatr> {
                           children: [
                             GestureDetector(
                               onTap: () {
-                                print('');
+                                LoginPerfil();
+                                AvatarImg().perfil =
+                                    AvatarInfo().imagesA[index];
+                                print(AvatarImg().perfil);
+
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
