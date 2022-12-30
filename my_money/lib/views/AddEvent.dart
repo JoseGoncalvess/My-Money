@@ -3,7 +3,6 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/views/MyPage.dart';
-import 'package:my_money/views/selected_avatar.dart';
 
 final List<String> listParcelas = <String>[
   "1",
@@ -584,7 +583,8 @@ class _AddEventState extends State<AddEvent> {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: ((context) => MyPage())));
+                                            builder: ((context) =>
+                                                const MyPage())));
                                   },
                                   style: ElevatedButton.styleFrom(
                                     fixedSize: const Size(150, 40),

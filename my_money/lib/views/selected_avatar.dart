@@ -1,12 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:carousel_slider/utils.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/app/valores/avatar_info.dart';
-import 'package:my_money/views/HomePage.dart';
 import 'package:my_money/views/user.dart';
 import 'package:swipe_deck/swipe_deck.dart';
 
@@ -21,8 +20,6 @@ class AvatarUser extends StatelessWidget {
   }
 }
 
-String foto = foto;
-
 class SelectedAvatr extends StatefulWidget {
   const SelectedAvatr({super.key});
 
@@ -34,7 +31,7 @@ class _SelectedAvatrState extends State<SelectedAvatr> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF2E4159),
+      backgroundColor: Color(0xFF2E4159),
       appBar: AppBar(
         backgroundColor: const Color(0xFF5F5DA6),
         title: Center(
@@ -45,21 +42,12 @@ class _SelectedAvatrState extends State<SelectedAvatr> {
                       fontSize: 25,
                       color: Colors.white))),
         ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.arrow_back_rounded),
-            onPressed: () {
-              Navigator.push(context,
-                  CupertinoPageRoute(builder: ((context) => UserCard())));
-            },
-          )
-        ],
       ),
       body: Scaffold(
         floatingActionButton: FloatingActionButton(
           onPressed: (() {
             showAnimatedDialog(
-              barrierColor: const Color.fromARGB(164, 95, 93, 166),
+              barrierColor: Color.fromARGB(164, 95, 93, 166),
               context: context,
               barrierDismissible: true,
               builder: (BuildContext context) {
@@ -76,7 +64,7 @@ class _SelectedAvatrState extends State<SelectedAvatr> {
                               fontSize: 25,
                               color: Colors.white))),
                   content: Text(
-                      "Uma Seleção Exclusiva de Avatar para melhor representa sua perssonalidade!",
+                      "Uma Seleção Exclusiva de Avatar para te melhor representa sua perssonalidade!",
                       textAlign: TextAlign.center,
                       style: GoogleFonts.fredoka(
                           textStyle: const TextStyle(
@@ -87,7 +75,7 @@ class _SelectedAvatrState extends State<SelectedAvatr> {
                     Align(
                       alignment: Alignment.center,
                       child: MaterialButton(
-                        onPressed: () => {Navigator.pop(context)},
+                        onPressed: () => {},
                         child: Text('ok',
                             textAlign: TextAlign.left,
                             style: GoogleFonts.fredoka(
@@ -105,9 +93,12 @@ class _SelectedAvatrState extends State<SelectedAvatr> {
               duration: const Duration(milliseconds: 400),
             );
           }),
+          child: Icon(
+            Icons.help_outline_rounded,
+            color: Colors.white,
+            size: 35,
+          ),
           backgroundColor: const Color(0xFF5F5DA6),
-          child: const Icon(Icons.help_outline_rounded,
-              color: Colors.white, size: 35),
         ),
         body: SingleChildScrollView(
             child: Container(
@@ -118,7 +109,9 @@ class _SelectedAvatrState extends State<SelectedAvatr> {
             children: [
               Center(
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    print(AvatarInfo().nameA);
+                  },
                   child: Padding(
                     padding: const EdgeInsets.only(left: 10, right: 10),
                     child: CarouselSlider.builder(
@@ -126,8 +119,9 @@ class _SelectedAvatrState extends State<SelectedAvatr> {
                       options: CarouselOptions(
                         height: MediaQuery.of(context).size.height,
                         scrollDirection: Axis.vertical,
-                        enlargeCenterPage: true,
                         autoPlay: false,
+                        enlargeCenterPage: true,
+                        autoPlayCurve: Curves.easeInOutQuart,
                         enableInfiniteScroll: false,
                         initialPage: 0,
                       ),
@@ -136,9 +130,7 @@ class _SelectedAvatrState extends State<SelectedAvatr> {
                           children: [
                             GestureDetector(
                               onTap: () {
-                                foto = AvatarInfo().imagesA[index];
-                                UserDatePreference().saveFotoDate(foto);
-                                print(foto);
+                                print('');
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(

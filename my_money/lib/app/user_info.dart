@@ -3,12 +3,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 class UserDatePreference {
   String name = '';
   String patrimonio = '';
-  String foto = '';
-
-  saveFotoDate(foto) async {
-    final prefs = await SharedPreferences.getInstance();
-    prefs.setString('foto', foto);
-  }
 
   saveUserDate(name, patrimonio) async {
     final prefs = await SharedPreferences.getInstance();
@@ -42,19 +36,4 @@ class UserData {
     required this.name,
     required this.patrimonio,
   });
-}
-
-class FotoUser {
-  Future<FotoData> loadFotoDate() async {
-    final prefs = await SharedPreferences.getInstance();
-    String foto = prefs.getString('foto') ?? "";
-
-    return FotoData(foto: foto);
-  }
-}
-
-class FotoData {
-  late String foto;
-
-  FotoData({required foto});
 }

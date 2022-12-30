@@ -5,8 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/app/user_info.dart';
 import 'package:my_money/views/AddEvent.dart';
 import 'package:my_money/views/HomePage.dart';
-import 'package:my_money/views/selected_avatar.dart';
-import 'package:my_money/views/user.dart';
 
 class MyPage extends StatefulWidget {
   const MyPage({super.key});
@@ -28,16 +26,10 @@ class _MyPageState extends State<MyPage> {
 
   UserData _userData = UserData(name: 'name', patrimonio: 'patrimonio');
 
-  FotoData _userFoto = FotoData(foto: 'foto');
-
   @override
   void initState() {
     super.initState();
-    FotoUser().loadFotoDate().then((value) => {
-          setState(() {
-            _userFoto = value;
-          })
-        });
+
     DataUser().loadUserData().then((value) => {
           setState(() {
             _userData = value;
@@ -48,7 +40,7 @@ class _MyPageState extends State<MyPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF2E4159),
+      backgroundColor: Color(0xFF2E4159),
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
@@ -92,8 +84,10 @@ class _MyPageState extends State<MyPage> {
                                     decoration: BoxDecoration(
                                         color: Colors.white,
                                         borderRadius: BorderRadius.circular(50),
-                                        image: DecorationImage(
-                                          image: AssetImage(_userFoto.foto),
+                                        image: const DecorationImage(
+                                          image: AssetImage(
+                                            "assets/img/cap.png",
+                                          ),
                                         )),
                                   ),
                                 ],

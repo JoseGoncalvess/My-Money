@@ -87,16 +87,20 @@ class _HomepageState extends State<Homepage> {
               child: ElevatedButton(
                 onPressed: () {
                   if (_userData.name != '' && _userData.patrimonio != '') {
-                    Navigator.push(context,
-                        CupertinoPageRoute(builder: ((context) => MyPage())));
+                    Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                            builder: ((context) => const MyPage())));
                   } else {
-                    Navigator.push(context,
-                        CupertinoPageRoute(builder: ((context) => UserCard())));
+                    Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                            builder: ((context) => const UserCard())));
                   }
                 },
                 style: ElevatedButton.styleFrom(
                   fixedSize: const Size(240, 80),
-                  shape: StadiumBorder(),
+                  shape: const StadiumBorder(),
                   backgroundColor: Colors.white,
                 ),
                 child: Text('Começar',

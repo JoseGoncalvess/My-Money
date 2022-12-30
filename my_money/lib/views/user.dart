@@ -4,7 +4,6 @@ import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/app/user_info.dart';
 import 'package:my_money/views/MyPage.dart';
-import 'package:my_money/views/selected_avatar.dart';
 
 class UserCard extends StatefulWidget {
   const UserCard({super.key});
@@ -26,13 +25,12 @@ class _UserCardState extends State<UserCard> {
             MaterialButton(
               onPressed: () => {
                 Navigator.push(context,
-                    CupertinoPageRoute(builder: ((context) => MyPage())))
+                    CupertinoPageRoute(builder: ((context) => const MyPage())))
               },
               child: const Text('Sim!'),
             ),
             MaterialButton(
               onPressed: () {
-                print(foto);
                 Navigator.pop(context);
               },
               child: const Text('Ops, Vou Ajustar!'),
@@ -102,11 +100,7 @@ class _UserCardState extends State<UserCard> {
                                 size: 50,
                               ),
                               onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    CupertinoPageRoute(
-                                        builder: ((context) =>
-                                            const AvatarUser())));
+                                Navigator.pop(context);
                               },
                               iconSize: 70,
                             ),
@@ -225,7 +219,8 @@ class _UserCardState extends State<UserCard> {
                                       Navigator.push(
                                           context,
                                           CupertinoPageRoute(
-                                              builder: ((context) => MyPage())))
+                                              builder: ((context) =>
+                                                  const MyPage())))
                                     },
                                     child: const Text(
                                       'Sim!',
