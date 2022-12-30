@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/app/user_info.dart';
 import 'package:my_money/views/AddEvent.dart';
 import 'package:my_money/views/HomePage.dart';
+import 'package:my_money/views/user.dart';
 
 class MyPage extends StatefulWidget {
-  const MyPage({super.key});
+  const MyPage({
+    super.key,
+  });
 
   @override
   State<MyPage> createState() => _MyPageState();
@@ -24,6 +25,8 @@ class _MyPageState extends State<MyPage> {
     "Cartão Nubank"
   ];
 
+//CARREGANDO OS DADOS DE USER
+//=========================================================================
   UserData _userData = UserData(name: 'name', patrimonio: 'patrimonio');
 
   @override
@@ -37,10 +40,11 @@ class _MyPageState extends State<MyPage> {
         });
   }
 
+//======================================================================
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF2E4159),
+      backgroundColor: const Color(0xFF2E4159),
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
@@ -85,10 +89,8 @@ class _MyPageState extends State<MyPage> {
                                         color: Colors.white,
                                         borderRadius: BorderRadius.circular(50),
                                         image: const DecorationImage(
-                                          image: AssetImage(
-                                            "assets/img/cap.png",
-                                          ),
-                                        )),
+                                            image: AssetImage(
+                                                'assets/img/sem_logo.jpg'))),
                                   ),
                                 ],
                               ),

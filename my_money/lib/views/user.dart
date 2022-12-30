@@ -5,16 +5,15 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/app/user_info.dart';
 import 'package:my_money/views/MyPage.dart';
 import 'package:my_money/views/selected_avatar.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class UserCard extends StatefulWidget {
-  const UserCard({super.key});
+  UserCard({
+    super.key,
+  });
 
   @override
   State<UserCard> createState() => _UserCardState();
-}
-
-class LoginPerfil {
-  String fotoperfil = AvatarImg().perfil;
 }
 
 class _UserCardState extends State<UserCard> {
@@ -49,6 +48,27 @@ class _UserCardState extends State<UserCard> {
   //controllers
   final TextEditingController _nameInputController = TextEditingController();
   final TextEditingController _patInputController = TextEditingController();
+
+  Future<String> loadPhoto() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString("foto") ?? "";
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    loadPhoto().then((value) {
+      // O VALUE É O RETORNO DA FUNÇÃO loadPhoto
+      if (value.isEmpty) {
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => const MyPage()));
+      } else {
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => const MyPage()));
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -95,13 +115,8 @@ class _UserCardState extends State<UserCard> {
                         width: 110,
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
-                            image: LoginPerfil().fotoperfil.isEmpty
-                                ? DecorationImage(
-                                    image:
-                                        AssetImage('assets/img/sem_logo.jpg'))
-                                : DecorationImage(
-                                    image:
-                                        AssetImage(LoginPerfil().fotoperfil)),
+                            image: DecorationImage(
+                                image: AssetImage('assets/img/sem_logo.jpg')),
                             color: const Color(0xFF8F8EBF),
                             borderRadius: BorderRadius.circular(100)),
                         child: Column(
@@ -245,7 +260,7 @@ class _UserCardState extends State<UserCard> {
                                   ),
                                   MaterialButton(
                                     onPressed: () {
-                                      print(LoginPerfil().fotoperfil);
+                                      print('');
                                       Navigator.pop(context);
                                     },
                                     child: const Text('Ops, Vou Ajustar!'),

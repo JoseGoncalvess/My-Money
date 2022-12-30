@@ -11,7 +11,7 @@ class UserDatePreference {
     prefs.setString('patrimonio', patrimonio);
 
     print(name);
-    print(patrimonio + "$name");
+    print(patrimonio);
   }
 }
 
