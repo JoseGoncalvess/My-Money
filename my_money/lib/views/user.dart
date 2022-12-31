@@ -1,8 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/app/user_info.dart';
+import 'package:my_money/app/valores/avatar_info.dart';
 import 'package:my_money/views/MyPage.dart';
 import 'package:my_money/views/selected_avatar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -60,12 +63,16 @@ class _UserCardState extends State<UserCard> {
 
     loadPhoto().then((value) {
       // O VALUE É O RETORNO DA FUNÇÃO loadPhoto
-      if (value.isEmpty) {
+      if (value.isNotEmpty) {
+        AvatarInfo.retrato = value;
+        log('vaziu');
+      }
+    });
+
+    DataUser().loadUserData().then((value) {
+      if (value.name.isNotEmpty && value.patrimonio.isNotEmpty) {
         Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => const MyPage()));
-      } else {
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => const MyPage()));
+            .push(CupertinoPageRoute(builder: ((context) => MyPage())));
       }
     });
   }
@@ -116,25 +123,30 @@ class _UserCardState extends State<UserCard> {
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage('assets/img/sem_logo.jpg')),
+                                image: AssetImage(AvatarInfo.retrato.isEmpty
+                                    ? 'assets/img/sem_logo.jpg'
+                                    : AvatarInfo.retrato)),
                             color: const Color(0xFF8F8EBF),
                             borderRadius: BorderRadius.circular(100)),
                         child: Column(
                           children: [
-                            IconButton(
-                              icon: const Icon(
-                                Icons.add_a_photo_outlined,
-                                size: 50,
-                                color: const Color(0xFF8F8EBF),
-                              ),
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    CupertinoPageRoute(
-                                        builder: ((context) => AvatarUser())));
-                              },
-                              iconSize: 70,
-                            ),
+                            AvatarInfo.retrato.isNotEmpty
+                                ? Container()
+                                : IconButton(
+                                    icon: const Icon(
+                                      Icons.add_a_photo_outlined,
+                                      size: 50,
+                                      color: const Color(0xFF8F8EBF),
+                                    ),
+                                    onPressed: () {
+                                      Navigator.push(
+                                          context,
+                                          CupertinoPageRoute(
+                                              builder: ((context) =>
+                                                  AvatarUser())));
+                                    },
+                                    iconSize: 70,
+                                  ),
                             Text(
                               'Foto',
                               style: GoogleFonts.fredoka(

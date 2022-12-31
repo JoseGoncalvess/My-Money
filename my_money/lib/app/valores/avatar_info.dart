@@ -1,4 +1,6 @@
 class AvatarInfo {
+  static String retrato = '';
+
   final List<String> imagesA = [
     'assets/img/boi.png',
     'assets/img/cap.png',

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/app/valores/avatar_info.dart';
+import 'package:my_money/views/metodos/showDialoganimated.dart';
 import 'package:my_money/views/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -46,6 +47,16 @@ class _SelectedAvatrState extends State<SelectedAvatr> {
   }
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    Future.delayed(Duration(seconds: 2)).then((value) {
+      alertAnimated(context);
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF2E4159),
@@ -62,56 +73,7 @@ class _SelectedAvatrState extends State<SelectedAvatr> {
       ),
       body: Scaffold(
         floatingActionButton: FloatingActionButton(
-          onPressed: (() {
-            showAnimatedDialog(
-              barrierColor: const Color.fromARGB(164, 95, 93, 166),
-              context: context,
-              barrierDismissible: true,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  backgroundColor: const Color(0xFF5F5DA6),
-                  icon: const Icon(
-                    Icons.person_pin_rounded,
-                    size: 60,
-                  ),
-                  title: Text('Perssonalidade',
-                      style: GoogleFonts.fredoka(
-                          textStyle: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 25,
-                              color: Colors.white))),
-                  content: Text(
-                      "Uma Seleção Exclusiva de Avatar para te melhor representa sua perssonalidade!",
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.fredoka(
-                          textStyle: const TextStyle(
-                              fontWeight: FontWeight.w300,
-                              fontSize: 19,
-                              color: Colors.white))),
-                  actions: [
-                    Align(
-                      alignment: Alignment.center,
-                      child: MaterialButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: Text('ok',
-                            textAlign: TextAlign.left,
-                            style: GoogleFonts.fredoka(
-                                textStyle: const TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 30,
-                                    color: Colors.white))),
-                      ),
-                    ),
-                  ],
-                );
-              },
-              animationType: DialogTransitionType.slideFromTop,
-              curve: Curves.fastOutSlowIn,
-              duration: const Duration(milliseconds: 400),
-            );
-          }),
+          onPressed: (() {}),
           child: Icon(
             Icons.help_outline_rounded,
             color: Colors.white,
@@ -144,15 +106,15 @@ class _SelectedAvatrState extends State<SelectedAvatr> {
                       return Column(
                         children: [
                           GestureDetector(
+                            //Aquiiiii
                             onTap: () async {
+                              AvatarInfo.retrato = AvatarInfo().imagesA[index];
                               saveImg(AvatarInfo().imagesA[index]);
 
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: ((context) => UserCard(
-                                            foto: imagesA[index],
-                                          ))));
+                                      builder: ((context) => UserCard())));
                             },
                             child: Container(
                                 height: 300,

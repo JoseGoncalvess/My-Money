@@ -68,14 +68,16 @@ class _HomepageState extends State<Homepage> {
                       padding: const EdgeInsets.all(20.0),
                       child: Image.asset(
                         "img/logo.png",
-                        height: 200,
-                        width: 200,
+                        height:
+                            (MediaQuery.of(context).size.height * 0.40) - 100,
+                        width:
+                            (MediaQuery.of(context).size.height * 0.40) - 100,
                       ),
                     ),
                     Text('My Money',
                         style: GoogleFonts.fredoka(
                             textStyle: const TextStyle(
-                          fontSize: 55,
+                          fontSize: 50,
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                         ))),
