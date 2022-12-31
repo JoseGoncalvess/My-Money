@@ -51,7 +51,7 @@ class _SelectedAvatrState extends State<SelectedAvatr> {
     // TODO: implement initState
     super.initState();
 
-    Future.delayed(Duration(seconds: 2)).then((value) {
+    Future.delayed(Duration(seconds: 1)).then((value) {
       alertAnimated(context);
     });
   }
