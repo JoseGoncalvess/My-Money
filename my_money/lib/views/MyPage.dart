@@ -1,11 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/app/user_info.dart';
 import 'package:my_money/app/valores/avatar_info.dart';
 import 'package:my_money/views/AddEvent.dart';
 import 'package:my_money/views/HomePage.dart';
-import 'package:my_money/views/selected_avatar.dart';
 import 'package:my_money/views/user.dart';
 
 class MyPage extends StatefulWidget {
@@ -87,27 +85,18 @@ class _MyPageState extends State<MyPage> {
                                         borderRadius: BorderRadius.circular(50),
                                       ),
                                     ),
-                                    GestureDetector(
-                                      onTap: () {
-                                        Navigator.push(
-                                            context,
-                                            CupertinoPageRoute(
-                                                builder: ((context) =>
-                                                    AvatarUser())));
-                                      },
-                                      child: Container(
-                                        width: 60,
-                                        height: 60,
-                                        decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius:
-                                                BorderRadius.circular(50),
-                                            image: DecorationImage(
-                                                image: AssetImage(AvatarInfo
-                                                        .retrato.isEmpty
-                                                    ? 'assets/img/sem_logo.jpg'
-                                                    : AvatarInfo.retrato))),
-                                      ),
+                                    Container(
+                                      width: 60,
+                                      height: 60,
+                                      decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(50),
+                                          image: DecorationImage(
+                                              image: AssetImage(AvatarInfo
+                                                      .retrato.isEmpty
+                                                  ? 'assets/img/sem_logo.jpg'
+                                                  : AvatarInfo.retrato))),
                                     ),
                                   ],
                                 ),
