@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/app/user_info.dart';
 import 'package:my_money/app/valores/avatar_info.dart';
+import 'package:my_money/app/widget/pages/Details_View.dart';
 import 'package:my_money/views/AddEvent.dart';
 import 'package:my_money/views/HomePage.dart';
 import 'package:my_money/views/selected_avatar.dart';
@@ -311,7 +312,11 @@ class _MyPageState extends State<MyPage> {
                             ),
                             IconButton(
                                 onPressed: () {
-                                  //
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: ((context) =>
+                                              DetalhesPage())));
                                 },
                                 icon: const Icon(
                                     Icons.arrow_circle_right_rounded,
@@ -384,27 +389,32 @@ class _MyPageState extends State<MyPage> {
                       );
                     }),
               ),
-              Container(
+              SizedBox(
                 height: MediaQuery.of(context).size.height * 0.08,
                 width: MediaQuery.of(context).size.width,
-                color: const Color(0xFF5F5DA6),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    SizedBox(
+                    Container(
                       height: 80,
                       width: MediaQuery.of(context).size.width * 0.40,
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(50),
+                        ),
+                        color: Color(0xFF5F5DA6),
+                      ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text('Saldo Livre',
+                          Text('Total pago',
                               style: GoogleFonts.fredoka(
                                   textStyle: const TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 18,
                               ))),
-                          Text('Total pago',
+                          Text('R\$ ' "50,00",
                               style: GoogleFonts.fredoka(
                                   textStyle: const TextStyle(
                                 fontWeight: FontWeight.w600,
@@ -416,17 +426,26 @@ class _MyPageState extends State<MyPage> {
                     Container(
                         height: 100,
                         width: MediaQuery.of(context).size.width * 0.20,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                        )),
-                    SizedBox(
+                        decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              bottomRight: Radius.circular(20),
+                              bottomLeft: Radius.circular(20),
+                            ),
+                            color: Color(0xFF2E4159))),
+                    Container(
                       height: 80,
                       width: MediaQuery.of(context).size.width * 0.40,
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(50),
+                        ),
+                        color: Color(0xFF5F5DA6),
+                      ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text('R\$ ' "50,00",
+                          Text('Saldo Livre',
                               style: GoogleFonts.fredoka(
                                   textStyle: const TextStyle(
                                 fontWeight: FontWeight.w600,

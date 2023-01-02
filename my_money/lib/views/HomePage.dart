@@ -81,8 +81,15 @@ class _HomepageState extends State<Homepage> {
             SizedBox(
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      CupertinoPageRoute(builder: ((context) => UserCard())));
+                  if (_userData.name.isEmpty & _userData.patrimonio.isEmpty) {
+                    Navigator.push(context,
+                        CupertinoPageRoute(builder: ((context) => UserCard())));
+                  } else {
+                    Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                            builder: ((context) => const MyPage())));
+                  }
                 },
                 style: ElevatedButton.styleFrom(
                   fixedSize: const Size(240, 80),
