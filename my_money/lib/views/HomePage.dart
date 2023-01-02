@@ -40,13 +40,6 @@ class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(context,
-              CupertinoPageRoute(builder: ((context) => const AvatarUser())));
-        },
-        child: const Icon(Icons.account_tree_rounded),
-      ),
       //passagem de cor em HexaDecimal.
       backgroundColor: const Color(0xFF5F5DA6),
       body: SizedBox(

@@ -26,21 +26,6 @@ class SelectedAvatr extends StatefulWidget {
 class _SelectedAvatrState extends State<SelectedAvatr> {
   //// SALVANDO IMAGEM
 
-  final List<String> imagesA = [
-    'assets/img/boi.png',
-    'assets/img/cap.png',
-    'assets/img/peralta.png',
-    'assets/img/julius.png',
-    'assets/img/rosa.png',
-    'assets/img/sargento.png',
-    'assets/img/sirigueijo.png',
-    'assets/img/bitcoin.png',
-    'assets/img/caramelo.png',
-    'assets/img/ethereum.png',
-    'assets/img/lobo.png',
-    'assets/img/monopoli.png'
-  ];
-
   void saveImg(String value) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString("foto", value);

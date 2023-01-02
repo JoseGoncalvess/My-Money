@@ -1,9 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/app/user_info.dart';
 import 'package:my_money/app/valores/avatar_info.dart';
 import 'package:my_money/views/AddEvent.dart';
 import 'package:my_money/views/HomePage.dart';
+import 'package:my_money/views/selected_avatar.dart';
 import 'package:my_money/views/user.dart';
 
 class MyPage extends StatefulWidget {
@@ -54,7 +56,7 @@ class _MyPageState extends State<MyPage> {
           child: Column(
             children: [
               Container(
-                height: 256,
+                height: MediaQuery.of(context).size.height * 0.35,
                 width: MediaQuery.of(context).size.width,
                 decoration: const BoxDecoration(
                     color: Color(0xFF5F5DA6),
@@ -85,18 +87,27 @@ class _MyPageState extends State<MyPage> {
                                         borderRadius: BorderRadius.circular(50),
                                       ),
                                     ),
-                                    Container(
-                                      width: 60,
-                                      height: 60,
-                                      decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius:
-                                              BorderRadius.circular(50),
-                                          image: DecorationImage(
-                                              image: AssetImage(AvatarInfo
-                                                      .retrato.isEmpty
-                                                  ? 'assets/img/sem_logo.jpg'
-                                                  : AvatarInfo.retrato))),
+                                    GestureDetector(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: ((context) =>
+                                                    const AvatarUser())));
+                                      },
+                                      child: Container(
+                                        width: 60,
+                                        height: 60,
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(50),
+                                            image: DecorationImage(
+                                                image: AssetImage(AvatarInfo
+                                                        .retrato.isEmpty
+                                                    ? 'assets/img/sem_logo.jpg'
+                                                    : AvatarInfo.retrato))),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -139,7 +150,7 @@ class _MyPageState extends State<MyPage> {
                                   decoration: BoxDecoration(
                                       color: Colors.white,
                                       borderRadius: BorderRadius.circular(20)),
-                                  child: Text('R\$ ' + _userData.patrimonio,
+                                  child: Text('R\$ ${_userData.patrimonio}',
                                       style: GoogleFonts.fredoka(
                                           textStyle: const TextStyle(
                                               fontWeight: FontWeight.w600,
@@ -317,12 +328,13 @@ class _MyPageState extends State<MyPage> {
                     itemCount: listName.length,
                     itemBuilder: (BuildContext context, index) {
                       return Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding:
+                            const EdgeInsets.only(left: 5, right: 5, top: 1),
                         child: Column(
                           children: [
                             Container(
-                              height: 100,
-                              color: Color(0xFF2E4159),
+                              height: 105,
+                              color: const Color(0xFF2E4159),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -364,7 +376,7 @@ class _MyPageState extends State<MyPage> {
                               ),
                             ),
                             Container(
-                              height: 2,
+                              height: 1.5,
                               color: Colors.white,
                             )
                           ],
@@ -373,66 +385,86 @@ class _MyPageState extends State<MyPage> {
                     }),
               ),
               Container(
+                height: MediaQuery.of(context).size.height * 0.08,
+                width: MediaQuery.of(context).size.width,
                 color: const Color(0xFF5F5DA6),
-                height: 70,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    SizedBox(
+                      height: 80,
+                      width: MediaQuery.of(context).size.width * 0.40,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text('Saldo Livre',
                               style: GoogleFonts.fredoka(
                                   textStyle: const TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 20,
+                                fontSize: 18,
                               ))),
-                          Text('R\$ ' "50,00",
-                              style: GoogleFonts.fredoka(
-                                  textStyle: const TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 20,
-                              )))
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
                           Text('Total pago',
                               style: GoogleFonts.fredoka(
                                   textStyle: const TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 20,
+                                fontSize: 18,
+                              ))),
+                        ],
+                      ),
+                    ),
+                    Container(
+                        height: 100,
+                        width: MediaQuery.of(context).size.width * 0.20,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                        )),
+                    SizedBox(
+                      height: 80,
+                      width: MediaQuery.of(context).size.width * 0.40,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text('R\$ ' "50,00",
+                              style: GoogleFonts.fredoka(
+                                  textStyle: const TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 18,
                               ))),
                           Text("R\$ " "200,00",
                               style: GoogleFonts.fredoka(
                                   textStyle: const TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 20,
+                                fontSize: 18,
                               )))
                         ],
-                      )
-                    ],
-                  ),
+                      ),
+                    )
+                  ],
                 ),
               )
             ],
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: (() {
-          Navigator.push(
-              context, MaterialPageRoute(builder: ((context) => AddEvent())));
-        }),
-        child: Icon(
-          Icons.add_card_rounded,
-          color: Color(0xFF5F5DA6),
-          size: 25,
+      floatingActionButton: Container(
+        height: 80,
+        width: 80,
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(50)),
+        child: FloatingActionButton(
+          onPressed: (() {
+            Navigator.push(context,
+                MaterialPageRoute(builder: ((context) => const AddEvent())));
+          }),
+          // ignore: sort_child_properties_last
+          child: const Icon(
+            Icons.add_card_rounded,
+            color: Color(0xFF2E4159),
+            size: 30,
+          ),
+          backgroundColor: Colors.white,
         ),
-        backgroundColor: Colors.white,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
