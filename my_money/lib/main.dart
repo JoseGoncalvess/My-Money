@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_money/views/HomePage.dart';
+
+import 'splash_page.dart';
 
 void main() {
   runApp(const AppWidget());
@@ -13,7 +14,7 @@ class AppWidget extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
-      home: const Homepage(),
+      home: const Splashpage(),
     );
   }
 }

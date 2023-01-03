@@ -1,11 +1,6 @@
-import 'package:flutter/cupertino.dart';
+import 'package:cr_calendar/cr_calendar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:my_money/app/valores/avatar_info.dart';
-
-import '../../../views/AddEvent.dart';
 
 class DetalhesPage extends StatefulWidget {
   const DetalhesPage({super.key});
@@ -15,12 +10,22 @@ class DetalhesPage extends StatefulWidget {
 }
 
 class _DetalhesPageState extends State<DetalhesPage> {
+  final CrCalendarController _datecontroler = CrCalendarController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: const Color(0xFF5F5DA6),
         centerTitle: true,
-        title: Text('Seu Mês em detalhes'),
+        title: const Text('Seu Mês em detalhes'),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.calendar_month_rounded),
+            color: Colors.white,
+          )
+        ],
       ),
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
@@ -95,29 +100,32 @@ class _DetalhesPageState extends State<DetalhesPage> {
                   Container(
                     height: 80,
                     width: MediaQuery.of(context).size.width * 0.40,
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(50),
+                    color: const Color(0xFF2E4159),
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        color: Color(0xFF5F5DA6),
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(50),
+                        ),
                       ),
-                      color: Color(0xFF5F5DA6),
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text('Total pago',
-                            style: GoogleFonts.fredoka(
-                                textStyle: const TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 18,
-                            ))),
-                        Text('R\$ ' "50,00",
-                            style: GoogleFonts.fredoka(
-                                textStyle: const TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 18,
-                            ))),
-                      ],
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text('Total pago',
+                              style: GoogleFonts.fredoka(
+                                  textStyle: const TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 18,
+                              ))),
+                          Text('R\$ ' "50,00",
+                              style: GoogleFonts.fredoka(
+                                  textStyle: const TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 18,
+                              ))),
+                        ],
+                      ),
                     ),
                   ),
                   Container(
@@ -128,29 +136,32 @@ class _DetalhesPageState extends State<DetalhesPage> {
                   Container(
                     height: 80,
                     width: MediaQuery.of(context).size.width * 0.40,
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(50),
+                    color: Color(0xFF2E4159),
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        color: Color(0xFF5F5DA6),
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(50),
+                        ),
                       ),
-                      color: Color(0xFF5F5DA6),
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text('Saldo Livre',
-                            style: GoogleFonts.fredoka(
-                                textStyle: const TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 18,
-                            ))),
-                        Text("R\$ " "200,00",
-                            style: GoogleFonts.fredoka(
-                                textStyle: const TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 18,
-                            )))
-                      ],
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text('Saldo Livre',
+                              style: GoogleFonts.fredoka(
+                                  textStyle: const TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 18,
+                              ))),
+                          Text("R\$ " "200,00",
+                              style: GoogleFonts.fredoka(
+                                  textStyle: const TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 18,
+                              )))
+                        ],
+                      ),
                     ),
                   )
                 ],
