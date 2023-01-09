@@ -12,6 +12,17 @@ class _DetalhesPageState extends State<DetalhesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF5F5DA6),
+        elevation: 0,
+        centerTitle: true,
+        title: Text('Seu Mês em Detalhes',
+            style: GoogleFonts.fredoka(
+                textStyle: const TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 22,
+                    color: Colors.white))),
+      ),
       backgroundColor: Colors.white,
       body: SafeArea(
         child: SizedBox(
@@ -20,7 +31,7 @@ class _DetalhesPageState extends State<DetalhesPage> {
           child: Column(
             children: [
               Container(
-                height: MediaQuery.of(context).size.height * 0.15,
+                height: MediaQuery.of(context).size.height * 0.08,
                 width: MediaQuery.of(context).size.width,
                 decoration: const BoxDecoration(
                     color: Color(0xFF5F5DA6),
@@ -30,48 +41,39 @@ class _DetalhesPageState extends State<DetalhesPage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('Seu Mês em Detalhes',
-                        style: GoogleFonts.fredoka(
-                            textStyle: const TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 22,
-                                color: Colors.white))),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Column(
-                            children: [
-                              Text('Mês',
-                                  style: GoogleFonts.fredoka(
-                                      textStyle: const TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 15,
-                                          color: Colors.white))),
-                              Row(
-                                children: [
-                                  IconButton(
-                                      onPressed: () {},
-                                      icon: const Icon(
-                                          Icons.arrow_circle_left_rounded)),
-                                  Text('Novembro',
-                                      style: GoogleFonts.fredoka(
-                                          textStyle: const TextStyle(
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 18,
-                                              color: Colors.white))),
-                                  IconButton(
-                                      onPressed: () {},
-                                      icon: Icon(
-                                          Icons.arrow_circle_right_rounded)),
-                                ],
-                              )
-                            ],
-                          )
-                        ],
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Column(
+                          children: [
+                            Text('Mês',
+                                style: GoogleFonts.fredoka(
+                                    textStyle: const TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 15,
+                                        color: Colors.white))),
+                            Row(
+                              children: [
+                                IconButton(
+                                    onPressed: () {},
+                                    icon: const Icon(
+                                        Icons.arrow_circle_left_rounded)),
+                                Text('Novembro',
+                                    style: GoogleFonts.fredoka(
+                                        textStyle: const TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 18,
+                                            color: Colors.white))),
+                                IconButton(
+                                    onPressed: () {},
+                                    icon: const Icon(
+                                        Icons.arrow_circle_right_rounded)),
+                              ],
+                            )
+                          ],
+                        )
+                      ],
                     )
                   ],
                 ),
@@ -81,7 +83,7 @@ class _DetalhesPageState extends State<DetalhesPage> {
                     itemCount: 10,
                     itemBuilder: (BuildContext context, index) {
                       return Padding(
-                        padding: const EdgeInsets.all(2),
+                        padding: const EdgeInsets.all(5),
                         child: Column(
                           children: [
                             Container(
