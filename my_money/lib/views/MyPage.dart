@@ -229,39 +229,7 @@ class _MyPageState extends State<MyPage> {
                               ),
                             ),
                             SizedBox(
-                              child: Column(
-                                children: [
-                                  const Icon(
-                                    Icons.wallet,
-                                    size: 50,
-                                  ),
-                                  Column(
-                                    children: [
-                                      Text("fatura Atual",
-                                          style: GoogleFonts.fredoka(
-                                              textStyle: const TextStyle(
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 15,
-                                                  color: Colors.white))),
-                                      Container(
-                                        alignment: Alignment.center,
-                                        width: 100,
-                                        height: 35,
-                                        decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius:
-                                                BorderRadius.circular(20)),
-                                        child: Text('R\$ ' "500,00",
-                                            style: GoogleFonts.fredoka(
-                                                textStyle: const TextStyle(
-                                                    fontWeight: FontWeight.w600,
-                                                    fontSize: 20,
-                                                    color: Color(0xFF5F5DA6)))),
-                                      )
-                                    ],
-                                  )
-                                ],
-                              ),
+                              child: Container(),
                             ),
                             SizedBox(
                               child: Column(
