@@ -81,7 +81,7 @@ class _HomepageState extends State<Homepage> {
             SizedBox(
               child: ElevatedButton(
                 onPressed: () {
-                  if (_userData.name.isEmpty && _userData.patrimonio.isEmpty) {
+                  if (_userData.name.isEmpty & _userData.patrimonio.isEmpty) {
                     Navigator.push(context,
                         CupertinoPageRoute(builder: ((context) => UserCard())));
                   } else {
