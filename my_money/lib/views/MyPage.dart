@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/app/user_info.dart';
 import 'package:my_money/app/valores/avatar_info.dart';
 import 'package:my_money/app/widget/pages/Details_view.dart';
+import 'package:my_money/views/AddEvent.dart';
 import 'package:my_money/views/user.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:my_money/views/selected_avatar.dart';
@@ -45,9 +46,11 @@ class _MyPageState extends State<MyPage> {
   }
 
 //======================================================================
+  final GlobalKey<ScaffoldState> _key = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _key,
       backgroundColor: const Color(0xFF2E4159),
       drawer: Drawer(
         backgroundColor: const Color(0xFF2E4159),
@@ -110,6 +113,20 @@ class _MyPageState extends State<MyPage> {
               ),
             ),
             ListTile(
+              onTap: () {},
+              leading: const Icon(
+                Icons.person_outline_rounded,
+                size: 28,
+              ),
+              title: Text('Perfi',
+                  style: GoogleFonts.fredoka(
+                      textStyle: const TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 20,
+                          color: Colors.white))),
+            ),
+            ListTile(
+              onTap: () {},
               leading: const Icon(
                 Icons.support_agent_rounded,
                 size: 28,
@@ -120,7 +137,20 @@ class _MyPageState extends State<MyPage> {
                           fontWeight: FontWeight.w600,
                           fontSize: 20,
                           color: Colors.white))),
-            )
+            ),
+            ListTile(
+              onTap: () {},
+              leading: const Icon(
+                Icons.settings_rounded,
+                size: 28,
+              ),
+              title: Text('Configuração',
+                  style: GoogleFonts.fredoka(
+                      textStyle: const TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 20,
+                          color: Colors.white))),
+            ),
           ],
         ),
       ),
@@ -150,7 +180,7 @@ class _MyPageState extends State<MyPage> {
                       children: [
                         SizedBox(
                           child: IconButton(
-                              onPressed: () {},
+                              onPressed: () => _key.currentState!.openDrawer(),
                               icon: const Icon(Icons.menu_rounded)),
                         ),
                         Column(
@@ -253,19 +283,34 @@ class _MyPageState extends State<MyPage> {
                           ],
                         ),
                       ),
-                      CircularPercentIndicator(
-                        radius: 95.0,
-                        lineWidth: 40.0,
-                        animation: true,
-                        percent: 0.3,
-                        center: Text('R\$ 500',
-                            style: GoogleFonts.fredoka(
-                                textStyle: const TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 22,
-                                    color: Colors.white))),
-                        progressColor: const Color(0xFF5F5DA6),
-                        circularStrokeCap: CircularStrokeCap.round,
+                      Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: CircularPercentIndicator(
+                          radius: 95.0,
+                          lineWidth: 38.0,
+                          animation: true,
+                          percent: 0.3,
+                          center: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text('Fatura atual',
+                                  style: GoogleFonts.fredoka(
+                                      textStyle: const TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 18,
+                                          color: Colors.white))),
+                              Text('R\$ 500',
+                                  style: GoogleFonts.fredoka(
+                                      textStyle: const TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 22,
+                                          color: Colors.white))),
+                            ],
+                          ),
+                          progressColor: const Color(0xFF5F5DA6),
+                          circularStrokeCap: CircularStrokeCap.round,
+                        ),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -275,7 +320,7 @@ class _MyPageState extends State<MyPage> {
                             children: [
                               IconButton(
                                   onPressed: () {},
-                                  icon: Icon(
+                                  icon: const Icon(
                                     Icons.wallet_rounded,
                                     size: 40,
                                   )),
@@ -306,7 +351,7 @@ class _MyPageState extends State<MyPage> {
                             children: [
                               IconButton(
                                   onPressed: () {},
-                                  icon: Icon(
+                                  icon: const Icon(
                                     Icons.wallet_rounded,
                                     size: 40,
                                   )),
@@ -407,6 +452,19 @@ class _MyPageState extends State<MyPage> {
               ),
             ],
           ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: const Color(0xFF5F5DA6),
+        elevation: 2,
+        onPressed: (() {
+          Navigator.push(context,
+              MaterialPageRoute(builder: ((context) => const AddEvent())));
+        }),
+        child: Icon(
+          Icons.add,
+          size: 20,
+          color: Colors.white,
         ),
       ),
     );
