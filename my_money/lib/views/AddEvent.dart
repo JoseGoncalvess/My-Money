@@ -15,10 +15,12 @@ class AddEvent extends StatefulWidget {
 }
 
 class _AddEventState extends State<AddEvent> {
+  bool select = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF2E4159),
+      backgroundColor: const Color(0xFF2E4159),
       //importante para teclado que transborda
 
       body: SafeArea(
@@ -216,11 +218,15 @@ class _AddEventState extends State<AddEvent> {
                                             height: 80,
                                             width: 80,
                                             decoration: BoxDecoration(
-                                                color: const Color(0xFF5F5DA6),
+                                                color: select == true
+                                                    ? const Color(0xFF5F5DA6)
+                                                    : Color(0xFF2E4159),
                                                 borderRadius:
                                                     BorderRadius.circular(50)),
                                             child: IconButton(
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                select = false;
+                                              },
                                               icon: const Icon(
                                                 Icons.medical_services_rounded,
                                                 size: 40,
@@ -249,7 +255,9 @@ class _AddEventState extends State<AddEvent> {
                                                 borderRadius:
                                                     BorderRadius.circular(50)),
                                             child: IconButton(
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                select = false;
+                                              },
                                               icon: const Icon(
                                                 Icons.restaurant_rounded,
                                                 size: 40,
