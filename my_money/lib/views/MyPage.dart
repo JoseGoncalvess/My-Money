@@ -11,6 +11,8 @@ import 'package:percent_indicator/percent_indicator.dart';
 import 'package:my_money/views/selected_avatar.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
+import 'configApp.dart';
+
 class MyPage extends StatefulWidget {
   const MyPage({
     super.key,
@@ -132,7 +134,10 @@ class _MyPageState extends State<MyPage> {
                           color: Colors.white))),
             ),
             ListTile(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: ((context) => UserCard())));
+              },
               leading: const Icon(
                 Icons.person_outline_rounded,
                 size: 28,
@@ -158,7 +163,12 @@ class _MyPageState extends State<MyPage> {
                           color: Colors.white))),
             ),
             ListTile(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) => const ConfigApp())));
+              },
               leading: const Icon(
                 Icons.settings_rounded,
                 size: 28,
