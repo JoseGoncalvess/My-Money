@@ -5,6 +5,7 @@ import 'package:my_money/app/user_info.dart';
 import 'package:my_money/app/valores/avatar_info.dart';
 import 'package:my_money/app/widget/pages/Details_view.dart';
 import 'package:my_money/views/AddEvent.dart';
+import 'package:my_money/views/HomePage.dart';
 import 'package:my_money/views/user.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:my_money/views/selected_avatar.dart';
@@ -111,6 +112,24 @@ class _MyPageState extends State<MyPage> {
                   ],
                 ),
               ),
+            ),
+            ListTile(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) => const Homepage())));
+              },
+              leading: const Icon(
+                Icons.home_rounded,
+                size: 28,
+              ),
+              title: Text('Inicio',
+                  style: GoogleFonts.fredoka(
+                      textStyle: const TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 20,
+                          color: Colors.white))),
             ),
             ListTile(
               onTap: () {},
