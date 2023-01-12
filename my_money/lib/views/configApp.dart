@@ -14,7 +14,15 @@ class _ConfigAppState extends State<ConfigApp> {
       appBar: AppBar(
         title: const Text('CoFigurações do User'),
       ),
-      body: Container(),
+      body: const SizedBox(
+        child: Center(
+          child: Text(
+            'Em Construção...',
+            style: TextStyle(
+                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 30),
+          ),
+        ),
+      ),
     );
   }
 }

@@ -5,6 +5,7 @@ import 'package:my_money/app/user_info.dart';
 import 'package:my_money/app/valores/avatar_info.dart';
 import 'package:my_money/app/widget/pages/Details_view.dart';
 import 'package:my_money/views/AddEvent.dart';
+import 'package:my_money/views/Faq.dart';
 import 'package:my_money/views/HomePage.dart';
 import 'package:my_money/views/user.dart';
 import 'package:percent_indicator/percent_indicator.dart';
@@ -182,10 +183,8 @@ class _MyPageState extends State<MyPage> {
             ),
             ListTile(
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: ((context) => const ConfigApp())));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: ((context) => const Faq())));
               },
               leading: const Icon(
                 Icons.help_outline_rounded,
