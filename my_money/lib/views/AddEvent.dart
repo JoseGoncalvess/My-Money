@@ -1,6 +1,3 @@
-import 'dart:developer';
-
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/views/MyPage.dart';
@@ -15,7 +12,12 @@ class AddEvent extends StatefulWidget {
 }
 
 class _AddEventState extends State<AddEvent> {
-  bool select = true;
+  @override
+
+  ///VAriaveis de controle de seleção
+  int indexTag = 0;
+  int indexPag = 0;
+  int indexAlert = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -218,14 +220,16 @@ class _AddEventState extends State<AddEvent> {
                                             height: 80,
                                             width: 80,
                                             decoration: BoxDecoration(
-                                                color: select == true
-                                                    ? const Color(0xFF5F5DA6)
-                                                    : Color(0xFF2E4159),
+                                                color: indexTag == 1
+                                                    ? const Color(0xFF2E4159)
+                                                    : const Color(0xFF5F5DA6),
                                                 borderRadius:
                                                     BorderRadius.circular(50)),
                                             child: IconButton(
                                               onPressed: () {
-                                                select = false;
+                                                setState(() {
+                                                  indexTag = 1;
+                                                });
                                               },
                                               icon: const Icon(
                                                 Icons.medical_services_rounded,
@@ -251,12 +255,16 @@ class _AddEventState extends State<AddEvent> {
                                             height: 80,
                                             width: 80,
                                             decoration: BoxDecoration(
-                                                color: const Color(0xFF5F5DA6),
+                                                color: indexTag == 2
+                                                    ? Color(0xFF2E4159)
+                                                    : const Color(0xFF5F5DA6),
                                                 borderRadius:
                                                     BorderRadius.circular(50)),
                                             child: IconButton(
                                               onPressed: () {
-                                                select = false;
+                                                setState(() {
+                                                  indexTag = 2;
+                                                });
                                               },
                                               icon: const Icon(
                                                 Icons.restaurant_rounded,
@@ -282,11 +290,17 @@ class _AddEventState extends State<AddEvent> {
                                             height: 80,
                                             width: 80,
                                             decoration: BoxDecoration(
-                                                color: const Color(0xFF5F5DA6),
+                                                color: indexTag == 3
+                                                    ? Color(0xFF2E4159)
+                                                    : const Color(0xFF5F5DA6),
                                                 borderRadius:
                                                     BorderRadius.circular(50)),
                                             child: IconButton(
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                setState(() {
+                                                  indexTag = 3;
+                                                });
+                                              },
                                               icon: const Icon(
                                                 Icons.park_rounded,
                                                 size: 40,
@@ -311,11 +325,17 @@ class _AddEventState extends State<AddEvent> {
                                             height: 80,
                                             width: 80,
                                             decoration: BoxDecoration(
-                                                color: const Color(0xFF5F5DA6),
+                                                color: indexTag == 4
+                                                    ? Color(0xFF2E4159)
+                                                    : const Color(0xFF5F5DA6),
                                                 borderRadius:
                                                     BorderRadius.circular(50)),
                                             child: IconButton(
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                setState(() {
+                                                  indexTag = 4;
+                                                });
+                                              },
                                               icon: const Icon(
                                                 Icons.work,
                                                 size: 40,
@@ -340,11 +360,17 @@ class _AddEventState extends State<AddEvent> {
                                             height: 80,
                                             width: 80,
                                             decoration: BoxDecoration(
-                                                color: const Color(0xFF5F5DA6),
+                                                color: indexTag == 5
+                                                    ? Color(0xFF2E4159)
+                                                    : const Color(0xFF5F5DA6),
                                                 borderRadius:
                                                     BorderRadius.circular(50)),
                                             child: IconButton(
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                setState(() {
+                                                  indexTag = 5;
+                                                });
+                                              },
                                               icon: const Icon(
                                                 Icons.luggage_rounded,
                                                 size: 40,
@@ -369,11 +395,17 @@ class _AddEventState extends State<AddEvent> {
                                             height: 80,
                                             width: 80,
                                             decoration: BoxDecoration(
-                                                color: const Color(0xFF5F5DA6),
+                                                color: indexTag == 6
+                                                    ? Color(0xFF2E4159)
+                                                    : const Color(0xFF5F5DA6),
                                                 borderRadius:
                                                     BorderRadius.circular(50)),
                                             child: IconButton(
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                setState(() {
+                                                  indexTag = 6;
+                                                });
+                                              },
                                               icon: const Icon(
                                                 Icons.flight_rounded,
                                                 size: 40,
@@ -421,13 +453,20 @@ class _AddEventState extends State<AddEvent> {
                                                   height: 50,
                                                   width: 50,
                                                   decoration: BoxDecoration(
-                                                      color: const Color(
-                                                          0xFF5F5DA6),
+                                                      color: indexPag == 1
+                                                          ? const Color(
+                                                              0xFF2E4159)
+                                                          : const Color(
+                                                              0xFF5F5DA6),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               20)),
                                                   child: IconButton(
-                                                    onPressed: () {},
+                                                    onPressed: () {
+                                                      setState(() {
+                                                        indexPag = 1;
+                                                      });
+                                                    },
                                                     icon: const Icon(
                                                       Icons.payments_rounded,
                                                       size: 25,
@@ -453,13 +492,20 @@ class _AddEventState extends State<AddEvent> {
                                                   height: 50,
                                                   width: 50,
                                                   decoration: BoxDecoration(
-                                                      color: const Color(
-                                                          0xFF5F5DA6),
+                                                      color: indexPag == 2
+                                                          ? const Color(
+                                                              0xFF2E4159)
+                                                          : const Color(
+                                                              0xFF5F5DA6),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               20)),
                                                   child: IconButton(
-                                                    onPressed: () {},
+                                                    onPressed: () {
+                                                      setState(() {
+                                                        indexPag = 2;
+                                                      });
+                                                    },
                                                     icon: const Icon(
                                                       Icons.credit_card_rounded,
                                                       size: 25,
@@ -525,23 +571,34 @@ class _AddEventState extends State<AddEvent> {
                                                 ))),
                                             Container(
                                               child: IconButton(
-                                                onPressed: () {},
-                                                icon: const Icon(
-                                                  Icons
-                                                      .notifications_none_rounded,
+                                                onPressed: () {
+                                                  setState(() {
+                                                    indexAlert = 1;
+                                                  });
+                                                },
+                                                icon: Icon(
+                                                  Icons.notifications_rounded,
                                                   size: 20,
-                                                  color: Color(0xFF5F5DA6),
+                                                  color: indexAlert == 1
+                                                      ? Color(0xFF2E4159)
+                                                      : Color(0xFF5F5DA6),
                                                 ),
                                               ),
                                             ),
                                             Container(
                                               child: IconButton(
-                                                onPressed: () {},
-                                                icon: const Icon(
+                                                onPressed: () {
+                                                  setState(() {
+                                                    indexAlert = 2;
+                                                  });
+                                                },
+                                                icon: Icon(
                                                   Icons
                                                       .notifications_active_rounded,
                                                   size: 20,
-                                                  color: Color(0xFF5F5DA6),
+                                                  color: indexAlert == 2
+                                                      ? Color(0xFF2E4159)
+                                                      : const Color(0xFF5F5DA6),
                                                 ),
                                               ),
                                             )
