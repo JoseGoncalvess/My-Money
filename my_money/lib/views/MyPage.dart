@@ -180,6 +180,24 @@ class _MyPageState extends State<MyPage> {
                           fontSize: 20,
                           color: Colors.white))),
             ),
+            ListTile(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) => const ConfigApp())));
+              },
+              leading: const Icon(
+                Icons.help_outline_rounded,
+                size: 28,
+              ),
+              title: Text('FAQ',
+                  style: GoogleFonts.fredoka(
+                      textStyle: const TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 20,
+                          color: Colors.white))),
+            ),
           ],
         ),
       ),

@@ -69,12 +69,12 @@ class _UserCardState extends State<UserCard> {
       }
     });
 
-    DataUser().loadUserData().then((value) {
+    /*DataUser().loadUserData().then((value) {
       if (value.name.isNotEmpty && value.patrimonio.isNotEmpty) {
         Navigator.of(context)
             .push(CupertinoPageRoute(builder: ((context) => MyPage())));
       }
-    });
+    });*/
   }
 
   @override
@@ -128,35 +128,45 @@ class _UserCardState extends State<UserCard> {
                                     : AvatarInfo.retrato)),
                             color: const Color(0xFF8F8EBF),
                             borderRadius: BorderRadius.circular(100)),
-                        child: Column(
-                          children: [
-                            AvatarInfo.retrato.isNotEmpty
-                                ? Container()
-                                : IconButton(
-                                    icon: const Icon(
-                                      Icons.add_a_photo_outlined,
-                                      size: 50,
-                                      color: const Color(0xFF8F8EBF),
-                                    ),
-                                    onPressed: () {
-                                      Navigator.push(
-                                          context,
-                                          CupertinoPageRoute(
-                                              builder: ((context) =>
-                                                  AvatarUser())));
-                                    },
-                                    iconSize: 70,
-                                  ),
-                            Text(
-                              'Foto',
-                              style: GoogleFonts.fredoka(
-                                  textStyle: const TextStyle(
-                                fontSize: 15,
-                                color: const Color(0xFF8F8EBF),
-                                fontWeight: FontWeight.bold,
-                              )),
+                        child: GestureDetector(
+                          onTap: (() {
+                            Navigator.push(
+                                context,
+                                CupertinoPageRoute(
+                                    builder: ((context) => AvatarUser())));
+                          }),
+                          child: SizedBox(
+                            child: Column(
+                              children: [
+                                AvatarInfo.retrato.isNotEmpty
+                                    ? Container()
+                                    : IconButton(
+                                        icon: const Icon(
+                                          Icons.add_a_photo_outlined,
+                                          size: 50,
+                                          color: const Color(0xFF8F8EBF),
+                                        ),
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              CupertinoPageRoute(
+                                                  builder: ((context) =>
+                                                      AvatarUser())));
+                                        },
+                                        iconSize: 70,
+                                      ),
+                                Text(
+                                  'Foto',
+                                  style: GoogleFonts.fredoka(
+                                      textStyle: const TextStyle(
+                                    fontSize: 15,
+                                    color: const Color(0xFF8F8EBF),
+                                    fontWeight: FontWeight.bold,
+                                  )),
+                                ),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
                       ),
                       SizedBox(
