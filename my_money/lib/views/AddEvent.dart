@@ -84,6 +84,7 @@ class _AddEventState extends State<AddEvent> {
                               width: 360,
                               height: 90,
                               child: TextField(
+                                  keyboardType: TextInputType.text,
                                   textAlign: TextAlign.center,
                                   decoration: InputDecoration(
                                       filled: true,
@@ -124,6 +125,8 @@ class _AddEventState extends State<AddEvent> {
                                       width: 150,
                                       height: 90,
                                       child: TextField(
+                                          maxLength: 10,
+                                          keyboardType: TextInputType.datetime,
                                           textAlign: TextAlign.center,
                                           decoration: InputDecoration(
                                               filled: true,
@@ -165,6 +168,7 @@ class _AddEventState extends State<AddEvent> {
                                       width: 150,
                                       height: 90,
                                       child: TextField(
+                                          keyboardType: TextInputType.number,
                                           textAlign: TextAlign.center,
                                           decoration: InputDecoration(
                                               filled: true,

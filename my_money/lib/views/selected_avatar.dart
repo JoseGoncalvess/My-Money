@@ -8,7 +8,9 @@ import 'package:my_money/views/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AvatarUser extends StatelessWidget {
-  const AvatarUser({super.key});
+  const AvatarUser({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

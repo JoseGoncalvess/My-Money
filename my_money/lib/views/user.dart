@@ -81,252 +81,290 @@ class _UserCardState extends State<UserCard> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: const Color(0xFF5F5DA6),
-        body: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              SizedBox(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height * 0.20,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      "img/logo.png",
-                      height: 90,
-                      width: 90,
-                    ),
-                    Text('My Money',
-                        style: GoogleFonts.fredoka(
-                            textStyle: const TextStyle(
-                          fontSize: 50,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        )))
-                  ],
-                ),
-              ),
-              Container(
-                height: MediaQuery.of(context).size.height * 0.6,
-                width: MediaQuery.of(context).size.width * 0.88,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    color: const Color(0xFF4F4D8C)),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height * 0.20,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        height: 110,
-                        width: 110,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage(AvatarInfo.retrato.isEmpty
-                                    ? 'assets/img/sem_logo.jpg'
-                                    : AvatarInfo.retrato)),
-                            color: const Color(0xFF8F8EBF),
-                            borderRadius: BorderRadius.circular(100)),
-                        child: GestureDetector(
-                          onTap: (() {
-                            Navigator.push(
-                                context,
-                                CupertinoPageRoute(
-                                    builder: ((context) => AvatarUser())));
-                          }),
-                          child: SizedBox(
-                            child: Column(
-                              children: [
-                                AvatarInfo.retrato.isNotEmpty
-                                    ? Container()
-                                    : IconButton(
-                                        icon: const Icon(
-                                          Icons.add_a_photo_outlined,
-                                          size: 50,
-                                          color: const Color(0xFF8F8EBF),
+                      Image.asset(
+                        "img/logo.png",
+                        height: 90,
+                        width: 90,
+                      ),
+                      Text('My Money',
+                          style: GoogleFonts.fredoka(
+                              textStyle: const TextStyle(
+                            fontSize: 50,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          )))
+                    ],
+                  ),
+                ),
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.6,
+                  width: MediaQuery.of(context).size.width * 0.88,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: const Color(0xFF4F4D8C)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Container(
+                          height: 110,
+                          width: 110,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Color.fromARGB(
+                                    110,
+                                    255,
+                                    255,
+                                    255,
+                                  ),
+                                  width: 1,
+                                  style: BorderStyle.solid),
+                              image: DecorationImage(
+                                  image: AssetImage(AvatarInfo.retrato.isEmpty
+                                      ? 'assets/img/sem_logo.jpg'
+                                      : AvatarInfo.retrato)),
+                              color: const Color(0xFF8F8EBF),
+                              borderRadius: BorderRadius.circular(100)),
+                          child: GestureDetector(
+                            onTap: (() {
+                              Navigator.push(
+                                  context,
+                                  CupertinoPageRoute(
+                                      builder: ((context) => AvatarUser())));
+                            }),
+                            child: SizedBox(
+                              child: Column(
+                                children: [
+                                  AvatarInfo.retrato.isNotEmpty
+                                      ? Container()
+                                      : IconButton(
+                                          icon: const Icon(
+                                            Icons.add_a_photo_outlined,
+                                            size: 50,
+                                            color: Color(0xFF8F8EBF),
+                                          ),
+                                          onPressed: () {
+                                            Navigator.push(
+                                                context,
+                                                CupertinoPageRoute(
+                                                    builder: ((context) =>
+                                                        AvatarUser())));
+                                          },
+                                          iconSize: 70,
                                         ),
-                                        onPressed: () {
-                                          Navigator.push(
-                                              context,
-                                              CupertinoPageRoute(
-                                                  builder: ((context) =>
-                                                      AvatarUser())));
-                                        },
-                                        iconSize: 70,
-                                      ),
-                                Text(
-                                  'Foto',
-                                  style: GoogleFonts.fredoka(
-                                      textStyle: const TextStyle(
-                                    fontSize: 15,
-                                    color: const Color(0xFF8F8EBF),
-                                    fontWeight: FontWeight.bold,
-                                  )),
-                                ),
-                              ],
+                                  Text(
+                                    'Foto',
+                                    style: GoogleFonts.fredoka(
+                                        textStyle: const TextStyle(
+                                      fontSize: 15,
+                                      color: Color(0xFF8F8EBF),
+                                      fontWeight: FontWeight.bold,
+                                    )),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      SizedBox(
-                        width: 300,
-                        child: Column(
+                        SizedBox(
+                          width: 300,
+                          child: Column(
+                            children: [
+                              Text('NOME :',
+                                  style: GoogleFonts.fredoka(
+                                      textStyle: const TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ))),
+                              TextField(
+                                  controller: _nameInputController,
+                                  textAlign: TextAlign.center,
+                                  maxLines: 1,
+                                  keyboardType: TextInputType.name,
+                                  cursorColor: const Color(0xFF8F8EBF),
+                                  style: const TextStyle(
+                                      color: Color(0xFF5F5DA6),
+                                      fontWeight: FontWeight.bold),
+                                  decoration: InputDecoration(
+                                    filled: true,
+                                    fillColor: Colors.white,
+                                    focusColor: const Color(0xFF5F5DA6),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    floatingLabelBehavior:
+                                        FloatingLabelBehavior.never,
+                                    hintText: "Como devo te Chamar?",
+                                    hintStyle: const TextStyle(
+                                      color: Color.fromARGB(105, 95, 93, 166),
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  )),
+                            ],
+                          ),
+                        ),
+                        Column(
                           children: [
-                            Text('NOME :',
+                            Text('PATRIMÔNIO :',
                                 style: GoogleFonts.fredoka(
                                     textStyle: const TextStyle(
                                   fontSize: 20,
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
                                 ))),
-                            TextField(
-                                controller: _nameInputController,
-                                textAlign: TextAlign.center,
-                                maxLines: 1,
-                                keyboardType: TextInputType.name,
-                                cursorColor: const Color(0xFF8F8EBF),
-                                style: const TextStyle(
-                                    color: Color(0xFF5F5DA6),
-                                    fontWeight: FontWeight.bold),
-                                decoration: InputDecoration(
-                                  filled: true,
-                                  fillColor: Colors.white,
-                                  focusColor: const Color(0xFF5F5DA6),
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  floatingLabelBehavior:
-                                      FloatingLabelBehavior.never,
-                                  hintText: "Como devo te Chamar?",
-                                  hintStyle: const TextStyle(
-                                    color: Color.fromARGB(105, 95, 93, 166),
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                )),
+                            SizedBox(
+                              width: 180,
+                              child: TextField(
+                                  controller: _patInputController,
+                                  keyboardType: TextInputType.number,
+                                  textAlign: TextAlign.center,
+                                  maxLines: 1,
+                                  cursorColor: const Color(0xFF8F8EBF),
+                                  style: const TextStyle(
+                                      color: Color(0xFF5F5DA6),
+                                      fontWeight: FontWeight.bold),
+                                  decoration: InputDecoration(
+                                    filled: true,
+                                    fillColor: Colors.white,
+                                    floatingLabelBehavior:
+                                        FloatingLabelBehavior.never,
+                                    border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
+                                    hintText: "R\$10,00",
+                                    hintStyle: const TextStyle(
+                                      color: Color.fromARGB(105, 95, 93, 166),
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  )),
+                            ),
                           ],
                         ),
-                      ),
-                      Column(
-                        children: [
-                          Text('PATRIMÔNIO :',
-                              style: GoogleFonts.fredoka(
-                                  textStyle: const TextStyle(
-                                fontSize: 20,
+                        ElevatedButton(
+                          onPressed: () => {
+                            showAnimatedDialog(
+                              barrierColor: Color.fromARGB(164, 95, 93, 166),
+                              context: context,
+                              barrierDismissible: true,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  backgroundColor: const Color(0xFF5F5DA6),
+                                  icon: const Icon(
+                                    Icons.warning_amber_rounded,
+                                    size: 30,
+                                  ),
+                                  title: const Text(
+                                    'Muito Importante',
+                                  ),
+                                  content: const Text(
+                                    "Olá, Seja Muito ebm vindo, antes de seguirmos, todas as Informações estão corretas?",
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  actions: [
+                                    MaterialButton(
+                                      onPressed: () => {
+                                        UserDatePreference().saveUserDate(
+                                            _nameInputController.text,
+                                            _patInputController.text),
+                                        Navigator.push(
+                                            context,
+                                            CupertinoPageRoute(
+                                                builder: ((context) =>
+                                                    const MyPage())))
+                                      },
+                                      child: const Text(
+                                        'Sim!',
+                                        textAlign: TextAlign.left,
+                                      ),
+                                    ),
+                                    MaterialButton(
+                                      onPressed: () {
+                                        print('');
+                                        Navigator.pop(context);
+                                      },
+                                      child: const Text('Ops, Vou Ajustar!'),
+                                    )
+                                  ],
+                                );
+                              },
+                              animationType: DialogTransitionType.fade,
+                              curve: Curves.fastOutSlowIn,
+                              duration: const Duration(milliseconds: 400),
+                            )
+                          },
+                          style: ElevatedButton.styleFrom(
+                            fixedSize: const Size(215, 40),
+                            shape: const StadiumBorder(),
+                            backgroundColor: Colors.white,
+                          ),
+                          child: Text(
+                            'SALVAR',
+                            style: GoogleFonts.fredoka(
+                              textStyle: const TextStyle(
+                                fontSize: 30,
+                                color: Color(0xFF5F5DA6),
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                        ElevatedButton(
+                          onPressed: () => {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: ((context) => const MyPage())))
+                          },
+                          style: ElevatedButton.styleFrom(
+                            fixedSize: const Size(110, 40),
+                            shape: const StadiumBorder(),
+                            backgroundColor: const Color(0xFF2E4159),
+                          ),
+                          child: Text(
+                            'CANCELAR',
+                            style: GoogleFonts.fredoka(
+                              textStyle: const TextStyle(
+                                fontSize: 15,
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
-                              ))),
-                          SizedBox(
-                            width: 180,
-                            child: TextField(
-                                controller: _patInputController,
-                                keyboardType: TextInputType.number,
-                                textAlign: TextAlign.center,
-                                maxLines: 1,
-                                cursorColor: const Color(0xFF8F8EBF),
-                                style: const TextStyle(
-                                    color: Color(0xFF5F5DA6),
-                                    fontWeight: FontWeight.bold),
-                                decoration: InputDecoration(
-                                  filled: true,
-                                  fillColor: Colors.white,
-                                  floatingLabelBehavior:
-                                      FloatingLabelBehavior.never,
-                                  border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(20)),
-                                  hintText: "R\$10,00",
-                                  hintStyle: const TextStyle(
-                                    color: Color.fromARGB(105, 95, 93, 166),
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                )),
+                              ),
+                            ),
                           ),
-                        ],
-                      ),
-                      ElevatedButton(
-                        onPressed: () => {
-                          showAnimatedDialog(
-                            barrierColor: Color.fromARGB(164, 95, 93, 166),
-                            context: context,
-                            barrierDismissible: true,
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-                                backgroundColor: const Color(0xFF5F5DA6),
-                                icon: const Icon(
-                                  Icons.warning_amber_rounded,
-                                  size: 30,
-                                ),
-                                title: const Text(
-                                  'Muito Importante',
-                                ),
-                                content: const Text(
-                                  "Olá, Seja Muito ebm vindo, antes de seguirmos, todas as Informações estão corretas?",
-                                  textAlign: TextAlign.center,
-                                ),
-                                actions: [
-                                  MaterialButton(
-                                    onPressed: () => {
-                                      UserDatePreference().saveUserDate(
-                                          _nameInputController.text,
-                                          _patInputController.text),
-                                      Navigator.push(
-                                          context,
-                                          CupertinoPageRoute(
-                                              builder: ((context) =>
-                                                  const MyPage())))
-                                    },
-                                    child: const Text(
-                                      'Sim!',
-                                      textAlign: TextAlign.left,
-                                    ),
-                                  ),
-                                  MaterialButton(
-                                    onPressed: () {
-                                      print('');
-                                      Navigator.pop(context);
-                                    },
-                                    child: const Text('Ops, Vou Ajustar!'),
-                                  )
-                                ],
-                              );
-                            },
-                            animationType: DialogTransitionType.fade,
-                            curve: Curves.fastOutSlowIn,
-                            duration: const Duration(milliseconds: 400),
-                          )
-                        },
-                        style: ElevatedButton.styleFrom(
-                          fixedSize: const Size(215, 40),
-                          shape: const StadiumBorder(),
-                          backgroundColor: Colors.white,
                         ),
-                        child: Text('SALVAR',
-                            style: GoogleFonts.fredoka(
-                                textStyle: const TextStyle(
-                              fontSize: 30,
-                              color: Color(0xFF5F5DA6),
-                              fontWeight: FontWeight.bold,
-                            ))),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              Container(
-                alignment: Alignment.center,
-                width: 280,
-                height: MediaQuery.of(context).size.height * 0.20,
-                child: Text(
-                    "FALTA POUCO PRA VOCÊ FICAR NO CONTROLE DA SUA VIDA FINANCEIRA.",
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.fredoka(
-                        textStyle: const TextStyle(
-                      fontSize: 15,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w500,
-                    ))),
-              ),
-            ],
+                Container(
+                  alignment: Alignment.center,
+                  width: 280,
+                  height: MediaQuery.of(context).size.height * 0.20,
+                  child: Text(
+                      "FALTA POUCO PRA VOCÊ FICAR NO CONTROLE DA SUA VIDA FINANCEIRA.",
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.fredoka(
+                          textStyle: const TextStyle(
+                        fontSize: 15,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w500,
+                      ))),
+                ),
+              ],
+            ),
           ),
         ));
   }
