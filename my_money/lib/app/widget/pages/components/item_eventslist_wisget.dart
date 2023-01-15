@@ -39,7 +39,8 @@ class _ItemeEventListWidgetState extends State<ItemeEventListWidget> {
                     height: 50,
                     child: Column(
                       children: [
-                        Text(widget.data,
+                        //separo os item atraves do caracter selecionado e pego o item d eum new list atraves do index []
+                        Text(widget.data.split('/')[0],
                             style: GoogleFonts.fredoka(
                                 textStyle: const TextStyle(
                                     fontWeight: FontWeight.w600,

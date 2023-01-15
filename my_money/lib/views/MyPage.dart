@@ -444,12 +444,12 @@ class _MyPageState extends State<MyPage> {
               ),
               Expanded(
                 child: ListView.builder(
-                    itemCount: Eventos().eventos.length,
+                    itemCount: Eventos.eventos.length,
                     itemBuilder: (BuildContext context, index) {
                       return ItemeEventListWidget(
-                          evento: Eventos().eventos[index].evento,
-                          data: Eventos().eventos[index].data,
-                          valor: Eventos().eventos[index].valor);
+                          evento: Eventos.eventos[index].evento,
+                          data: Eventos.eventos[index].data,
+                          valor: Eventos.eventos[index].valor);
                       ;
                     }),
               ),

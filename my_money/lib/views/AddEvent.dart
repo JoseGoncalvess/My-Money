@@ -1,5 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_money/app/model/evento_model.dart';
+import 'package:my_money/app/model/lista_eventos.dart';
 import 'package:my_money/views/MyPage.dart';
 
 final parcelController = TextEditingController();
@@ -12,7 +16,9 @@ class AddEvent extends StatefulWidget {
 }
 
 class _AddEventState extends State<AddEvent> {
-  @override
+  TextEditingController evetocontroller = TextEditingController();
+  TextEditingController datacontroller = TextEditingController();
+  TextEditingController valorcontroller = TextEditingController();
 
   ///VAriaveis de controle de seleção
   int indexTag = 0;
@@ -88,6 +94,7 @@ class _AddEventState extends State<AddEvent> {
                               width: 360,
                               height: 90,
                               child: TextField(
+                                  controller: evetocontroller,
                                   keyboardType: TextInputType.text,
                                   textAlign: TextAlign.center,
                                   decoration: InputDecoration(
@@ -129,6 +136,7 @@ class _AddEventState extends State<AddEvent> {
                                       width: 150,
                                       height: 90,
                                       child: TextField(
+                                          controller: datacontroller,
                                           maxLength: 10,
                                           keyboardType: TextInputType.datetime,
                                           textAlign: TextAlign.center,
@@ -172,6 +180,7 @@ class _AddEventState extends State<AddEvent> {
                                       width: 150,
                                       height: 90,
                                       child: TextField(
+                                          controller: valorcontroller,
                                           keyboardType: TextInputType.number,
                                           textAlign: TextAlign.center,
                                           decoration: InputDecoration(
@@ -622,7 +631,16 @@ class _AddEventState extends State<AddEvent> {
                               child: Column(
                                 children: [
                                   ElevatedButton(
-                                    onPressed: () => {},
+                                    onPressed: () {
+                                      setState(() {
+                                        Eventos.eventos.add(ListEvento(
+                                            evento: evetocontroller.text,
+                                            data: datacontroller.text,
+                                            valor: double.parse(
+                                                valorcontroller.text)));
+                                        log(Eventos.eventos.length.toString());
+                                      });
+                                    },
                                     style: ElevatedButton.styleFrom(
                                       fixedSize: const Size(255, 45),
                                       shape: const StadiumBorder(),
