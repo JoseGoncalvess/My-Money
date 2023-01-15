@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_money/app/model/evento_model.dart';
+import 'package:my_money/app/model/lista_eventos.dart';
+import 'package:my_money/app/widget/pages/components/item_eventslist_wisget.dart';
+
+import '../../../views/metodos/somatoria_valores.dart';
 
 class DetalhesPage extends StatefulWidget {
   const DetalhesPage({super.key});
@@ -31,7 +36,7 @@ class _DetalhesPageState extends State<DetalhesPage> {
           child: Column(
             children: [
               Container(
-                height: MediaQuery.of(context).size.height * 0.08,
+                height: MediaQuery.of(context).size.height * 0.12,
                 width: MediaQuery.of(context).size.width,
                 decoration: const BoxDecoration(
                     color: Color(0xFF5F5DA6),
@@ -80,65 +85,12 @@ class _DetalhesPageState extends State<DetalhesPage> {
               ),
               Expanded(
                 child: ListView.builder(
-                    itemCount: 10,
+                    itemCount: Eventos().eventos.length,
                     itemBuilder: (BuildContext context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.all(5),
-                        child: Column(
-                          children: [
-                            Container(
-                              height: 70,
-                              decoration: BoxDecoration(
-                                  color: const Color(0xFF2E4159),
-                                  borderRadius: BorderRadius.circular(15)),
-                              child: Padding(
-                                padding: const EdgeInsets.all(7.0),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    SizedBox(
-                                      width: 50,
-                                      height: 50,
-                                      child: Column(
-                                        children: [
-                                          Text("20",
-                                              style: GoogleFonts.fredoka(
-                                                  textStyle: const TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      fontSize: 15,
-                                                      color: Colors.white))),
-                                          Text("NOV.",
-                                              style: GoogleFonts.fredoka(
-                                                  textStyle: const TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      fontSize: 15,
-                                                      color: Colors.white)))
-                                        ],
-                                      ),
-                                    ),
-                                    Text('Olokinho',
-                                        style: GoogleFonts.fredoka(
-                                            textStyle: const TextStyle(
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 18,
-                                                color: Colors.white))),
-                                    Text('R\$ ' "50,00",
-                                        style: GoogleFonts.fredoka(
-                                            textStyle: const TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 18,
-                                        )))
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      );
+                      return ItemeEventListWidget(
+                          evento: Eventos().eventos[index].evento,
+                          data: Eventos().eventos[index].data,
+                          valor: Eventos().eventos[index].valor);
                     }),
               ),
               Container(

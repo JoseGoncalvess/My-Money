@@ -35,22 +35,26 @@ class _AddEventState extends State<AddEvent> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text('Novas Dispesas',
-                                style: GoogleFonts.fredoka(
-                                    textStyle: const TextStyle(
-                                  fontSize: 40,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ))),
-                            Image.asset(
-                              "img/logo.png",
-                              height: 70,
-                              width: 70,
-                            ),
-                          ],
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * 0.8,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text('Novas Dispesas',
+                                  style: GoogleFonts.fredoka(
+                                      textStyle: const TextStyle(
+                                    fontSize: 30.0,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ))),
+                              Image.asset(
+                                "img/logo.png",
+                                height: 70,
+                                width: 70,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       Container(

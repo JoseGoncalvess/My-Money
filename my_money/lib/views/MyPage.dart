@@ -12,6 +12,8 @@ import 'package:percent_indicator/percent_indicator.dart';
 import 'package:my_money/views/selected_avatar.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
+import '../app/model/lista_eventos.dart';
+import '../app/widget/pages/components/item_eventslist_wisget.dart';
 import 'configApp.dart';
 
 class MyPage extends StatefulWidget {
@@ -272,7 +274,7 @@ class _MyPageState extends State<MyPage> {
                 ],
               ),
               Container(
-                height: MediaQuery.of(context).size.height * 0.45,
+                height: MediaQuery.of(context).size.height * 0.50,
                 width: MediaQuery.of(context).size.width,
                 decoration: const BoxDecoration(
                     color: Color(0xFF2E4159),
@@ -305,24 +307,33 @@ class _MyPageState extends State<MyPage> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceAround,
                                 children: [
-                                  Text('Dia',
-                                      style: GoogleFonts.fredoka(
-                                          textStyle: const TextStyle(
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 15,
-                                              color: Colors.white))),
-                                  Text('Mês',
-                                      style: GoogleFonts.fredoka(
-                                          textStyle: const TextStyle(
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 15,
-                                              color: Colors.white))),
-                                  Text('Ano',
-                                      style: GoogleFonts.fredoka(
-                                          textStyle: const TextStyle(
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 15,
-                                              color: Colors.white))),
+                                  GestureDetector(
+                                    onTap: (() {}),
+                                    child: Text('Dia',
+                                        style: GoogleFonts.fredoka(
+                                            textStyle: const TextStyle(
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 15,
+                                                color: Colors.white))),
+                                  ),
+                                  GestureDetector(
+                                    onTap: (() {}),
+                                    child: Text('Mês',
+                                        style: GoogleFonts.fredoka(
+                                            textStyle: const TextStyle(
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 15,
+                                                color: Colors.white))),
+                                  ),
+                                  GestureDetector(
+                                    onTap: (() {}),
+                                    child: Text('Ano',
+                                        style: GoogleFonts.fredoka(
+                                            textStyle: const TextStyle(
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 15,
+                                                color: Colors.white))),
+                                  ),
                                 ],
                               ),
                             ),
@@ -358,72 +369,74 @@ class _MyPageState extends State<MyPage> {
                           circularStrokeCap: CircularStrokeCap.round,
                         ),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              IconButton(
-                                  onPressed: () {},
-                                  icon: const Icon(
-                                    Icons.wallet_rounded,
-                                    size: 40,
-                                  )),
-                              Text("Ultima fatura",
-                                  style: GoogleFonts.fredoka(
-                                      textStyle: const TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 15,
-                                          color: Colors.white))),
-                              Container(
-                                alignment: Alignment.center,
-                                width: 80,
-                                height: 20,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(20)),
-                                child: Text('R\$ ' "500,00",
+                      SizedBox(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                IconButton(
+                                    onPressed: () {},
+                                    icon: const Icon(
+                                      Icons.wallet_rounded,
+                                      size: 40,
+                                    )),
+                                Text("Ultima fatura",
                                     style: GoogleFonts.fredoka(
                                         textStyle: const TextStyle(
                                             fontWeight: FontWeight.w600,
                                             fontSize: 15,
-                                            color: Color(0xFF5F5DA6)))),
-                              )
-                            ],
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              IconButton(
-                                  onPressed: () {},
-                                  icon: const Icon(
-                                    Icons.wallet_rounded,
-                                    size: 40,
-                                  )),
-                              Text("Ultima fatura",
-                                  style: GoogleFonts.fredoka(
-                                      textStyle: const TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 15,
-                                          color: Colors.white))),
-                              Container(
-                                alignment: Alignment.center,
-                                width: 80,
-                                height: 20,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(20)),
-                                child: Text('R\$ ' "500,00",
+                                            color: Colors.white))),
+                                Container(
+                                  alignment: Alignment.center,
+                                  width: 80,
+                                  height: 20,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(20)),
+                                  child: Text('R\$ ' "500,00",
+                                      style: GoogleFonts.fredoka(
+                                          textStyle: const TextStyle(
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 15,
+                                              color: Color(0xFF5F5DA6)))),
+                                )
+                              ],
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                IconButton(
+                                    onPressed: () {},
+                                    icon: const Icon(
+                                      Icons.wallet_rounded,
+                                      size: 40,
+                                    )),
+                                Text("Ultima fatura",
                                     style: GoogleFonts.fredoka(
                                         textStyle: const TextStyle(
                                             fontWeight: FontWeight.w600,
                                             fontSize: 15,
-                                            color: Color(0xFF5F5DA6)))),
-                              )
-                            ],
-                          )
-                        ],
+                                            color: Colors.white))),
+                                Container(
+                                  alignment: Alignment.center,
+                                  width: 80,
+                                  height: 20,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(20)),
+                                  child: Text('R\$ ' "500,00",
+                                      style: GoogleFonts.fredoka(
+                                          textStyle: const TextStyle(
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 15,
+                                              color: Color(0xFF5F5DA6)))),
+                                )
+                              ],
+                            )
+                          ],
+                        ),
                       )
                     ],
                   ),
@@ -431,69 +444,13 @@ class _MyPageState extends State<MyPage> {
               ),
               Expanded(
                 child: ListView.builder(
-                    itemCount: listName.length,
+                    itemCount: Eventos().eventos.length,
                     itemBuilder: (BuildContext context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.all(6),
-                        child: Column(
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                  color: const Color(0xFF494F56),
-                                  borderRadius: BorderRadius.circular(22)),
-                              height: 70,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    SizedBox(
-                                      width: 50,
-                                      height: 50,
-                                      child: Column(
-                                        children: [
-                                          Text("20",
-                                              style: GoogleFonts.fredoka(
-                                                  textStyle: const TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      fontSize: 15,
-                                                      color: Colors.white))),
-                                          Text("NOV.",
-                                              style: GoogleFonts.fredoka(
-                                                  textStyle: const TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      fontSize: 15,
-                                                      color: Colors.white)))
-                                        ],
-                                      ),
-                                    ),
-                                    Text(listName[index],
-                                        style: GoogleFonts.fredoka(
-                                            textStyle: const TextStyle(
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 18,
-                                                color: Colors.white))),
-                                    Text('R\$ ' "50,00",
-                                        style: GoogleFonts.fredoka(
-                                            textStyle: const TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 18,
-                                        )))
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Container(
-                              height: 0.5,
-                              color: Colors.white,
-                            )
-                          ],
-                        ),
-                      );
+                      return ItemeEventListWidget(
+                          evento: Eventos().eventos[index].evento,
+                          data: Eventos().eventos[index].data,
+                          valor: Eventos().eventos[index].valor);
+                      ;
                     }),
               ),
             ],
