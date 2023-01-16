@@ -54,7 +54,7 @@ class _HomepageState extends State<Homepage> {
                     Padding(
                       padding: const EdgeInsets.all(20.0),
                       child: Image.asset(
-                        "img/logo.png",
+                        "assets/img/logo.png",
                         height:
                             (MediaQuery.of(context).size.height * 0.40) - 100,
                         width:
