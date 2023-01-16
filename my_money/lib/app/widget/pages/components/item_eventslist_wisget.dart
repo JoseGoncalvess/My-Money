@@ -1,6 +1,6 @@
-import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_money/app/model/editor_data.dart';
 
 class ItemeEventListWidget extends StatefulWidget {
   const ItemeEventListWidget(
@@ -46,7 +46,7 @@ class _ItemeEventListWidgetState extends State<ItemeEventListWidget> {
                                     fontWeight: FontWeight.w600,
                                     fontSize: 15,
                                     color: Colors.white))),
-                        Text("NOV.",
+                        Text(EditorData().dateEvent(),
                             style: GoogleFonts.fredoka(
                                 textStyle: const TextStyle(
                                     fontWeight: FontWeight.w600,

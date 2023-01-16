@@ -41,7 +41,7 @@ class _AddEventState extends State<AddEvent> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Container(
+                        child: SizedBox(
                           width: MediaQuery.of(context).size.width * 0.8,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -142,7 +142,8 @@ class _AddEventState extends State<AddEvent> {
                                           textAlign: TextAlign.center,
                                           decoration: InputDecoration(
                                               filled: true,
-                                              fillColor: Color(0xFF8F8EBF),
+                                              fillColor:
+                                                  const Color(0xFF8F8EBF),
                                               border: OutlineInputBorder(
                                                 borderRadius:
                                                     BorderRadius.circular(30),
@@ -273,7 +274,7 @@ class _AddEventState extends State<AddEvent> {
                                             width: 80,
                                             decoration: BoxDecoration(
                                                 color: indexTag == 2
-                                                    ? Color(0xFF2E4159)
+                                                    ? const Color(0xFF2E4159)
                                                     : const Color(0xFF5F5DA6),
                                                 borderRadius:
                                                     BorderRadius.circular(50)),
@@ -308,7 +309,7 @@ class _AddEventState extends State<AddEvent> {
                                             width: 80,
                                             decoration: BoxDecoration(
                                                 color: indexTag == 3
-                                                    ? Color(0xFF2E4159)
+                                                    ? const Color(0xFF2E4159)
                                                     : const Color(0xFF5F5DA6),
                                                 borderRadius:
                                                     BorderRadius.circular(50)),
@@ -343,7 +344,7 @@ class _AddEventState extends State<AddEvent> {
                                             width: 80,
                                             decoration: BoxDecoration(
                                                 color: indexTag == 4
-                                                    ? Color(0xFF2E4159)
+                                                    ? const Color(0xFF2E4159)
                                                     : const Color(0xFF5F5DA6),
                                                 borderRadius:
                                                     BorderRadius.circular(50)),
@@ -378,7 +379,7 @@ class _AddEventState extends State<AddEvent> {
                                             width: 80,
                                             decoration: BoxDecoration(
                                                 color: indexTag == 5
-                                                    ? Color(0xFF2E4159)
+                                                    ? const Color(0xFF2E4159)
                                                     : const Color(0xFF5F5DA6),
                                                 borderRadius:
                                                     BorderRadius.circular(50)),
@@ -413,7 +414,7 @@ class _AddEventState extends State<AddEvent> {
                                             width: 80,
                                             decoration: BoxDecoration(
                                                 color: indexTag == 6
-                                                    ? Color(0xFF2E4159)
+                                                    ? const Color(0xFF2E4159)
                                                     : const Color(0xFF5F5DA6),
                                                 borderRadius:
                                                     BorderRadius.circular(50)),
@@ -586,20 +587,18 @@ class _AddEventState extends State<AddEvent> {
                                                   color: Color(0xFF2E4159),
                                                   fontWeight: FontWeight.bold,
                                                 ))),
-                                            Container(
-                                              child: IconButton(
-                                                onPressed: () {
-                                                  setState(() {
-                                                    indexAlert = 1;
-                                                  });
-                                                },
-                                                icon: Icon(
-                                                  Icons.notifications_rounded,
-                                                  size: 20,
-                                                  color: indexAlert == 1
-                                                      ? Color(0xFF2E4159)
-                                                      : Color(0xFF5F5DA6),
-                                                ),
+                                            IconButton(
+                                              onPressed: () {
+                                                setState(() {
+                                                  indexAlert = 1;
+                                                });
+                                              },
+                                              icon: Icon(
+                                                Icons.notifications_rounded,
+                                                size: 20,
+                                                color: indexAlert == 1
+                                                    ? const Color(0xFF2E4159)
+                                                    : const Color(0xFF5F5DA6),
                                               ),
                                             ),
                                             Container(
@@ -614,7 +613,7 @@ class _AddEventState extends State<AddEvent> {
                                                       .notifications_active_rounded,
                                                   size: 20,
                                                   color: indexAlert == 2
-                                                      ? Color(0xFF2E4159)
+                                                      ? const Color(0xFF2E4159)
                                                       : const Color(0xFF5F5DA6),
                                                 ),
                                               ),
@@ -639,6 +638,11 @@ class _AddEventState extends State<AddEvent> {
                                             valor: double.parse(
                                                 valorcontroller.text)));
                                         log(Eventos.eventos.length.toString());
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: ((context) =>
+                                                    const MyPage())));
                                       });
                                     },
                                     style: ElevatedButton.styleFrom(

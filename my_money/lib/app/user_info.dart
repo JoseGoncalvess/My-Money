@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UserDatePreference {
@@ -10,8 +12,8 @@ class UserDatePreference {
     prefs.setString('name', name);
     prefs.setString('patrimonio', patrimonio);
 
-    print(name);
-    print(patrimonio);
+    log(name);
+    log(patrimonio);
   }
 }
 

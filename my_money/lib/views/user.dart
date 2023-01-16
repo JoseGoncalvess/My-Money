@@ -11,7 +11,7 @@ import 'package:my_money/views/selected_avatar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UserCard extends StatefulWidget {
-  UserCard({
+  const UserCard({
     super.key,
   });
 
@@ -20,7 +20,7 @@ class UserCard extends StatefulWidget {
 }
 
 class _UserCardState extends State<UserCard> {
-  void _showdialog(BuildContext context) async {
+  void showdialog(BuildContext context) async {
     return showDialog<void>(
       context: context,
       builder: (context) {
@@ -124,7 +124,7 @@ class _UserCardState extends State<UserCard> {
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
                               border: Border.all(
-                                  color: Color.fromARGB(
+                                  color: const Color.fromARGB(
                                     110,
                                     255,
                                     255,
@@ -143,7 +143,8 @@ class _UserCardState extends State<UserCard> {
                               Navigator.push(
                                   context,
                                   CupertinoPageRoute(
-                                      builder: ((context) => AvatarUser())));
+                                      builder: ((context) =>
+                                          const AvatarUser())));
                             }),
                             child: SizedBox(
                               child: Column(
@@ -161,7 +162,7 @@ class _UserCardState extends State<UserCard> {
                                                 context,
                                                 CupertinoPageRoute(
                                                     builder: ((context) =>
-                                                        AvatarUser())));
+                                                        const AvatarUser())));
                                           },
                                           iconSize: 70,
                                         ),
@@ -257,7 +258,8 @@ class _UserCardState extends State<UserCard> {
                         ElevatedButton(
                           onPressed: () => {
                             showAnimatedDialog(
-                              barrierColor: Color.fromARGB(164, 95, 93, 166),
+                              barrierColor:
+                                  const Color.fromARGB(164, 95, 93, 166),
                               context: context,
                               barrierDismissible: true,
                               builder: (BuildContext context) {
@@ -293,7 +295,7 @@ class _UserCardState extends State<UserCard> {
                                     ),
                                     MaterialButton(
                                       onPressed: () {
-                                        print('');
+                                        log('');
                                         Navigator.pop(context);
                                       },
                                       child: const Text('Ops, Vou Ajustar!'),

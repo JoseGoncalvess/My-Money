@@ -1,6 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/app/valores/avatar_info.dart';
 import 'package:my_money/views/metodos/showDialoganimated.dart';
@@ -61,7 +60,7 @@ class _SelectedAvatrState extends State<SelectedAvatr> {
       body: Scaffold(
         floatingActionButton: FloatingActionButton(
           onPressed: (() {}),
-          child: Icon(
+          child: const Icon(
             Icons.help_outline_rounded,
             color: Colors.white,
             size: 35,
@@ -101,7 +100,8 @@ class _SelectedAvatrState extends State<SelectedAvatr> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: ((context) => UserCard())));
+                                      builder: ((context) =>
+                                          const UserCard())));
                             },
                             child: Container(
                                 height: 300,

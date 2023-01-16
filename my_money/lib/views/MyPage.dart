@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/app/user_info.dart';
@@ -26,16 +25,6 @@ class MyPage extends StatefulWidget {
 }
 
 class _MyPageState extends State<MyPage> {
-  final List<String> listName = <String>[
-    "Churras- Arena vip",
-    "Casamento ",
-    "Curso",
-    "Faculdade",
-    "Confra Work",
-    "Celular",
-    "Cartão Nubank"
-  ];
-
 //CARREGANDO OS DADOS DE USER
 //=========================================================================
   UserData _userData = UserData(name: 'name', patrimonio: 'patrimonio');
@@ -450,7 +439,6 @@ class _MyPageState extends State<MyPage> {
                           evento: Eventos.eventos[index].evento,
                           data: Eventos.eventos[index].data,
                           valor: Eventos.eventos[index].valor);
-                      ;
                     }),
               ),
             ],

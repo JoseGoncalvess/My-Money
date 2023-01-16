@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:my_money/app/model/evento_model.dart';
 import 'package:my_money/app/model/lista_eventos.dart';
 import 'package:my_money/app/widget/pages/components/item_eventslist_wisget.dart';
-
-import '../../../views/metodos/somatoria_valores.dart';
 
 class DetalhesPage extends StatefulWidget {
   const DetalhesPage({super.key});
