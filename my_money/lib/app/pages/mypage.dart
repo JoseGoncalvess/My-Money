@@ -2,18 +2,19 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:my_money/app/user_info.dart';
+
 import 'package:my_money/app/valores/avatar_info.dart';
-import 'package:my_money/views/AddEvent.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../model/lista_eventos.dart';
+import '../valores/user_info.dart';
 import 'Details_view.dart';
 import 'Faq.dart';
 import 'HomePage.dart';
 import '../widget/components/item_eventslist_wisget.dart';
+import 'addevent.dart';
 import 'configApp.dart';
 import 'selected_avatar.dart';
 import 'user.dart';

@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/app/model/evento_model.dart';
 import 'package:my_money/app/model/lista_eventos.dart';
-import 'package:my_money/views/MyPage.dart';
+
+import 'mypage.dart';
 
 final parcelController = TextEditingController();
 

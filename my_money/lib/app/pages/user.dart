@@ -4,12 +4,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:my_money/app/user_info.dart';
 import 'package:my_money/app/valores/avatar_info.dart';
-import 'package:my_money/views/MyPage.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../valores/user_info.dart';
+import 'mypage.dart';
 import 'selected_avatar.dart';
 
 class UserCard extends StatefulWidget {

@@ -3,9 +3,8 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:my_money/views/MyPage.dart';
-
-import '../user_info.dart';
+import '../valores/user_info.dart';
+import 'mypage.dart';
 import 'user.dart';
 
 class Homepage extends StatefulWidget {
