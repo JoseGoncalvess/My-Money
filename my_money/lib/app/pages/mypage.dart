@@ -1,19 +1,22 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/app/user_info.dart';
 import 'package:my_money/app/valores/avatar_info.dart';
-import 'package:my_money/app/widget/pages/Details_view.dart';
 import 'package:my_money/views/AddEvent.dart';
-import 'package:my_money/views/Faq.dart';
-import 'package:my_money/views/HomePage.dart';
-import 'package:my_money/views/user.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-import 'package:my_money/views/selected_avatar.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-import '../app/model/lista_eventos.dart';
-import '../app/widget/pages/components/item_eventslist_wisget.dart';
+import '../model/lista_eventos.dart';
+import 'Details_view.dart';
+import 'Faq.dart';
+import 'HomePage.dart';
+import '../widget/components/item_eventslist_wisget.dart';
 import 'configApp.dart';
+import 'selected_avatar.dart';
+import 'user.dart';
 
 class MyPage extends StatefulWidget {
   const MyPage({
@@ -29,6 +32,11 @@ class _MyPageState extends State<MyPage> {
 //=========================================================================
   UserData _userData = UserData(name: 'name', patrimonio: 'patrimonio');
 
+  Future<String> loadPhoto() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString("foto") ?? "";
+  }
+
   @override
   void initState() {
     super.initState();
@@ -38,6 +46,13 @@ class _MyPageState extends State<MyPage> {
             _userData = value;
           })
         });
+    loadPhoto().then((value) {
+      // O VALUE É O RETORNO DA FUNÇÃO loadPhoto
+      if (value.isNotEmpty) {
+        AvatarInfo.retrato = value;
+        log('vaziu');
+      }
+    });
   }
 
 //======================================================================
@@ -127,8 +142,10 @@ class _MyPageState extends State<MyPage> {
             ),
             ListTile(
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: ((context) => UserCard())));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) => const UserCard())));
               },
               leading: const Icon(
                 Icons.person_outline_rounded,

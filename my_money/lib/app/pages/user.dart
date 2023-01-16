@@ -7,8 +7,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/app/user_info.dart';
 import 'package:my_money/app/valores/avatar_info.dart';
 import 'package:my_money/views/MyPage.dart';
-import 'package:my_money/views/selected_avatar.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'selected_avatar.dart';
 
 class UserCard extends StatefulWidget {
   const UserCard({

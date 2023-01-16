@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/app/valores/avatar_info.dart';
 import 'package:my_money/views/metodos/showDialoganimated.dart';
-import 'package:my_money/views/user.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'user.dart';
 
 class AvatarUser extends StatelessWidget {
   const AvatarUser({

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_money/views/splash_page.dart';
+
+import 'app/pages/splash_page.dart';
 
 void main() {
   runApp(const AppWidget());

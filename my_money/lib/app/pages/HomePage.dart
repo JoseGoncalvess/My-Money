@@ -4,9 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/views/MyPage.dart';
-import 'package:my_money/views/user.dart';
 
-import '../app/user_info.dart';
+import '../user_info.dart';
+import 'user.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -77,8 +77,10 @@ class _HomepageState extends State<Homepage> {
               child: ElevatedButton(
                 onPressed: () {
                   if (_userData.name.isEmpty & _userData.patrimonio.isEmpty) {
-                    Navigator.push(context,
-                        CupertinoPageRoute(builder: ((context) => UserCard())));
+                    Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                            builder: ((context) => const UserCard())));
                   } else {
                     Navigator.push(
                         context,

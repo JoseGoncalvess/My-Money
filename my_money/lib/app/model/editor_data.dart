@@ -1,11 +1,7 @@
-import 'package:flutter/cupertino.dart';
-
 class EditorData {
-  static String datetime = '10/04/2023';
+  dateEvent(data) {
+    int mes = int.parse(data.split('/')[1]);
 
-  int mes = int.parse(datetime.split('/')[1]);
-
-  dateEvent() {
     if (mes == 1) {
       return 'JANEIRO';
     } else if (mes == 2) {
@@ -31,7 +27,7 @@ class EditorData {
     } else if (mes == 12) {
       return 'DEZEMBRO';
     } else {
-      return '';
+      return null;
     }
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/app/model/editor_data.dart';
+import 'package:my_money/app/model/lista_eventos.dart';
 
 class ItemeEventListWidget extends StatefulWidget {
   const ItemeEventListWidget(
@@ -35,7 +36,7 @@ class _ItemeEventListWidgetState extends State<ItemeEventListWidget> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(
-                    width: 50,
+                    width: 80,
                     height: 50,
                     child: Column(
                       children: [
@@ -46,7 +47,7 @@ class _ItemeEventListWidgetState extends State<ItemeEventListWidget> {
                                     fontWeight: FontWeight.w600,
                                     fontSize: 15,
                                     color: Colors.white))),
-                        Text(EditorData().dateEvent(),
+                        Text(EditorData().dateEvent(widget.data),
                             style: GoogleFonts.fredoka(
                                 textStyle: const TextStyle(
                                     fontWeight: FontWeight.w600,
