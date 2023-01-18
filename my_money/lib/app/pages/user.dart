@@ -95,7 +95,7 @@ class _UserCardState extends State<UserCard> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.asset(
-                        "img/logo.png",
+                        "assets/img/logo.png",
                         height: 90,
                         width: 90,
                       ),

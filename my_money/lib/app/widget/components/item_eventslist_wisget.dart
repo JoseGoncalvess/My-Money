@@ -36,7 +36,7 @@ class _ItemeEventListWidgetState extends State<ItemeEventListWidget> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(
-                    width: 80,
+                    width: 90,
                     height: 50,
                     child: Column(
                       children: [
@@ -45,7 +45,7 @@ class _ItemeEventListWidgetState extends State<ItemeEventListWidget> {
                             style: GoogleFonts.fredoka(
                                 textStyle: const TextStyle(
                                     fontWeight: FontWeight.w600,
-                                    fontSize: 15,
+                                    fontSize: 18,
                                     color: Colors.white))),
                         Text(EditorData().dateEvent(widget.data),
                             style: GoogleFonts.fredoka(
@@ -62,7 +62,7 @@ class _ItemeEventListWidgetState extends State<ItemeEventListWidget> {
                               fontWeight: FontWeight.w600,
                               fontSize: 18,
                               color: Colors.white))),
-                  Text(widget.valor.toString(),
+                  Text("R\$ ${widget.valor.toString()}",
                       style: GoogleFonts.fredoka(
                           textStyle: const TextStyle(
                         fontWeight: FontWeight.w600,

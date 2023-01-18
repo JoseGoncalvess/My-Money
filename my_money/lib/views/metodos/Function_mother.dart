@@ -13,4 +13,10 @@ class Year {
     "Novembro",
     "Dezembro"
   ];
+
+  nextMother() {
+    for (String proxmes in meses) {
+      print(proxmes);
+    }
+  }
 }

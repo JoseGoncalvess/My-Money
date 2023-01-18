@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/app/model/evento_model.dart';
 import 'package:my_money/app/model/lista_eventos.dart';
+import 'package:my_money/app/widget/components/item_eventslist_wisget.dart';
 
 import 'mypage.dart';
 
@@ -56,7 +57,7 @@ class _AddEventState extends State<AddEvent> {
                                     fontWeight: FontWeight.bold,
                                   ))),
                               Image.asset(
-                                "img/logo.png",
+                                "assets/img/logo.png",
                                 height: 70,
                                 width: 70,
                               ),
@@ -232,8 +233,7 @@ class _AddEventState extends State<AddEvent> {
                                     const SizedBox(
                                       width: 10,
                                     ),
-                                    SizedBox(
-                                        child: Column(
+                                    Column(
                                       children: [
                                         Container(
                                             height: 80,
@@ -263,7 +263,7 @@ class _AddEventState extends State<AddEvent> {
                                               fontWeight: FontWeight.bold,
                                             ))),
                                       ],
-                                    )),
+                                    ),
                                     const SizedBox(
                                       width: 10,
                                     ),
@@ -627,61 +627,66 @@ class _AddEventState extends State<AddEvent> {
                                 ],
                               ),
                             ),
-                            Container(
-                              child: Column(
-                                children: [
-                                  ElevatedButton(
-                                    onPressed: () {
+                            Column(
+                              children: [
+                                ElevatedButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      Eventos.eventos.add(ListEvento(
+                                          evento: evetocontroller.text,
+                                          data: datacontroller.text,
+                                          valor: double.parse(
+                                              valorcontroller.text),
+                                          alert: indexAlert.toString(),
+                                          pag: indexPag.toString(),
+                                          tag: indexTag.toString()));
                                       setState(() {
-                                        Eventos.eventos.add(ListEvento(
-                                            evento: evetocontroller.text,
-                                            data: datacontroller.text,
-                                            valor: double.parse(
-                                                valorcontroller.text)));
-                                        log(Eventos.eventos.length.toString());
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: ((context) =>
-                                                    const MyPage())));
+                                        ItemeEventListWidget;
                                       });
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                      fixedSize: const Size(255, 45),
-                                      shape: const StadiumBorder(),
-                                      backgroundColor: const Color(0xFF5F5DA6),
-                                    ),
-                                    child: Text('SALVAR',
-                                        style: GoogleFonts.fredoka(
-                                            textStyle: const TextStyle(
-                                          fontSize: 30,
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                        ))),
-                                  ),
-                                  ElevatedButton(
-                                    onPressed: () {
+
+                                      log(Eventos.eventos.length.toString());
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
                                               builder: ((context) =>
                                                   const MyPage())));
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                      fixedSize: const Size(150, 40),
-                                      shape: const StadiumBorder(),
-                                      backgroundColor: const Color(0xFF2E4159),
-                                    ),
-                                    child: Text('CANCELAR',
-                                        style: GoogleFonts.fredoka(
-                                            textStyle: const TextStyle(
-                                          fontSize: 20,
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                        ))),
+                                    });
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    fixedSize: const Size(255, 45),
+                                    shape: const StadiumBorder(),
+                                    backgroundColor: const Color(0xFF5F5DA6),
                                   ),
-                                ],
-                              ),
+                                  child: Text('SALVAR',
+                                      style: GoogleFonts.fredoka(
+                                          textStyle: const TextStyle(
+                                        fontSize: 30,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                      ))),
+                                ),
+                                ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: ((context) =>
+                                                const MyPage())));
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    fixedSize: const Size(150, 40),
+                                    shape: const StadiumBorder(),
+                                    backgroundColor: const Color(0xFF2E4159),
+                                  ),
+                                  child: Text('CANCELAR',
+                                      style: GoogleFonts.fredoka(
+                                          textStyle: const TextStyle(
+                                        fontSize: 20,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                      ))),
+                                ),
+                              ],
                             ),
                           ],
                         ),

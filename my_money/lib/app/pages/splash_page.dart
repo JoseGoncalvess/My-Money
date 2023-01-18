@@ -42,7 +42,7 @@ class _SplashpageState extends State<Splashpage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [Image.asset('img/logo_splash.png')],
+        children: [Image.asset('assets/img/logo_splash.png')],
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/app/model/lista_eventos.dart';
+import 'package:my_money/views/metodos/Function_mother.dart';
 
 import '../widget/components/item_eventslist_wisget.dart';
 
@@ -69,7 +70,9 @@ class _DetalhesPageState extends State<DetalhesPage> {
                                             fontSize: 18,
                                             color: Colors.white))),
                                 IconButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Year().nextMother();
+                                    },
                                     icon: const Icon(
                                         Icons.arrow_circle_right_rounded)),
                               ],
