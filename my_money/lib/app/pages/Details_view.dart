@@ -1,7 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/app/model/lista_eventos.dart';
-import 'package:my_money/views/metodos/Function_mother.dart';
+import 'package:my_money/app/model/metodos/Function_mother.dart';
 
 import '../widget/components/item_eventslist_wisget.dart';
 
@@ -60,7 +62,9 @@ class _DetalhesPageState extends State<DetalhesPage> {
                             Row(
                               children: [
                                 IconButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      log('ERA  PRA VOLTAR PARA O MÊS ANTERIO, FOI ?');
+                                    },
                                     icon: const Icon(
                                         Icons.arrow_circle_left_rounded)),
                                 Text('Novembro',
@@ -71,7 +75,7 @@ class _DetalhesPageState extends State<DetalhesPage> {
                                             color: Colors.white))),
                                 IconButton(
                                     onPressed: () {
-                                      Year().nextMother();
+                                      log('ERA  PRA IR POR PROXIMO MÊS, FOI ?');
                                     },
                                     icon: const Icon(
                                         Icons.arrow_circle_right_rounded)),
@@ -91,13 +95,12 @@ class _DetalhesPageState extends State<DetalhesPage> {
                       return ItemeEventListWidget(
                           evento: Eventos.eventos[index].evento,
                           data: Eventos.eventos[index].data,
-                          valor: Eventos.eventos[index].valor);
+                          valor: Eventos.eventos[index].valor.toString());
                     }),
               ),
               Container(
                 height: MediaQuery.of(context).size.height * 0.08,
                 width: MediaQuery.of(context).size.width,
-                color: Color(0xFF2E4159),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

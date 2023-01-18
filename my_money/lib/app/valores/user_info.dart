@@ -1,7 +1,6 @@
-import 'dart:developer';
-
 import 'package:shared_preferences/shared_preferences.dart';
 
+///SALVANDO O DAQDOS DO USER NO ARMAZENAMENTO LOCAL
 class UserDatePreference {
   String name = '';
   String patrimonio = '';
@@ -11,18 +10,16 @@ class UserDatePreference {
 
     prefs.setString('name', name);
     prefs.setString('patrimonio', patrimonio);
-
-    log(name);
-    log(patrimonio);
   }
 }
 
+///CARREGA OS DADOS QUE FORAM SALVON EM LOCAL
 class DataUser {
   Future<UserData> loadUserData() async {
     final prefs = await SharedPreferences.getInstance();
     String name = prefs.getString('name') ?? "";
     String patrimonio = prefs.getString('patrimonio') ?? "";
-
+//
     return UserData(
       name: name,
       patrimonio: patrimonio,
@@ -30,6 +27,7 @@ class DataUser {
   }
 }
 
+//paRAMETROS A SEREM PASSADOS
 class UserData {
   final String name;
   final String patrimonio;

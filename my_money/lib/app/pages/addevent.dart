@@ -635,8 +635,7 @@ class _AddEventState extends State<AddEvent> {
                                       Eventos.eventos.add(ListEvento(
                                           evento: evetocontroller.text,
                                           data: datacontroller.text,
-                                          valor: double.parse(
-                                              valorcontroller.text),
+                                          valor: valorcontroller.text,
                                           alert: indexAlert.toString(),
                                           pag: indexPag.toString(),
                                           tag: indexTag.toString()));
