@@ -639,16 +639,23 @@ class _AddEventState extends State<AddEvent> {
                                           alert: indexAlert.toString(),
                                           pag: indexPag.toString(),
                                           tag: indexTag.toString()));
-                                      setState(() {
-                                        ItemeEventListWidget;
-                                      });
 
                                       log(Eventos.eventos.length.toString());
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: ((context) =>
-                                                  const MyPage())));
+                                      EventosUSerPreference()
+                                          .saveEvntoUser(
+                                              alert: indexAlert,
+                                              data: datacontroller.text,
+                                              evento: evetocontroller.text,
+                                              pag: indexPag,
+                                              tag: indexTag,
+                                              valor: valorcontroller.text)
+                                          .then((value) {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: ((context) =>
+                                                    const MyPage())));
+                                      });
                                     });
                                   },
                                   style: ElevatedButton.styleFrom(

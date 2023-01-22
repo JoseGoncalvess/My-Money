@@ -31,7 +31,6 @@ class MyPage extends StatefulWidget {
 class _MyPageState extends State<MyPage> {
 //CARREGANDO OS DADOS DE USER
 //=========================================================================
-  UserData _userData = UserData(name: 'name', patrimonio: 'patrimonio');
 
   Future<String> loadPhoto() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -44,7 +43,7 @@ class _MyPageState extends State<MyPage> {
 
     DataUser().loadUserData().then((value) => {
           setState(() {
-            _userData = value;
+            DataUser.userData = value;
           })
         });
     loadPhoto().then((value) {
@@ -111,7 +110,7 @@ class _MyPageState extends State<MyPage> {
                                         : AvatarInfo.retrato))),
                           ),
                         ),
-                        Text(_userData.name,
+                        Text(DataUser.userData.name,
                             style: GoogleFonts.fredoka(
                                 textStyle: const TextStyle(
                                     fontWeight: FontWeight.w600,
@@ -255,7 +254,7 @@ class _MyPageState extends State<MyPage> {
                               decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(20)),
-                              child: Text('R\$ ${_userData.patrimonio}',
+                              child: Text('R\$ ${DataUser.userData.patrimonio}',
                                   style: GoogleFonts.fredoka(
                                       textStyle: const TextStyle(
                                           fontWeight: FontWeight.w600,

@@ -15,6 +15,8 @@ class UserDatePreference {
 
 ///CARREGA OS DADOS QUE FORAM SALVON EM LOCAL
 class DataUser {
+  static UserData userData = UserData(name: 'name', patrimonio: 'patrimonio');
+
   Future<UserData> loadUserData() async {
     final prefs = await SharedPreferences.getInstance();
     String name = prefs.getString('name') ?? "";

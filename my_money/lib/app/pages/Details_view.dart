@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/app/model/lista_eventos.dart';
 import 'package:my_money/app/model/metodos/Function_mother.dart';
+import 'package:my_money/app/model/metodos/somatoria_valores.dart';
 
+import '../valores/user_info.dart';
 import '../widget/components/item_eventslist_wisget.dart';
 
 class DetalhesPage extends StatefulWidget {
@@ -123,7 +125,7 @@ class _DetalhesPageState extends State<DetalhesPage> {
                                 fontWeight: FontWeight.w600,
                                 fontSize: 18,
                               ))),
-                          Text('R\$ ' "50,00",
+                          Text('R\$ ' '${SomatoriaValores().getValor()}',
                               style: GoogleFonts.fredoka(
                                   textStyle: const TextStyle(
                                 fontWeight: FontWeight.w600,
@@ -151,7 +153,9 @@ class _DetalhesPageState extends State<DetalhesPage> {
                                 fontWeight: FontWeight.w600,
                                 fontSize: 18,
                               ))),
-                          Text("R\$ " "200,00",
+                          Text(
+                              "R\$ "
+                              "${int.parse(DataUser.userData.patrimonio) - SomatoriaValores().getValor()}",
                               style: GoogleFonts.fredoka(
                                   textStyle: const TextStyle(
                                 fontWeight: FontWeight.w600,

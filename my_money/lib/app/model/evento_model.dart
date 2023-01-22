@@ -18,8 +18,6 @@ class ListEvento {
   });
 }
 
-
-/*
 ///SALVANDO O DAQDOS DO USER NO ARMAZENAMENTO LOCAL
 class EventosUSerPreference {
   String evento = '';
@@ -29,7 +27,7 @@ class EventosUSerPreference {
   String pag = '';
   String alert = '';
 
-  saveEvntoUser(evento, data, valor, tag, pag, alert) async {
+  Future saveEvntoUser({evento, data, valor, tag, pag, alert}) async {
     final presf = await SharedPreferences.getInstance();
     presf.setString('evento', evento);
     presf.setString('dara', data);
@@ -59,4 +57,3 @@ class EventoUser {
         evento: evento);
   }
 }
-*/
