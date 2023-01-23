@@ -351,21 +351,6 @@ class _MyPageState extends State<MyPage> {
                                                 fontSize: 15,
                                                 color: Colors.white))),
                                   ),
-                                  GestureDetector(
-                                    onTap: (() {
-                                      setState(() {
-                                        valorFat = SomatoriaValores()
-                                            .getvalorY()
-                                            .toString();
-                                      });
-                                    }),
-                                    child: Text('Ano',
-                                        style: GoogleFonts.fredoka(
-                                            textStyle: const TextStyle(
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 15,
-                                                color: Colors.white))),
-                                  ),
                                 ],
                               ),
                             ),
@@ -378,7 +363,7 @@ class _MyPageState extends State<MyPage> {
                           radius: 95.0,
                           lineWidth: 38.0,
                           animation: true,
-                          percent: 0.3,
+                          percent: SomatoriaValores().getperc(),
                           center: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
@@ -443,7 +428,7 @@ class _MyPageState extends State<MyPage> {
                               children: [
                                 IconButton(
                                     onPressed: () {
-                                      SomatoriaValores().getvalorPmes();
+                                      SomatoriaValores().getperc();
                                     },
                                     icon: const Icon(
                                       Icons.wallet_rounded,

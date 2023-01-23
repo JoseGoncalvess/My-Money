@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:my_money/app/model/lista_eventos.dart';
+import 'package:my_money/app/valores/user_info.dart';
 
 /// CAUCULANDO OS VALORES DE TODOS OS ITENS DA LISTA
 class SomatoriaValores {
@@ -86,8 +89,18 @@ class SomatoriaValores {
         resultPM = resultPM + int.parse(Eventos.eventos[i].valor);
       } else {}
     }
-    print(datetime);
-    print(resultPM);
+
     return resultPM;
+  }
+
+  ///percentual do patrimonio
+
+  getperc() {
+    var patrimonio = double.parse(DataUser.userData.patrimonio);
+    var fatura = SomatoriaValores().getValor();
+
+    double porcent = ((fatura * 100) / patrimonio) / 100;
+    print(porcent);
+    return porcent;
   }
 }
