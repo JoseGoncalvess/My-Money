@@ -643,11 +643,11 @@ class _AddEventState extends State<AddEvent> {
                                       log(Eventos.eventos.length.toString());
                                       EventosUSerPreference()
                                           .saveEvntoUser(
-                                              alert: indexAlert,
+                                              alert: indexAlert.toString(),
                                               data: datacontroller.text,
                                               evento: evetocontroller.text,
-                                              pag: indexPag,
-                                              tag: indexTag,
+                                              pag: indexPag.toString(),
+                                              tag: indexTag.toString(),
                                               valor: valorcontroller.text)
                                           .then((value) {
                                         Navigator.push(
@@ -708,18 +708,22 @@ class _AddEventState extends State<AddEvent> {
 
   validatePArcel() {
     var parcela = int.parse(parcelController.text);
-    print(parcela);
-    if (parcela < 1 || parcela > 12) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        backgroundColor: Colors.red,
-        content: const Text(
-          'Numero de Parcelas Incorreto, até 12x!',
-          style: TextStyle(color: Colors.white),
-        ),
-        action: SnackBarAction(
-            label: 'Ajustar', textColor: Colors.white, onPressed: () {}),
-      ));
-      parcelController.clear();
-    } else {}
+
+    if (indexPag == 1) {
+      if (parcela < 1 || parcela > 12 || parcela == null) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          backgroundColor: Colors.red,
+          content: const Text(
+            'Numero de Parcelas Incorreto, até 12x!',
+            style: TextStyle(color: Colors.white),
+          ),
+          action: SnackBarAction(
+              label: 'Ajustar', textColor: Colors.white, onPressed: () {}),
+        ));
+        parcelController.clear();
+      } else {
+        return parcela = 0;
+      }
+    }
   }
 }

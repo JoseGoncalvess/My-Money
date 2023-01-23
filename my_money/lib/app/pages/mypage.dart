@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_money/app/model/metodos/somatoria_valores.dart';
 
 import 'package:my_money/app/valores/avatar_info.dart';
 import 'package:percent_indicator/percent_indicator.dart';
@@ -29,9 +30,16 @@ class MyPage extends StatefulWidget {
 }
 
 class _MyPageState extends State<MyPage> {
-//CARREGANDO OS DADOS DE USER
-//=========================================================================
+  ///Variaves de aceso rapido a soma
 
+  //valor fat total
+  String valorFat = SomatoriaValores().getValor().toString();
+  //valor fat mês
+  String fatMP = SomatoriaValores().getvalorMesP().toString();
+  //VALOR DAS PROXIMAS FATURAS
+  String fatPM = SomatoriaValores().getvalorPmes().toString();
+
+  ///CARREGANDO OS DADOS DE USER
   Future<String> loadPhoto() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getString("foto") ?? "";
@@ -314,7 +322,13 @@ class _MyPageState extends State<MyPage> {
                                     MainAxisAlignment.spaceAround,
                                 children: [
                                   GestureDetector(
-                                    onTap: (() {}),
+                                    onTap: (() {
+                                      setState(() {
+                                        valorFat = SomatoriaValores()
+                                            .getvalorday()
+                                            .toString();
+                                      });
+                                    }),
                                     child: Text('Dia',
                                         style: GoogleFonts.fredoka(
                                             textStyle: const TextStyle(
@@ -323,7 +337,13 @@ class _MyPageState extends State<MyPage> {
                                                 color: Colors.white))),
                                   ),
                                   GestureDetector(
-                                    onTap: (() {}),
+                                    onTap: (() {
+                                      setState(() {
+                                        valorFat = SomatoriaValores()
+                                            .getvalorMes()
+                                            .toString();
+                                      });
+                                    }),
                                     child: Text('Mês',
                                         style: GoogleFonts.fredoka(
                                             textStyle: const TextStyle(
@@ -332,7 +352,13 @@ class _MyPageState extends State<MyPage> {
                                                 color: Colors.white))),
                                   ),
                                   GestureDetector(
-                                    onTap: (() {}),
+                                    onTap: (() {
+                                      setState(() {
+                                        valorFat = SomatoriaValores()
+                                            .getvalorY()
+                                            .toString();
+                                      });
+                                    }),
                                     child: Text('Ano',
                                         style: GoogleFonts.fredoka(
                                             textStyle: const TextStyle(
@@ -363,7 +389,7 @@ class _MyPageState extends State<MyPage> {
                                           fontWeight: FontWeight.w600,
                                           fontSize: 18,
                                           color: Colors.white))),
-                              Text('R\$ 500',
+                              Text('R\$' ' ${valorFat}',
                                   style: GoogleFonts.fredoka(
                                       textStyle: const TextStyle(
                                           fontWeight: FontWeight.w600,
@@ -383,12 +409,14 @@ class _MyPageState extends State<MyPage> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 IconButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      SomatoriaValores().getvalorMesP();
+                                    },
                                     icon: const Icon(
                                       Icons.wallet_rounded,
                                       size: 40,
                                     )),
-                                Text("Ultima fatura",
+                                Text('Ultima Fatura',
                                     style: GoogleFonts.fredoka(
                                         textStyle: const TextStyle(
                                             fontWeight: FontWeight.w600,
@@ -401,7 +429,7 @@ class _MyPageState extends State<MyPage> {
                                   decoration: BoxDecoration(
                                       color: Colors.white,
                                       borderRadius: BorderRadius.circular(20)),
-                                  child: Text('R\$ ' "500,00",
+                                  child: Text('R\$' '$fatMP',
                                       style: GoogleFonts.fredoka(
                                           textStyle: const TextStyle(
                                               fontWeight: FontWeight.w600,
@@ -414,12 +442,14 @@ class _MyPageState extends State<MyPage> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 IconButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      SomatoriaValores().getvalorPmes();
+                                    },
                                     icon: const Icon(
                                       Icons.wallet_rounded,
                                       size: 40,
                                     )),
-                                Text("Ultima fatura",
+                                Text("Proxima Fatura",
                                     style: GoogleFonts.fredoka(
                                         textStyle: const TextStyle(
                                             fontWeight: FontWeight.w600,
@@ -432,7 +462,7 @@ class _MyPageState extends State<MyPage> {
                                   decoration: BoxDecoration(
                                       color: Colors.white,
                                       borderRadius: BorderRadius.circular(20)),
-                                  child: Text('R\$ ' "500,00",
+                                  child: Text('R\$ ' "$fatPM",
                                       style: GoogleFonts.fredoka(
                                           textStyle: const TextStyle(
                                               fontWeight: FontWeight.w600,

@@ -16,5 +16,12 @@ class Eventos {
         pag: '1',
         alert: '2',
         tag: '2'),
+    ListEvento(
+        evento: 'Gatos',
+        data: '26/12/2022',
+        valor: '20',
+        pag: '1',
+        alert: '2',
+        tag: '2'),
   ];
 }

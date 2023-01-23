@@ -1,7 +1,8 @@
+import 'package:my_money/app/model/metodos/Function_mother.dart';
+
 class EditorData {
   dateEvent(data) {
     int mes = int.parse(data.split('/')[1]);
-
     if (mes == 1) {
       return 'JANEIRO';
     } else if (mes == 2) {
@@ -29,5 +30,10 @@ class EditorData {
     } else {
       return null;
     }
+  }
+
+  comparetdate(data) {
+    int mes = int.parse(data.split('/')[1]);
+    var mother = DateTime.now().month;
   }
 }
