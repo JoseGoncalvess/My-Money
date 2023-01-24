@@ -96,11 +96,12 @@ class SomatoriaValores {
   ///percentual do patrimonio
 
   getperc() {
-    var patrimonio = double.parse(DataUser.userData.patrimonio);
+    double valor = double.parse(DataUser.userData.patrimonio);
+    double patrimonio = valor;
     var fatura = SomatoriaValores().getValor();
 
     double porcent = ((fatura * 100) / patrimonio) / 100;
-    print(porcent);
+
     return porcent;
   }
 }

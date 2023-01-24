@@ -16,7 +16,7 @@ import 'Faq.dart';
 import 'HomePage.dart';
 import '../widget/components/item_eventslist_wisget.dart';
 import 'addevent.dart';
-import 'configApp.dart';
+import 'config_app.dart';
 import 'selected_avatar.dart';
 import 'user.dart';
 
@@ -368,18 +368,33 @@ class _MyPageState extends State<MyPage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Text('Fatura atual',
-                                  style: GoogleFonts.fredoka(
-                                      textStyle: const TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 18,
-                                          color: Colors.white))),
-                              Text('R\$' ' ${valorFat}',
-                                  style: GoogleFonts.fredoka(
-                                      textStyle: const TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 22,
-                                          color: Colors.white))),
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    valorFat = SomatoriaValores()
+                                        .getValor()
+                                        .toString();
+                                  });
+                                },
+                                child: SizedBox(
+                                  child: Column(
+                                    children: [
+                                      Text('Fatura atual',
+                                          style: GoogleFonts.fredoka(
+                                              textStyle: const TextStyle(
+                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: 18,
+                                                  color: Colors.white))),
+                                      Text('R\$' ' ${valorFat}',
+                                          style: GoogleFonts.fredoka(
+                                              textStyle: const TextStyle(
+                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: 22,
+                                                  color: Colors.white))),
+                                    ],
+                                  ),
+                                ),
+                              )
                             ],
                           ),
                           progressColor: const Color(0xFF5F5DA6),
@@ -413,7 +428,7 @@ class _MyPageState extends State<MyPage> {
                                   height: 20,
                                   decoration: BoxDecoration(
                                       color: Colors.white,
-                                      borderRadius: BorderRadius.circular(20)),
+                                      borderRadius: BorderRadius.circular(22)),
                                   child: Text('R\$' '$fatMP',
                                       style: GoogleFonts.fredoka(
                                           textStyle: const TextStyle(

@@ -18,6 +18,7 @@ class AddEvent extends StatefulWidget {
 }
 
 class _AddEventState extends State<AddEvent> {
+  ///controladores de evento
   TextEditingController evetocontroller = TextEditingController();
   TextEditingController datacontroller = TextEditingController();
   TextEditingController valorcontroller = TextEditingController();
@@ -103,7 +104,7 @@ class _AddEventState extends State<AddEvent> {
                                       filled: true,
                                       fillColor: const Color(0xFF8F8EBF),
                                       border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(30),
+                                        borderRadius: BorderRadius.circular(12),
                                       ),
                                       floatingLabelAlignment:
                                           FloatingLabelAlignment.center,
@@ -148,7 +149,7 @@ class _AddEventState extends State<AddEvent> {
                                                   const Color(0xFF8F8EBF),
                                               border: OutlineInputBorder(
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(12),
                                               ),
                                               floatingLabelAlignment:
                                                   FloatingLabelAlignment.center,
@@ -192,7 +193,7 @@ class _AddEventState extends State<AddEvent> {
                                                   const Color(0xFF8F8EBF),
                                               border: OutlineInputBorder(
                                                 borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(12),
                                               ),
                                               floatingLabelAlignment:
                                                   FloatingLabelAlignment.center,
@@ -563,7 +564,7 @@ class _AddEventState extends State<AddEvent> {
                                             decoration: BoxDecoration(
                                                 color: const Color(0xFF2E4159),
                                                 borderRadius:
-                                                    BorderRadius.circular(20)),
+                                                    BorderRadius.circular(12)),
                                             child: TextField(
                                               onSubmitted: (value) {
                                                 validatePArcel();
