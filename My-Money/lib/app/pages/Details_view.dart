@@ -3,12 +3,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/app/model/editor_data.dart';
-import 'package:my_money/app/model/lista_eventos.dart';
-import 'package:my_money/app/model/metodos/Function_mother.dart';
 import 'package:my_money/app/model/metodos/filtro_list.dart';
 import 'package:my_money/app/model/metodos/somatoria_valores.dart';
-
-import '../model/evento_model.dart';
 import '../valores/user_info.dart';
 import '../widget/components/item_eventslist_wisget.dart';
 
@@ -23,10 +19,13 @@ int month = DateTime.now().month;
 
 class _DetalhesPageState extends State<DetalhesPage> {
   @override
+
+  //Atualiza a tela pasadno p´ra lista o valor do mes e mudando conforme o atual
   void initState() {
-    List<ListEvento> meses = [];
-    meses = EditorData().dateEvent(month.toString());
-    print(meses.length);
+    super.initState();
+    List<String> meses = [];
+    String item = EditorData().datames(month).toString();
+    meses.add(item);
     print(meses);
   }
 
@@ -78,6 +77,8 @@ class _DetalhesPageState extends State<DetalhesPage> {
                               children: [
                                 IconButton(
                                     onPressed: () {
+                                      EditorData().dateEvent(month);
+                                      print(month);
                                       log('ERA  PRA VOLTAR PARA O MÊS ANTERIO, FOI ?');
                                     },
                                     icon: const Icon(
@@ -90,7 +91,6 @@ class _DetalhesPageState extends State<DetalhesPage> {
                                             color: Colors.white))),
                                 IconButton(
                                     onPressed: () {
-                                      FiltroList().filtermes(month);
                                       log('ERA  PRA IR POR PROXIMO MÊS, FOI ?');
                                     },
                                     icon: const Icon(

@@ -59,7 +59,7 @@ class _MyPageState extends State<MyPage> {
       // O VALUE É O RETORNO DA FUNÇÃO loadPhoto
       if (value.isNotEmpty) {
         AvatarInfo.retrato = value;
-        log('vaziu');
+        log('o retarato não esta vazio');
       }
     });
   }

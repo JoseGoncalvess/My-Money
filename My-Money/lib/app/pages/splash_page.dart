@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:my_money/app/model/evento_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../valores/user_info.dart';
 import 'HomePage.dart';
 import 'mypage.dart';
 
@@ -22,7 +22,13 @@ class _SplashpageState extends State<Splashpage> {
   @override
   void initState() {
     super.initState();
-
+//CARREGA OS DADOS A SEREM EXIBIDOS
+    DataUser().loadUserData().then((value) => {
+          setState(() {
+            DataUser.userData = value;
+          })
+        });
+//CARREGA O VALOR DE FOTO D EPERFIL QUE CASO SEJA VAZIO
     Future.delayed(const Duration(seconds: 2)).then((value) => {
           loadPhoto().then((value) {
             // O VALUE É O RETORNO DA FUNÇÃO loadPhoto

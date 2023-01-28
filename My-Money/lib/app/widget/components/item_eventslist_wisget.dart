@@ -49,7 +49,10 @@ class _ItemeEventListWidgetState extends State<ItemeEventListWidget> {
                                   fontWeight: FontWeight.w600,
                                   fontSize: 18,
                                   color: Colors.white))),
-                      Text(EditorData().dateEvent(widget.data),
+                      Text(
+                          EditorData()
+                              .dateEvent(int.parse(widget.data.split('/')[1]))
+                              .toString(),
                           style: GoogleFonts.fredoka(
                               textStyle: const TextStyle(
                                   fontWeight: FontWeight.w600,

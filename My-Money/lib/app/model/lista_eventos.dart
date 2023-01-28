@@ -11,7 +11,7 @@ class Eventos {
         tag: '5'),
     ListEvento(
         evento: 'Carneirinho',
-        data: '20/01/2023',
+        data: '20/1/2023',
         valor: '800',
         pag: '1',
         alert: '2',
