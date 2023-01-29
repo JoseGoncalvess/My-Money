@@ -13,4 +13,13 @@ class FiltroList {
 
     return filtrMonth;
   }
+
+  double calcTotalFilter(List<ListEvento> list) {
+    double resultSoma = 0;
+    for (var element in list) {
+      resultSoma =
+          double.parse(element.valor.replaceAll(',', '.')) + resultSoma;
+    }
+    return resultSoma;
+  }
 }

@@ -641,7 +641,6 @@ class _AddEventState extends State<AddEvent> {
                                           pag: indexPag.toString(),
                                           tag: indexTag.toString()));
 
-                                      log(Eventos.eventos.length.toString());
                                       EventosUSerPreference()
                                           .saveEvntoUser(
                                               alert: indexAlert.toString(),
@@ -651,12 +650,14 @@ class _AddEventState extends State<AddEvent> {
                                               tag: indexTag.toString(),
                                               valor: valorcontroller.text)
                                           .then((value) {
-                                        Navigator.push(
+                                        Navigator.pushReplacement(
                                             context,
                                             MaterialPageRoute(
                                                 builder: ((context) =>
                                                     const MyPage())));
                                       });
+
+                                      EventoUser().loadEventoUser();
                                     });
                                   },
                                   style: ElevatedButton.styleFrom(

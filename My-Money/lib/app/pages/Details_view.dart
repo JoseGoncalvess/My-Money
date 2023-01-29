@@ -15,18 +15,14 @@ class DetalhesPage extends StatefulWidget {
   State<DetalhesPage> createState() => _DetalhesPageState();
 }
 
-int month = DateTime.now().month;
-
 class _DetalhesPageState extends State<DetalhesPage> {
+  int month = DateTime.now().month;
+
   @override
 
   //Atualiza a tela pasadno p´ra lista o valor do mes e mudando conforme o atual
   void initState() {
     super.initState();
-    List<String> meses = [];
-    String item = EditorData().datames(month).toString();
-    meses.add(item);
-    print(meses);
   }
 
   @override
@@ -77,13 +73,19 @@ class _DetalhesPageState extends State<DetalhesPage> {
                               children: [
                                 IconButton(
                                     onPressed: () {
-                                      EditorData().dateEvent(month);
+                                      setState(() {
+                                        if (month == 1) {
+                                          month = 12;
+                                        } else {
+                                          month--;
+                                        }
+                                      });
                                       print(month);
                                       log('ERA  PRA VOLTAR PARA O MÊS ANTERIO, FOI ?');
                                     },
                                     icon: const Icon(
                                         Icons.arrow_circle_left_rounded)),
-                                Text('Novembro',
+                                Text(EditorData().datames(month.toString()),
                                     style: GoogleFonts.fredoka(
                                         textStyle: const TextStyle(
                                             fontWeight: FontWeight.w600,
@@ -91,6 +93,13 @@ class _DetalhesPageState extends State<DetalhesPage> {
                                             color: Colors.white))),
                                 IconButton(
                                     onPressed: () {
+                                      setState(() {
+                                        if (month == 12) {
+                                          month = 1;
+                                        } else {
+                                          month++;
+                                        }
+                                      });
                                       log('ERA  PRA IR POR PROXIMO MÊS, FOI ?');
                                     },
                                     icon: const Icon(
@@ -142,7 +151,9 @@ class _DetalhesPageState extends State<DetalhesPage> {
                                 fontWeight: FontWeight.w600,
                                 fontSize: 18,
                               ))),
-                          Text('R\$ ' '${SomatoriaValores().getValor()}',
+                          Text(
+                              'R\$ '
+                              '${FiltroList().calcTotalFilter(FiltroList().filtermes(month))}',
                               style: GoogleFonts.fredoka(
                                   textStyle: const TextStyle(
                                 fontWeight: FontWeight.w600,

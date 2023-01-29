@@ -222,7 +222,9 @@ class _MyPageState extends State<MyPage> {
                           radius: 95.0,
                           lineWidth: 38.0,
                           animation: true,
-                          percent: SomatoriaValores().getperc(),
+                          percent: DataUser.userData.patrimonio == ''
+                              ? 0.0
+                              : SomatoriaValores().getperc(),
                           center: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,

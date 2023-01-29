@@ -9,7 +9,8 @@ class SomatoriaValores {
   double getValor() {
     double result = 0;
     for (int i = 0; i < Eventos.eventos.length; i++) {
-      result = result + double.parse(Eventos.eventos[i].valor);
+      result =
+          result + double.parse(Eventos.eventos[i].valor.replaceAll(',', '.'));
     }
 
     return result;
@@ -95,8 +96,9 @@ class SomatoriaValores {
 
   ///percentual do patrimonio
 
-  getperc() {
-    late double valor = double.parse(DataUser.userData.patrimonio);
+  double getperc() {
+    double valor = double.parse(DataUser.userData.patrimonio);
+
     double patrimonio = valor;
     var fatura = SomatoriaValores().getValor();
 
