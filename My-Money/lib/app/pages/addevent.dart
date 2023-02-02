@@ -1,10 +1,8 @@
-import 'dart:developer';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/app/model/evento_model.dart';
-import 'package:my_money/app/model/lista_eventos.dart';
-import 'package:my_money/app/widget/components/item_eventslist_wisget.dart';
 
 import 'mypage.dart';
 
@@ -633,31 +631,39 @@ class _AddEventState extends State<AddEvent> {
                                 ElevatedButton(
                                   onPressed: () {
                                     setState(() {
-                                      Eventos.eventos.add(ListEvento(
+                                      EventosUSerPreference().eventosC.add(
+                                          Evento(
+                                              evento: evetocontroller.text,
+                                              data: datacontroller.text,
+                                              valor: valorcontroller.text,
+                                              alert: indexAlert.toString(),
+                                              pag: indexPag.toString(),
+                                              tag: indexTag.toString()));
+
+                                      EventosUSerPreference()
+                                          .saveItemList(
+                                        Evento(
                                           evento: evetocontroller.text,
                                           data: datacontroller.text,
                                           valor: valorcontroller.text,
-                                          alert: indexAlert.toString(),
+                                          tag: indexTag.toString(),
                                           pag: indexPag.toString(),
-                                          tag: indexTag.toString()));
-
-                                      EventosUSerPreference()
-                                          .saveEvntoUser(
-                                              alert: indexAlert.toString(),
-                                              data: datacontroller.text,
-                                              evento: evetocontroller.text,
-                                              pag: indexPag.toString(),
-                                              tag: indexTag.toString(),
-                                              valor: valorcontroller.text)
-                                          .then((value) {
-                                        Navigator.pushReplacement(
+                                          alert: indexAlert.toString(),
+                                        ),
+                                      )
+                                          .then(
+                                        (value) {
+                                          Navigator.pushReplacement(
                                             context,
                                             MaterialPageRoute(
-                                                builder: ((context) =>
-                                                    const MyPage())));
-                                      });
+                                              builder: ((context) =>
+                                                  const MyPage()),
+                                            ),
+                                          );
+                                        },
+                                      );
 
-                                      EventoUser().loadEventoUser();
+                                      EventosUSerPreference().loadList();
                                     });
                                   },
                                   style: ElevatedButton.styleFrom(

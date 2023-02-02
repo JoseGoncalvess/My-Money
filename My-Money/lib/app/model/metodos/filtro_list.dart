@@ -1,20 +1,20 @@
 import 'dart:core';
 import 'package:my_money/app/model/evento_model.dart';
-import 'package:my_money/app/model/lista_eventos.dart';
 
 class FiltroList {
-  List<ListEvento> filtermes(int mes) {
-    List<ListEvento> filtrMonth = [];
-    for (int i = 0; i < Eventos.eventos.length; i++) {
-      if (int.parse(Eventos.eventos[i].data.split('/')[1]) == mes) {
-        filtrMonth.add(Eventos.eventos[i]);
+  List<Evento> filtermes(int mes) {
+    List<Evento> filtrMonth = [];
+    for (int i = 0; i < EventosUSerPreference().eventosC.length; i++) {
+      if (int.parse(EventosUSerPreference().eventosC[i].data.split('/')[1]) ==
+          mes) {
+        filtrMonth.add(EventosUSerPreference().eventosC[i]);
       }
     }
 
     return filtrMonth;
   }
 
-  double calcTotalFilter(List<ListEvento> list) {
+  double calcTotalFilter(List<Evento> list) {
     double resultSoma = 0;
     for (var element in list) {
       resultSoma =

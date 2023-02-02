@@ -1,16 +1,18 @@
 import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
-import 'package:my_money/app/model/lista_eventos.dart';
 import 'package:my_money/app/valores/user_info.dart';
+
+import '../evento_model.dart';
 
 /// CAUCULANDO OS VALORES DE TODOS OS ITENS DA LISTA
 class SomatoriaValores {
   double getValor() {
     double result = 0;
-    for (int i = 0; i < Eventos.eventos.length; i++) {
-      result =
-          result + double.parse(Eventos.eventos[i].valor.replaceAll(',', '.'));
+    for (int i = 0; i < EventosUSerPreference().eventosC.length; i++) {
+      result = result +
+          double.parse(
+              EventosUSerPreference().eventosC[i].valor.replaceAll(',', '.'));
     }
 
     return result;
@@ -21,9 +23,11 @@ class SomatoriaValores {
     double resultMp = 0;
     var datetime = DateTime.now().month;
 
-    for (int i = 0; i < Eventos.eventos.length; i++) {
-      if (int.parse(Eventos.eventos[i].data.split('/')[1]) == datetime) {
-        resultMp = resultMp + double.parse(Eventos.eventos[i].valor);
+    for (int i = 0; i < EventosUSerPreference().eventosC.length; i++) {
+      if (int.parse(EventosUSerPreference().eventosC[i].data.split('/')[1]) ==
+          datetime) {
+        resultMp =
+            resultMp + double.parse(EventosUSerPreference().eventosC[i].valor);
       } else {}
     }
 
@@ -35,9 +39,11 @@ class SomatoriaValores {
     double resultday = 0;
     var datetime = DateTime.now().day;
 
-    for (int i = 0; i < Eventos.eventos.length; i++) {
-      if (int.parse(Eventos.eventos[i].data.split('/')[0]) == datetime) {
-        resultday = resultday + double.parse(Eventos.eventos[i].valor);
+    for (int i = 0; i < EventosUSerPreference().eventosC.length; i++) {
+      if (int.parse(EventosUSerPreference().eventosC[i].data.split('/')[0]) ==
+          datetime) {
+        resultday =
+            resultday + double.parse(EventosUSerPreference().eventosC[i].valor);
       } else {}
     }
 
@@ -49,9 +55,11 @@ class SomatoriaValores {
     double resultday = 0;
     var datetime = DateTime.now().year;
 
-    for (int i = 0; i < Eventos.eventos.length; i++) {
-      if (int.parse(Eventos.eventos[i].data.split('/')[2]) == datetime) {
-        resultday = resultday + double.parse(Eventos.eventos[i].valor);
+    for (int i = 0; i < EventosUSerPreference().eventosC.length; i++) {
+      if (int.parse(EventosUSerPreference().eventosC[i].data.split('/')[2]) ==
+          datetime) {
+        resultday =
+            resultday + double.parse(EventosUSerPreference().eventosC[i].valor);
       } else {}
     }
 
@@ -67,9 +75,11 @@ class SomatoriaValores {
       datetime = datetime - 1;
     }
 
-    for (int i = 0; i < Eventos.eventos.length; i++) {
-      if (int.parse(Eventos.eventos[i].data.split('/')[1]) == datetime) {
-        resultMp = resultMp + double.parse(Eventos.eventos[i].valor);
+    for (int i = 0; i < EventosUSerPreference().eventosC.length; i++) {
+      if (int.parse(EventosUSerPreference().eventosC[i].data.split('/')[1]) ==
+          datetime) {
+        resultMp =
+            resultMp + double.parse(EventosUSerPreference().eventosC[i].valor);
       } else {}
     }
 
@@ -85,9 +95,11 @@ class SomatoriaValores {
       datetime = datetime + 1;
     }
 
-    for (int i = 0; i < Eventos.eventos.length; i++) {
-      if (int.parse(Eventos.eventos[i].data.split('/')[1]) == datetime) {
-        resultPM = resultPM + double.parse(Eventos.eventos[i].valor);
+    for (int i = 0; i < EventosUSerPreference().eventosC.length; i++) {
+      if (int.parse(EventosUSerPreference().eventosC[i].data.split('/')[1]) ==
+          datetime) {
+        resultPM =
+            resultPM + double.parse(EventosUSerPreference().eventosC[i].valor);
       } else {}
     }
 

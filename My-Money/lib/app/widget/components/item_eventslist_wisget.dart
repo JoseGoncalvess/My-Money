@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/app/model/editor_data.dart';
-import 'package:my_money/app/model/lista_eventos.dart';
 
 class ItemeEventListWidget extends StatefulWidget {
   const ItemeEventListWidget(

@@ -1,25 +1,18 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_money/app/model/evento_model.dart';
 import 'package:my_money/app/model/metodos/somatoria_valores.dart';
-
 import 'package:my_money/app/valores/avatar_info.dart';
 import 'package:my_money/app/widget/components/list_drawer.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../model/lista_eventos.dart';
 import '../valores/user_info.dart';
 import 'Details_view.dart';
-import 'Faq.dart';
-import 'HomePage.dart';
 import '../widget/components/item_eventslist_wisget.dart';
 import 'addevent.dart';
-import 'config_app.dart';
-import 'selected_avatar.dart';
-import 'user.dart';
+import '../model/evento_model.dart';
 
 class MyPage extends StatefulWidget {
   const MyPage({
@@ -49,7 +42,7 @@ class _MyPageState extends State<MyPage> {
   @override
   void initState() {
     super.initState();
-
+    EventosUSerPreference().loadList();
     DataUser().loadUserData().then((value) => {
           setState(() {
             DataUser.userData = value;
@@ -341,12 +334,13 @@ class _MyPageState extends State<MyPage> {
               ),
               Expanded(
                 child: ListView.builder(
-                    itemCount: Eventos.eventos.length,
+                    itemCount: EventosUSerPreference().eventosC.length,
                     itemBuilder: (BuildContext context, index) {
                       return ItemeEventListWidget(
-                          evento: Eventos.eventos[index].evento,
-                          data: Eventos.eventos[index].data,
-                          valor: Eventos.eventos[index].valor);
+                          evento:
+                              EventosUSerPreference().eventosC[index].evento,
+                          data: EventosUSerPreference().eventosC[index].data,
+                          valor: EventosUSerPreference().eventosC[index].valor);
                     }),
               ),
             ],

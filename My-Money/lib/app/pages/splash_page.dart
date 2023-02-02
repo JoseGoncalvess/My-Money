@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_money/app/model/evento_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../valores/user_info.dart';
 import 'HomePage.dart';
 import 'mypage.dart';
@@ -19,10 +18,6 @@ Future<String> loadPhoto() async {
   return prefs.getString("foto") ?? "";
 }
 
-Future loadEventoUser() async {
-  EventoUser().loadEventoUser();
-}
-
 class _SplashpageState extends State<Splashpage> {
   @override
   void initState() {
@@ -31,7 +26,6 @@ class _SplashpageState extends State<Splashpage> {
     DataUser().loadUserData().then((value) => {
           setState(() {
             DataUser.userData = value;
-            loadEventoUser();
           })
         });
 //CARREGA O VALOR DE FOTO D EPERFIL QUE CASO SEJA VAZIO
@@ -39,10 +33,10 @@ class _SplashpageState extends State<Splashpage> {
           loadPhoto().then((value) {
             // O VALUE É O RETORNO DA FUNÇÃO loadPhoto
             if (value.isEmpty) {
-              Navigator.of(context).push(
+              Navigator.of(context).pushReplacement(
                   CupertinoPageRoute(builder: (context) => const Homepage()));
             } else {
-              Navigator.of(context).push(
+              Navigator.of(context).pushReplacement(
                   CupertinoPageRoute(builder: (context) => const MyPage()));
             }
           })
