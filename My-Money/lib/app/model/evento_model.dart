@@ -27,6 +27,16 @@ class EventosUSerPreference {
   String pag = '';
   String alert = '';
 
+  saveEvento(evento, data, valor, tag, pag, alert) {
+    eventosC.add(Evento(
+        evento: evento,
+        data: data,
+        valor: valor,
+        tag: tag,
+        pag: pag,
+        alert: alert));
+  }
+
   List<Evento> eventosC = [];
   int contList = 0;
 

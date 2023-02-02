@@ -631,14 +631,13 @@ class _AddEventState extends State<AddEvent> {
                                 ElevatedButton(
                                   onPressed: () {
                                     setState(() {
-                                      EventosUSerPreference().eventosC.add(
-                                          Evento(
-                                              evento: evetocontroller.text,
-                                              data: datacontroller.text,
-                                              valor: valorcontroller.text,
-                                              alert: indexAlert.toString(),
-                                              pag: indexPag.toString(),
-                                              tag: indexTag.toString()));
+                                      EventosUSerPreference().saveEvento(
+                                          evetocontroller.text,
+                                          datacontroller.text,
+                                          valorcontroller.text,
+                                          indexTag.toString(),
+                                          indexPag.toString(),
+                                          indexAlert.toString());
 
                                       EventosUSerPreference()
                                           .saveItemList(
@@ -662,6 +661,9 @@ class _AddEventState extends State<AddEvent> {
                                           );
                                         },
                                       );
+                                      print(EventosUSerPreference()
+                                          .eventosC
+                                          .length);
 
                                       EventosUSerPreference().loadList();
                                     });
