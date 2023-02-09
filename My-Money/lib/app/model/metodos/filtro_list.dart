@@ -1,9 +1,11 @@
 import 'dart:core';
+import 'dart:developer';
 import 'package:my_money/app/model/evento_model.dart';
 
 class FiltroList {
   Future<List<Evento>> filtermes(int mes) async {
     List<Evento> mylist = await EventosUSerPreference().loadList();
+    log(mylist.length.toString());
     List<Evento> filtrMonth = [];
     for (int i = 0; i < mylist.length; i++) {
       if (int.parse(mylist[i].data.split('/')[1]) == mes) {
@@ -11,7 +13,7 @@ class FiltroList {
       }
     }
 
-    return filtrMonth;
+    return mylist;
   }
 
   double calcTotalFilter(List<Evento> list) {

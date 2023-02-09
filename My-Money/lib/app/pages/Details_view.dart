@@ -1,5 +1,4 @@
 import 'dart:developer';
-import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,7 +18,7 @@ class DetalhesPage extends StatefulWidget {
 
 class _DetalhesPageState extends State<DetalhesPage> {
   int month = DateTime.now().month;
-  ScrollController _controller = ScrollController();
+  final ScrollController _controller = ScrollController();
 
   List<Evento> efiltro = [];
   @override
@@ -27,9 +26,16 @@ class _DetalhesPageState extends State<DetalhesPage> {
   //Atualiza a tela pasadno p´ra lista o valor do mes e mudando conforme o atual
   void initState() {
     _controller.addListener(() async {
-      efiltro = await FiltroList().filtermes(month);
+      log('qualquer merda');
     });
     super.initState();
+    FiltroList().filtermes(month).then((value) {
+      setState(() {
+        efiltro = value;
+      });
+    });
+
+    log(efiltro.toString());
   }
 
   @override
