@@ -1,4 +1,4 @@
-import 'dart:math';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -630,43 +630,32 @@ class _AddEventState extends State<AddEvent> {
                               children: [
                                 ElevatedButton(
                                   onPressed: () {
-                                    setState(() {
-                                      EventosUSerPreference().saveEvento(
-                                          evetocontroller.text,
-                                          datacontroller.text,
-                                          valorcontroller.text,
-                                          indexTag.toString(),
-                                          indexPag.toString(),
-                                          indexAlert.toString());
-
-                                      EventosUSerPreference()
-                                          .saveItemList(
-                                        Evento(
-                                          evento: evetocontroller.text,
-                                          data: datacontroller.text,
-                                          valor: valorcontroller.text,
-                                          tag: indexTag.toString(),
-                                          pag: indexPag.toString(),
-                                          alert: indexAlert.toString(),
-                                        ),
-                                      )
-                                          .then(
-                                        (value) {
-                                          Navigator.pushReplacement(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: ((context) =>
-                                                  const MyPage()),
-                                            ),
-                                          );
-                                        },
-                                      );
-                                      print(EventosUSerPreference()
-                                          .eventosC
-                                          .length);
-
-                                      EventosUSerPreference().loadList();
+                                    EventosUSerPreference()
+                                        .saveEvento(
+                                            alert: indexAlert.toString(),
+                                            data: datacontroller.text,
+                                            evento: evetocontroller.text,
+                                            pag: indexPag.toString(),
+                                            tag: indexTag.toString(),
+                                            valor: valorcontroller.text)
+                                        .then(
+                                      (value) {
+                                        Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: ((context) =>
+                                                const MyPage()),
+                                          ),
+                                        );
+                                      },
+                                    ).catchError((onError) {
+                                      log('Deu merda em salvar as paradas');
                                     });
+                                    log(EventosUSerPreference()
+                                        .eventosC
+                                        .length
+                                        .toString());
+                                    EventosUSerPreference().loadList();
                                   },
                                   style: ElevatedButton.styleFrom(
                                     fixedSize: const Size(255, 45),

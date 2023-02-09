@@ -12,7 +12,6 @@ import '../valores/user_info.dart';
 import 'Details_view.dart';
 import '../widget/components/item_eventslist_wisget.dart';
 import 'addevent.dart';
-import '../model/evento_model.dart';
 
 class MyPage extends StatefulWidget {
   const MyPage({
@@ -24,8 +23,6 @@ class MyPage extends StatefulWidget {
 }
 
 class _MyPageState extends State<MyPage> {
-  ///Variaves de aceso rapido a soma
-
   //valor fat total
   String valorFat = SomatoriaValores().getValor().toString();
   //valor fat mês
@@ -39,6 +36,7 @@ class _MyPageState extends State<MyPage> {
     return prefs.getString("foto") ?? "";
   }
 
+  List<Evento> eventoC = [];
   @override
   void initState() {
     super.initState();
@@ -54,6 +52,16 @@ class _MyPageState extends State<MyPage> {
         AvatarInfo.retrato = value;
         log('o retarato não esta vazio');
       }
+    });
+
+    EventosUSerPreference().loadList().then((value) {
+      setState(() {
+        eventoC = value;
+
+        log(
+          eventoC.length.toString(),
+        );
+      });
     });
   }
 

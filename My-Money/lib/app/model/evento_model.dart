@@ -27,39 +27,48 @@ class EventosUSerPreference {
   String pag = '';
   String alert = '';
 
-  saveEvento(evento, data, valor, tag, pag, alert) {
-    eventosC.add(Evento(
+  Future saveEvento({
+    required evento,
+    required data,
+    required valor,
+    required tag,
+    required pag,
+    required alert,
+  }) async {
+    Evento item = Evento(
         evento: evento,
         data: data,
         valor: valor,
         tag: tag,
         pag: pag,
-        alert: alert));
+        alert: alert);
+
+    final SharedPreferences sharedPreferences =
+        await SharedPreferences.getInstance();
+
+    contList = sharedPreferences.getInt('contList') ?? 0;
+    int i = contList;
+
+    saveItemList(item, i);
   }
 
   List<Evento> eventosC = [];
   int contList = 0;
 
 //metodo que efetua o salvamento do item an lista
-  Future saveItemList(Evento evento) async {
+  Future saveItemList(Evento evento, int index) async {
     final SharedPreferences sharedPreferences =
         await SharedPreferences.getInstance();
 
     contList++;
 
     //salavdno os caracteres do evento
-    sharedPreferences.setString(
-        'item_evento_name_${evento.evento.length}', evento.evento);
-    sharedPreferences.setString(
-        'item_evento_data_${evento.evento.length}', evento.data);
-    sharedPreferences.setString(
-        'item_evento_valor_${evento.evento.length}', evento.valor);
-    sharedPreferences.setString(
-        'item_evento_pag_${evento.evento.length}', evento.pag);
-    sharedPreferences.setString(
-        'item_evento_tag_${evento.evento.length}', evento.tag);
-    sharedPreferences.setString(
-        'item_evento_alert_${evento.evento.length}', evento.alert);
+    sharedPreferences.setString('item_evento_name_$index', evento.evento);
+    sharedPreferences.setString('item_evento_data_$index', evento.data);
+    sharedPreferences.setString('item_evento_valor_$index', evento.valor);
+    sharedPreferences.setString('item_evento_pag_$index', evento.pag);
+    sharedPreferences.setString('item_evento_tag_$index', evento.tag);
+    sharedPreferences.setString('item_evento_alert_$index', evento.alert);
 //salvadmp o conter da lista
     sharedPreferences.setInt('conterList', contList);
   }
@@ -72,67 +81,23 @@ class EventosUSerPreference {
 
 //o for efetua o loop buscando os eventos pelo numeor do indice passado pelo i
     for (var i = 0; i < conterlist; i++) {
-      String evento =
-          sharedPreferences.getString('item_evento_name_${eventosC.length}') ??
-              '';
-      String valor =
-          sharedPreferences.getString('item_evento_valor_${eventosC.length}') ??
-              '';
-      String data =
-          sharedPreferences.getString('item_evento_data_${eventosC.length}') ??
-              '';
-      String pag =
-          sharedPreferences.getString('item_evento_pag_${eventosC.length}') ??
-              '';
-      String tag =
-          sharedPreferences.getString('item_evento_tag_${eventosC.length}') ??
-              '';
-      String alert =
-          sharedPreferences.getString('item_evento_alert_${eventosC.length}') ??
-              '';
+      String evento = sharedPreferences.getString('item_evento_name_$i') ?? '';
+      String valor = sharedPreferences.getString('item_evento_valor_$i') ?? '';
+      String data = sharedPreferences.getString('item_evento_data_$i') ?? '';
+      String pag = sharedPreferences.getString('item_evento_pag_$i') ?? '';
+      String tag = sharedPreferences.getString('item_evento_tag_$i') ?? '';
+      String alert = sharedPreferences.getString('item_evento_alert_$i') ?? '';
 
-      getList.add(Evento(
-          evento: evento,
-          data: data,
-          valor: valor,
-          tag: tag,
-          pag: pag,
-          alert: alert));
+      getList.add(
+        Evento(
+            evento: evento,
+            data: data,
+            valor: valor,
+            tag: tag,
+            pag: pag,
+            alert: alert),
+      );
     }
     return getList;
   }
 }
-/*
-class EventoUser {
-  Future<Eventos> loadEventoUser() async {
-    final prefs = await SharedPreferences.getInstance();
-    String evento = prefs.getString('evento') ?? "";
-    String data = prefs.getString('data') ?? "";
-    String valor = prefs.getString('valor') ?? "";
-    String tag = prefs.getString('tag') ?? "";
-    String pag = prefs.getString('pag') ?? "";
-    String alert = prefs.getString('alert') ?? "";
-
-    return Eventos(
-        alert: alert,
-        valor: valor,
-        data: data,
-        pag: pag,
-        tag: tag,
-        evento: evento);
-  }
-}
-
-
-/*
-  Future saveEvntoUser({evento, data, valor, tag, pag, alert}) async {
-    final presf = await SharedPreferences.getInstance();
-    presf.setString('evento', evento);
-    presf.setString('dara', data);
-    presf.setString('valor', valor);
-    presf.setString('tag', tag);
-    presf.setString('pag', pag);
-    presf.setString('alert', alert);
-  }
-*/
-*/
