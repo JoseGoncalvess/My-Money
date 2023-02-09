@@ -54,13 +54,19 @@ class _MyPageState extends State<MyPage> {
       }
     });
 
-    EventosUSerPreference().loadList().then((value) {
+    EventosUSerPreference().loadList().then((value) async {
+      final SharedPreferences sharedPreferences =
+          await SharedPreferences.getInstance();
+
+      int contlist = sharedPreferences.getInt('conterList') ?? 0;
+
       setState(() {
         eventoC = value;
 
         log(
-          eventoC.length.toString(),
+          '${value[0].evento} ',
         );
+        log(contlist.toString());
       });
     });
   }
@@ -342,13 +348,12 @@ class _MyPageState extends State<MyPage> {
               ),
               Expanded(
                 child: ListView.builder(
-                    itemCount: EventosUSerPreference().eventosC.length,
+                    itemCount: eventoC.length,
                     itemBuilder: (BuildContext context, index) {
                       return ItemeEventListWidget(
-                          evento:
-                              EventosUSerPreference().eventosC[index].evento,
-                          data: EventosUSerPreference().eventosC[index].data,
-                          valor: EventosUSerPreference().eventosC[index].valor);
+                          evento: eventoC[index].evento,
+                          data: eventoC[index].data,
+                          valor: eventoC[index].valor);
                     }),
               ),
             ],

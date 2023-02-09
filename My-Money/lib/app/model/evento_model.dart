@@ -46,7 +46,7 @@ class EventosUSerPreference {
     final SharedPreferences sharedPreferences =
         await SharedPreferences.getInstance();
 
-    contList = sharedPreferences.getInt('contList') ?? 0;
+    contList = sharedPreferences.getInt('conterList') ?? 0;
     int i = contList;
 
     saveItemList(item, i);

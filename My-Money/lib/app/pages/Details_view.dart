@@ -1,8 +1,10 @@
 import 'dart:developer';
+import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/app/model/editor_data.dart';
+import 'package:my_money/app/model/evento_model.dart';
 import 'package:my_money/app/model/metodos/filtro_list.dart';
 import 'package:my_money/app/model/metodos/somatoria_valores.dart';
 import '../valores/user_info.dart';
@@ -17,11 +19,16 @@ class DetalhesPage extends StatefulWidget {
 
 class _DetalhesPageState extends State<DetalhesPage> {
   int month = DateTime.now().month;
+  ScrollController _controller = ScrollController();
 
+  List<Evento> efiltro = [];
   @override
 
   //Atualiza a tela pasadno p´ra lista o valor do mes e mudando conforme o atual
   void initState() {
+    _controller.addListener(() async {
+      efiltro = await FiltroList().filtermes(month);
+    });
     super.initState();
   }
 
@@ -115,15 +122,13 @@ class _DetalhesPageState extends State<DetalhesPage> {
               ),
               Expanded(
                 child: ListView.builder(
-                    itemCount: FiltroList().filtermes(month).length,
+                    controller: _controller,
+                    itemCount: efiltro.length,
                     itemBuilder: (BuildContext context, index) {
                       return ItemeEventListWidget(
-                          evento: FiltroList().filtermes(month)[index].evento,
-                          data: FiltroList().filtermes(month)[index].data,
-                          valor: FiltroList()
-                              .filtermes(month)[index]
-                              .valor
-                              .toString());
+                          evento: efiltro[index].evento,
+                          data: efiltro[index].data,
+                          valor: efiltro[index].valor.toString());
                     }),
               ),
               SizedBox(
@@ -153,7 +158,7 @@ class _DetalhesPageState extends State<DetalhesPage> {
                               ))),
                           Text(
                               'R\$ '
-                              '${FiltroList().calcTotalFilter(FiltroList().filtermes(month))}',
+                              '${FiltroList().calcTotalFilter(efiltro)}',
                               style: GoogleFonts.fredoka(
                                   textStyle: const TextStyle(
                                 fontWeight: FontWeight.w600,

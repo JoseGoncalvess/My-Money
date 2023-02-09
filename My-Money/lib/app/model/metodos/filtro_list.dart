@@ -2,12 +2,12 @@ import 'dart:core';
 import 'package:my_money/app/model/evento_model.dart';
 
 class FiltroList {
-  List<Evento> filtermes(int mes) {
+  Future<List<Evento>> filtermes(int mes) async {
+    List<Evento> mylist = await EventosUSerPreference().loadList();
     List<Evento> filtrMonth = [];
-    for (int i = 0; i < EventosUSerPreference().eventosC.length; i++) {
-      if (int.parse(EventosUSerPreference().eventosC[i].data.split('/')[1]) ==
-          mes) {
-        filtrMonth.add(EventosUSerPreference().eventosC[i]);
+    for (int i = 0; i < mylist.length; i++) {
+      if (int.parse(mylist[i].data.split('/')[1]) == mes) {
+        filtrMonth.add(mylist[i]);
       }
     }
 
