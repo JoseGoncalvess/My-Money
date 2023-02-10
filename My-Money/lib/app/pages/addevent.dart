@@ -16,13 +16,14 @@ class AddEvent extends StatefulWidget {
 class _AddEventState extends State<AddEvent> {
   ///controladores de evento
   TextEditingController evetocontroller = TextEditingController();
-  TextEditingController datacontroller = TextEditingController();
+
   TextEditingController valorcontroller = TextEditingController();
 
   ///VAriaveis de controle de seleção
   int indexTag = 0;
   int indexPag = 0;
   int indexAlert = 0;
+  String dataController = '';
 
   @override
   Widget build(BuildContext context) {
@@ -136,49 +137,55 @@ class _AddEventState extends State<AddEvent> {
                                     ),
                                     SizedBox(
                                       width: 150,
-                                      height: 90,
+                                      height: 60,
                                       child: InkWell(
-                                        onTap: () {
-                                          showDatePicker(
-                                              context: context,
-                                              initialDate: DateTime.now(),
-                                              firstDate: DateTime(2000),
-                                              lastDate: DateTime(2035),
-                                              locale: const Locale('pt', 'BR'));
-                                        },
-                                        child: TextField(
-                                          enableInteractiveSelection: false,
-                                          enabled: false,
-                                          controller: datacontroller,
-                                          maxLength: 10,
-                                          keyboardType: TextInputType.datetime,
-                                          textAlign: TextAlign.center,
-                                          decoration: InputDecoration(
-                                              filled: true,
-                                              fillColor:
-                                                  const Color(0xFF8F8EBF),
-                                              border: OutlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(12),
-                                              ),
-                                              floatingLabelAlignment:
-                                                  FloatingLabelAlignment.center,
-                                              floatingLabelBehavior:
-                                                  FloatingLabelBehavior.never,
-                                              hintText: "DD/MM/AA",
-                                              hintStyle: const TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                              labelText: 'DD/MM/AA',
-                                              labelStyle: const TextStyle(
+                                          onTap: () {
+                                            //lembre que ele recebe o SDK também não so a depedence.
+                                            showDatePicker(
+                                                    context: context,
+                                                    initialDate: DateTime.now(),
+                                                    firstDate: DateTime(2000),
+                                                    lastDate: DateTime(2035),
+                                                    locale: const Locale(
+                                                        'pt', 'BR'))
+                                                .then((value) {
+                                              String informat = value
+                                                  .toString()
+                                                  .split(' ')[0];
+                                              String day =
+                                                  informat.split('-')[2];
+                                              String month =
+                                                  informat.split('-')[1];
+                                              String year =
+                                                  informat.split('-')[0];
+
+                                              String dataValue =
+                                                  '$day/$month/$year';
+
+                                              setState(() {
+                                                dataController = dataValue;
+                                              });
+                                              log(dataController);
+                                            });
+                                          },
+                                          child: Container(
+                                            alignment: Alignment.center,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(12),
+                                              color: const Color(0xFF8F8EBF),
+                                            ),
+                                            child: Text('DD/MM/YY',
+                                                style: GoogleFonts.fredoka(
+                                                    textStyle: const TextStyle(
                                                   color: Colors.white,
                                                   fontSize: 10,
-                                                  fontWeight: FontWeight.bold),
-                                              disabledBorder: InputBorder.none),
-                                        ),
-                                      ),
+                                                  fontWeight: FontWeight.bold,
+                                                ))),
+                                          )),
+                                    ),
+                                    const SizedBox(
+                                      height: 30,
                                     )
                                   ],
                                 ),
@@ -650,7 +657,7 @@ class _AddEventState extends State<AddEvent> {
                                     EventosUSerPreference()
                                         .saveEvento(
                                             alert: indexAlert.toString(),
-                                            data: datacontroller.text,
+                                            data: dataController,
                                             evento: evetocontroller.text,
                                             pag: indexPag.toString(),
                                             tag: indexTag.toString(),
