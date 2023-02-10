@@ -1,9 +1,7 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/app/model/evento_model.dart';
-
 import 'mypage.dart';
 
 final parcelController = TextEditingController();
@@ -92,7 +90,7 @@ class _AddEventState extends State<AddEvent> {
                                   fontWeight: FontWeight.bold,
                                 ))),
                             SizedBox(
-                              width: 360,
+                              width: MediaQuery.of(context).size.width * .95,
                               height: 90,
                               child: TextField(
                                   controller: evetocontroller,
@@ -126,17 +124,31 @@ class _AddEventState extends State<AddEvent> {
                               children: [
                                 Column(
                                   children: [
-                                    Text("Data:",
-                                        style: GoogleFonts.fredoka(
-                                            textStyle: const TextStyle(
+                                    Text(
+                                      "Data:",
+                                      style: GoogleFonts.fredoka(
+                                        textStyle: const TextStyle(
                                           fontSize: 20,
                                           color: Color(0xFF2E4159),
                                           fontWeight: FontWeight.bold,
-                                        ))),
+                                        ),
+                                      ),
+                                    ),
                                     SizedBox(
                                       width: 150,
                                       height: 90,
-                                      child: TextField(
+                                      child: InkWell(
+                                        onTap: () {
+                                          showDatePicker(
+                                              context: context,
+                                              initialDate: DateTime.now(),
+                                              firstDate: DateTime(2000),
+                                              lastDate: DateTime(2035),
+                                              locale: const Locale('pt', 'BR'));
+                                        },
+                                        child: TextField(
+                                          enableInteractiveSelection: false,
+                                          enabled: false,
                                           controller: datacontroller,
                                           maxLength: 10,
                                           keyboardType: TextInputType.datetime,
@@ -164,8 +176,9 @@ class _AddEventState extends State<AddEvent> {
                                                   color: Colors.white,
                                                   fontSize: 10,
                                                   fontWeight: FontWeight.bold),
-                                              disabledBorder:
-                                                  InputBorder.none)),
+                                              disabledBorder: InputBorder.none),
+                                        ),
+                                      ),
                                     )
                                   ],
                                 ),
@@ -216,230 +229,234 @@ class _AddEventState extends State<AddEvent> {
                               ],
                             ),
 
-                            Text("Tag",
-                                style: GoogleFonts.fredoka(
-                                    textStyle: const TextStyle(
+                            Text(
+                              "Tag",
+                              style: GoogleFonts.fredoka(
+                                textStyle: const TextStyle(
                                   fontSize: 30,
                                   color: Color(0xFF2E4159),
                                   fontWeight: FontWeight.bold,
-                                ))),
+                                ),
+                              ),
+                            ),
 
                             ///Categorias da dispesa
                             SingleChildScrollView(
-                                scrollDirection: Axis.horizontal,
-                                child: Row(
-                                  children: [
-                                    const SizedBox(
-                                      width: 10,
-                                    ),
-                                    Column(
-                                      children: [
-                                        Container(
-                                            height: 80,
-                                            width: 80,
-                                            decoration: BoxDecoration(
-                                                color: indexTag == 1
-                                                    ? const Color(0xFF2E4159)
-                                                    : const Color(0xFF5F5DA6),
-                                                borderRadius:
-                                                    BorderRadius.circular(50)),
-                                            child: IconButton(
-                                              onPressed: () {
-                                                setState(() {
-                                                  indexTag = 1;
-                                                });
-                                              },
-                                              icon: const Icon(
-                                                Icons.medical_services_rounded,
-                                                size: 40,
-                                              ),
-                                            )),
-                                        Text("saúde",
-                                            style: GoogleFonts.fredoka(
-                                                textStyle: const TextStyle(
-                                              fontSize: 20,
-                                              color: Color(0xFF2E4159),
-                                              fontWeight: FontWeight.bold,
-                                            ))),
-                                      ],
-                                    ),
-                                    const SizedBox(
-                                      width: 10,
-                                    ),
-                                    SizedBox(
-                                        child: Column(
-                                      children: [
-                                        Container(
-                                            height: 80,
-                                            width: 80,
-                                            decoration: BoxDecoration(
-                                                color: indexTag == 2
-                                                    ? const Color(0xFF2E4159)
-                                                    : const Color(0xFF5F5DA6),
-                                                borderRadius:
-                                                    BorderRadius.circular(50)),
-                                            child: IconButton(
-                                              onPressed: () {
-                                                setState(() {
-                                                  indexTag = 2;
-                                                });
-                                              },
-                                              icon: const Icon(
-                                                Icons.restaurant_rounded,
-                                                size: 40,
-                                              ),
-                                            )),
-                                        Text("Alimentação",
-                                            style: GoogleFonts.fredoka(
-                                                textStyle: const TextStyle(
-                                              fontSize: 20,
-                                              color: Color(0xFF2E4159),
-                                              fontWeight: FontWeight.bold,
-                                            ))),
-                                      ],
-                                    )),
-                                    const SizedBox(
-                                      width: 10,
-                                    ),
-                                    SizedBox(
-                                        child: Column(
-                                      children: [
-                                        Container(
-                                            height: 80,
-                                            width: 80,
-                                            decoration: BoxDecoration(
-                                                color: indexTag == 3
-                                                    ? const Color(0xFF2E4159)
-                                                    : const Color(0xFF5F5DA6),
-                                                borderRadius:
-                                                    BorderRadius.circular(50)),
-                                            child: IconButton(
-                                              onPressed: () {
-                                                setState(() {
-                                                  indexTag = 3;
-                                                });
-                                              },
-                                              icon: const Icon(
-                                                Icons.park_rounded,
-                                                size: 40,
-                                              ),
-                                            )),
-                                        Text("Lazer",
-                                            style: GoogleFonts.fredoka(
-                                                textStyle: const TextStyle(
-                                              fontSize: 20,
-                                              color: Color(0xFF2E4159),
-                                              fontWeight: FontWeight.bold,
-                                            ))),
-                                      ],
-                                    )),
-                                    const SizedBox(
-                                      width: 10,
-                                    ),
-                                    SizedBox(
-                                        child: Column(
-                                      children: [
-                                        Container(
-                                            height: 80,
-                                            width: 80,
-                                            decoration: BoxDecoration(
-                                                color: indexTag == 4
-                                                    ? const Color(0xFF2E4159)
-                                                    : const Color(0xFF5F5DA6),
-                                                borderRadius:
-                                                    BorderRadius.circular(50)),
-                                            child: IconButton(
-                                              onPressed: () {
-                                                setState(() {
-                                                  indexTag = 4;
-                                                });
-                                              },
-                                              icon: const Icon(
-                                                Icons.work,
-                                                size: 40,
-                                              ),
-                                            )),
-                                        Text("Trabalho",
-                                            style: GoogleFonts.fredoka(
-                                                textStyle: const TextStyle(
-                                              fontSize: 20,
-                                              color: Color(0xFF2E4159),
-                                              fontWeight: FontWeight.bold,
-                                            ))),
-                                      ],
-                                    )),
-                                    const SizedBox(
-                                      width: 10,
-                                    ),
-                                    SizedBox(
-                                        child: Column(
-                                      children: [
-                                        Container(
-                                            height: 80,
-                                            width: 80,
-                                            decoration: BoxDecoration(
-                                                color: indexTag == 5
-                                                    ? const Color(0xFF2E4159)
-                                                    : const Color(0xFF5F5DA6),
-                                                borderRadius:
-                                                    BorderRadius.circular(50)),
-                                            child: IconButton(
-                                              onPressed: () {
-                                                setState(() {
-                                                  indexTag = 5;
-                                                });
-                                              },
-                                              icon: const Icon(
-                                                Icons.luggage_rounded,
-                                                size: 40,
-                                              ),
-                                            )),
-                                        Text("Ferias",
-                                            style: GoogleFonts.fredoka(
-                                                textStyle: const TextStyle(
-                                              fontSize: 20,
-                                              color: Color(0xFF2E4159),
-                                              fontWeight: FontWeight.bold,
-                                            ))),
-                                      ],
-                                    )),
-                                    const SizedBox(
-                                      width: 10,
-                                    ),
-                                    SizedBox(
-                                        child: Column(
-                                      children: [
-                                        Container(
-                                            height: 80,
-                                            width: 80,
-                                            decoration: BoxDecoration(
-                                                color: indexTag == 6
-                                                    ? const Color(0xFF2E4159)
-                                                    : const Color(0xFF5F5DA6),
-                                                borderRadius:
-                                                    BorderRadius.circular(50)),
-                                            child: IconButton(
-                                              onPressed: () {
-                                                setState(() {
-                                                  indexTag = 6;
-                                                });
-                                              },
-                                              icon: const Icon(
-                                                Icons.flight_rounded,
-                                                size: 40,
-                                              ),
-                                            )),
-                                        Text("Viagem",
-                                            style: GoogleFonts.fredoka(
-                                                textStyle: const TextStyle(
-                                              fontSize: 15,
-                                              color: Color(0xFF2E4159),
-                                              fontWeight: FontWeight.bold,
-                                            ))),
-                                      ],
-                                    ))
-                                  ],
-                                )),
+                              scrollDirection: Axis.horizontal,
+                              child: Row(
+                                children: [
+                                  const SizedBox(
+                                    width: 10,
+                                  ),
+                                  Column(
+                                    children: [
+                                      Container(
+                                          height: 80,
+                                          width: 80,
+                                          decoration: BoxDecoration(
+                                              color: indexTag == 1
+                                                  ? const Color(0xFF2E4159)
+                                                  : const Color(0xFF5F5DA6),
+                                              borderRadius:
+                                                  BorderRadius.circular(50)),
+                                          child: IconButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                indexTag = 1;
+                                              });
+                                            },
+                                            icon: const Icon(
+                                              Icons.medical_services_rounded,
+                                              size: 40,
+                                            ),
+                                          )),
+                                      Text("saúde",
+                                          style: GoogleFonts.fredoka(
+                                              textStyle: const TextStyle(
+                                            fontSize: 20,
+                                            color: Color(0xFF2E4159),
+                                            fontWeight: FontWeight.bold,
+                                          ))),
+                                    ],
+                                  ),
+                                  const SizedBox(
+                                    width: 10,
+                                  ),
+                                  SizedBox(
+                                      child: Column(
+                                    children: [
+                                      Container(
+                                          height: 80,
+                                          width: 80,
+                                          decoration: BoxDecoration(
+                                              color: indexTag == 2
+                                                  ? const Color(0xFF2E4159)
+                                                  : const Color(0xFF5F5DA6),
+                                              borderRadius:
+                                                  BorderRadius.circular(50)),
+                                          child: IconButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                indexTag = 2;
+                                              });
+                                            },
+                                            icon: const Icon(
+                                              Icons.restaurant_rounded,
+                                              size: 40,
+                                            ),
+                                          )),
+                                      Text("Alimentação",
+                                          style: GoogleFonts.fredoka(
+                                              textStyle: const TextStyle(
+                                            fontSize: 20,
+                                            color: Color(0xFF2E4159),
+                                            fontWeight: FontWeight.bold,
+                                          ))),
+                                    ],
+                                  )),
+                                  const SizedBox(
+                                    width: 10,
+                                  ),
+                                  SizedBox(
+                                      child: Column(
+                                    children: [
+                                      Container(
+                                          height: 80,
+                                          width: 80,
+                                          decoration: BoxDecoration(
+                                              color: indexTag == 3
+                                                  ? const Color(0xFF2E4159)
+                                                  : const Color(0xFF5F5DA6),
+                                              borderRadius:
+                                                  BorderRadius.circular(50)),
+                                          child: IconButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                indexTag = 3;
+                                              });
+                                            },
+                                            icon: const Icon(
+                                              Icons.park_rounded,
+                                              size: 40,
+                                            ),
+                                          )),
+                                      Text("Lazer",
+                                          style: GoogleFonts.fredoka(
+                                              textStyle: const TextStyle(
+                                            fontSize: 20,
+                                            color: Color(0xFF2E4159),
+                                            fontWeight: FontWeight.bold,
+                                          ))),
+                                    ],
+                                  )),
+                                  const SizedBox(
+                                    width: 10,
+                                  ),
+                                  SizedBox(
+                                      child: Column(
+                                    children: [
+                                      Container(
+                                          height: 80,
+                                          width: 80,
+                                          decoration: BoxDecoration(
+                                              color: indexTag == 4
+                                                  ? const Color(0xFF2E4159)
+                                                  : const Color(0xFF5F5DA6),
+                                              borderRadius:
+                                                  BorderRadius.circular(50)),
+                                          child: IconButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                indexTag = 4;
+                                              });
+                                            },
+                                            icon: const Icon(
+                                              Icons.work,
+                                              size: 40,
+                                            ),
+                                          )),
+                                      Text("Trabalho",
+                                          style: GoogleFonts.fredoka(
+                                              textStyle: const TextStyle(
+                                            fontSize: 20,
+                                            color: Color(0xFF2E4159),
+                                            fontWeight: FontWeight.bold,
+                                          ))),
+                                    ],
+                                  )),
+                                  const SizedBox(
+                                    width: 10,
+                                  ),
+                                  SizedBox(
+                                      child: Column(
+                                    children: [
+                                      Container(
+                                          height: 80,
+                                          width: 80,
+                                          decoration: BoxDecoration(
+                                              color: indexTag == 5
+                                                  ? const Color(0xFF2E4159)
+                                                  : const Color(0xFF5F5DA6),
+                                              borderRadius:
+                                                  BorderRadius.circular(50)),
+                                          child: IconButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                indexTag = 5;
+                                              });
+                                            },
+                                            icon: const Icon(
+                                              Icons.luggage_rounded,
+                                              size: 40,
+                                            ),
+                                          )),
+                                      Text("Ferias",
+                                          style: GoogleFonts.fredoka(
+                                              textStyle: const TextStyle(
+                                            fontSize: 20,
+                                            color: Color(0xFF2E4159),
+                                            fontWeight: FontWeight.bold,
+                                          ))),
+                                    ],
+                                  )),
+                                  const SizedBox(
+                                    width: 10,
+                                  ),
+                                  SizedBox(
+                                      child: Column(
+                                    children: [
+                                      Container(
+                                          height: 80,
+                                          width: 80,
+                                          decoration: BoxDecoration(
+                                              color: indexTag == 6
+                                                  ? const Color(0xFF2E4159)
+                                                  : const Color(0xFF5F5DA6),
+                                              borderRadius:
+                                                  BorderRadius.circular(50)),
+                                          child: IconButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                indexTag = 6;
+                                              });
+                                            },
+                                            icon: const Icon(
+                                              Icons.flight_rounded,
+                                              size: 40,
+                                            ),
+                                          )),
+                                      Text("Viagem",
+                                          style: GoogleFonts.fredoka(
+                                              textStyle: const TextStyle(
+                                            fontSize: 15,
+                                            color: Color(0xFF2E4159),
+                                            fontWeight: FontWeight.bold,
+                                          ))),
+                                    ],
+                                  ))
+                                ],
+                              ),
+                            ),
                             const SizedBox(
                               height: 20,
                             ),
