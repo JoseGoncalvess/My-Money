@@ -20,6 +20,7 @@ class _DetalhesPageState extends State<DetalhesPage> {
   final ScrollController _controller = ScrollController();
 
   List<Evento> efiltro = [];
+  double slivre = 0;
   @override
 
   //Atualiza a tela pasadno p´ra lista o valor do mes e mudando conforme o atual
@@ -28,6 +29,8 @@ class _DetalhesPageState extends State<DetalhesPage> {
       log('qualquer merda');
     });
     super.initState();
+
+    getvalor();
     FiltroList().filtermes(month).then((value) {
       setState(() {
         efiltro = value;
@@ -35,6 +38,11 @@ class _DetalhesPageState extends State<DetalhesPage> {
     });
 
     log(efiltro.toString());
+  }
+
+  Future getvalor() async {
+    slivre = int.parse(DataUser.userData.patrimonio) -
+        await SomatoriaValores().getValor();
   }
 
   @override
@@ -193,7 +201,7 @@ class _DetalhesPageState extends State<DetalhesPage> {
                               ))),
                           Text(
                               "R\$ "
-                              "${int.parse(DataUser.userData.patrimonio) - SomatoriaValores().getValor()}",
+                              "$slivre",
                               style: GoogleFonts.fredoka(
                                   textStyle: const TextStyle(
                                 fontWeight: FontWeight.w600,

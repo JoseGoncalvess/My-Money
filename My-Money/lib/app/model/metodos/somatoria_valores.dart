@@ -7,14 +7,18 @@ import '../evento_model.dart';
 
 /// CAUCULANDO OS VALORES DE TODOS OS ITENS DA LISTA
 class SomatoriaValores {
-  double getValor() {
+  Future<double> getValor() async {
     double result = 0;
-    for (int i = 0; i < EventosUSerPreference().eventosC.length; i++) {
-      result = result +
-          double.parse(
-              EventosUSerPreference().eventosC[i].valor.replaceAll(',', '.'));
-    }
+    await EventosUSerPreference().loadList().then((value) {
+      for (int i = 0; i < EventosUSerPreference().eventosC.length; i++) {
+        result = result +
+            double.parse(
+                EventosUSerPreference().eventosC[i].valor.replaceAll(',', '.'));
+      }
 
+      print(EventosUSerPreference().eventosC.length);
+      print(result);
+    });
     return result;
   }
 
@@ -108,11 +112,11 @@ class SomatoriaValores {
 
   ///percentual do patrimonio
 
-  double getperc() {
+  Future<double> getperc() async {
     double valor = double.parse(DataUser.userData.patrimonio);
 
     double patrimonio = valor;
-    var fatura = SomatoriaValores().getValor();
+    var fatura = await SomatoriaValores().getValor();
 
     double porcent = ((fatura * 100) / patrimonio) / 100;
 
