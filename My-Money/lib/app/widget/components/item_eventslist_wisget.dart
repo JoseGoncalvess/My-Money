@@ -1,6 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/app/model/editor_data.dart';
+import 'package:my_money/app/model/metodos/showDialoganimated.dart';
 
 class ItemeEventListWidget extends StatefulWidget {
   const ItemeEventListWidget(
@@ -17,13 +21,31 @@ class ItemeEventListWidget extends StatefulWidget {
 }
 
 class _ItemeEventListWidgetState extends State<ItemeEventListWidget> {
+  bool animation = true;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(5),
-      child: GestureDetector(
+      child: InkWell(
         onTap: () {
-          print('CLICOU PORRA, AGORA COMO EXCLUIR ?');
+          log('CLICOU PORRA, AGORA COMO EXCLUIR ?');
+        },
+        onLongPress: () {
+          log('CLIQEI KRAIII');
+          showAnimatedDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  backgroundColor: Colors.red,
+                  title: const Text('sla'),
+                  content: const Text('textando uams aprada aqui'),
+                  actions: [
+                    ElevatedButton(
+                        onPressed: () {}, child: const Text('vlica ai'))
+                  ],
+                );
+              });
         },
         child: Container(
           height: 70,

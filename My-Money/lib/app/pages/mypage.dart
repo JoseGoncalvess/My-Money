@@ -23,8 +23,18 @@ class MyPage extends StatefulWidget {
 }
 
 class _MyPageState extends State<MyPage> {
+  double slivre = 0.0;
+
   //valor fat total
-  String valorFat = SomatoriaValores().getValor().toString();
+  String valorFat = '';
+  getvaluefat() async {
+    SomatoriaValores().getValor().then((value) {
+      setState(() {
+        valorFat = value.toString();
+      });
+    });
+  }
+
   //valor fat mês
   String fatMP = SomatoriaValores().getvalorMesP().toString();
   //VALOR DAS PROXIMAS FATURAS
@@ -39,6 +49,14 @@ class _MyPageState extends State<MyPage> {
   List<Evento> eventoC = [];
   @override
   void initState() {
+    setState(() {
+      getvaluefat();
+    });
+
+    setState(() {
+      getvalue();
+    });
+
     super.initState();
     EventosUSerPreference().loadList();
     DataUser().loadUserData().then((value) => {
@@ -67,6 +85,14 @@ class _MyPageState extends State<MyPage> {
           '${value[0].evento} ',
         );
         log(contlist.toString());
+      });
+    });
+  }
+
+  getvalue() async {
+    await SomatoriaValores().getperc().then((value) {
+      setState(() {
+        slivre = value;
       });
     });
   }
@@ -229,9 +255,8 @@ class _MyPageState extends State<MyPage> {
                           radius: 95.0,
                           lineWidth: 38.0,
                           animation: true,
-                          percent: DataUser.userData.patrimonio == ''
-                              ? 0.0
-                              : SomatoriaValores().getperc(),
+                          percent:
+                              DataUser.userData.patrimonio == '' ? 0.0 : slivre,
                           center: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,

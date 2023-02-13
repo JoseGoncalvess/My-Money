@@ -10,14 +10,9 @@ class SomatoriaValores {
   Future<double> getValor() async {
     double result = 0;
     await EventosUSerPreference().loadList().then((value) {
-      for (int i = 0; i < EventosUSerPreference().eventosC.length; i++) {
-        result = result +
-            double.parse(
-                EventosUSerPreference().eventosC[i].valor.replaceAll(',', '.'));
+      for (int i = 0; i < value.length; i++) {
+        result = result + double.parse(value[i].valor.replaceAll(',', '.'));
       }
-
-      print(EventosUSerPreference().eventosC.length);
-      print(result);
     });
     return result;
   }
@@ -113,9 +108,7 @@ class SomatoriaValores {
   ///percentual do patrimonio
 
   Future<double> getperc() async {
-    double valor = double.parse(DataUser.userData.patrimonio);
-
-    double patrimonio = valor;
+    double patrimonio = double.parse(DataUser.userData.patrimonio);
     var fatura = await SomatoriaValores().getValor();
 
     double porcent = ((fatura * 100) / patrimonio) / 100;
