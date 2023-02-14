@@ -9,10 +9,12 @@ class ItemeEventListWidget extends StatefulWidget {
       {super.key,
       required this.evento,
       required this.data,
-      required this.valor});
+      required this.valor,
+      required this.onPressed});
   final String evento;
   final String data;
   final String valor;
+  final Function() onPressed;
 
   @override
   State<ItemeEventListWidget> createState() => _ItemeEventListWidgetState();
@@ -64,9 +66,7 @@ class _ItemeEventListWidgetState extends State<ItemeEventListWidget> {
                       children: [
                         Center(
                           child: ElevatedButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
+                            onPressed: widget.onPressed,
                             child: const Text('Sim'),
                           ),
                         ),

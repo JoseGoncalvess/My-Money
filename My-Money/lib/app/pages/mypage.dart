@@ -81,9 +81,6 @@ class _MyPageState extends State<MyPage> {
       setState(() {
         eventoC = value;
 
-        log(
-          '${value[0].evento} ',
-        );
         log(contlist.toString());
       });
     });
@@ -376,6 +373,14 @@ class _MyPageState extends State<MyPage> {
                     itemCount: eventoC.length,
                     itemBuilder: (BuildContext context, index) {
                       return ItemeEventListWidget(
+                          onPressed: () {
+                            setState(() {
+                              eventoC.remove(eventoC[index]);
+                            });
+                            EventosUSerPreference().deletItemList(index);
+
+                            Navigator.of(context).pop();
+                          },
                           evento: eventoC[index].evento,
                           data: eventoC[index].data,
                           valor: eventoC[index].valor);

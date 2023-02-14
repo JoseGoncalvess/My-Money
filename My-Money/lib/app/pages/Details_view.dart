@@ -139,6 +139,7 @@ class _DetalhesPageState extends State<DetalhesPage> {
                     itemCount: efiltro.length,
                     itemBuilder: (BuildContext context, index) {
                       return ItemeEventListWidget(
+                          onPressed: () {},
                           evento: efiltro[index].evento,
                           data: efiltro[index].data,
                           valor: efiltro[index].valor.toString());

@@ -165,7 +165,6 @@ class _AddEventState extends State<AddEvent> {
                                               setState(() {
                                                 dataController = dataValue;
                                               });
-                                              log(dataController);
                                             });
                                           },
                                           child: Container(
@@ -175,7 +174,7 @@ class _AddEventState extends State<AddEvent> {
                                                   BorderRadius.circular(12),
                                               color: const Color(0xFF8F8EBF),
                                             ),
-                                            child: Text('DD/MM/YY',
+                                            child: Text(dataController,
                                                 style: GoogleFonts.fredoka(
                                                     textStyle: const TextStyle(
                                                   color: Colors.white,
@@ -191,13 +190,16 @@ class _AddEventState extends State<AddEvent> {
                                 ),
                                 Column(
                                   children: [
-                                    Text("Gastou:",
-                                        style: GoogleFonts.fredoka(
-                                            textStyle: const TextStyle(
+                                    Text(
+                                      "Gastou:",
+                                      style: GoogleFonts.fredoka(
+                                        textStyle: const TextStyle(
                                           fontSize: 20,
                                           color: Color(0xFF2E4159),
                                           fontWeight: FontWeight.bold,
-                                        ))),
+                                        ),
+                                      ),
+                                    ),
                                     SizedBox(
                                       width: 150,
                                       height: 90,

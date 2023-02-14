@@ -100,4 +100,22 @@ class EventosUSerPreference {
     }
     return getList;
   }
+
+//deletando o item atraves do index
+  Future deletItemList(int index) async {
+    final SharedPreferences sharedPreferences =
+        await SharedPreferences.getInstance();
+
+    contList--;
+
+    //salavdno os caracteres do evento
+    sharedPreferences.remove('item_evento_name_$index');
+    sharedPreferences.remove('item_evento_data_$index');
+    sharedPreferences.remove('item_evento_valor_$index');
+    sharedPreferences.remove('item_evento_pag_$index');
+    sharedPreferences.remove('item_evento_tag_$index');
+    sharedPreferences.remove('item_evento_alert_$index');
+//salvadmp o conter da lista
+    sharedPreferences.setInt('conterList', contList);
+  }
 }
