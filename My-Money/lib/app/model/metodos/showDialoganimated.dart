@@ -1,11 +1,9 @@
-import 'package:flutter/animation.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:cupertino_icons/cupertino_icons.dart';
 
 alertAnimated(BuildContext context) {
+  //AQUI ESTA SENDO CHAMDNO COMO METODO
   showAnimatedDialog(
     barrierColor: const Color.fromARGB(164, 95, 93, 166),
     context: context,

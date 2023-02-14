@@ -278,7 +278,7 @@ class _MyPageState extends State<MyPage> {
                                                   fontWeight: FontWeight.w600,
                                                   fontSize: 18,
                                                   color: Colors.white))),
-                                      Text('R\$' ' ${valorFat}',
+                                      Text('R\$' ' $valorFat',
                                           style: GoogleFonts.fredoka(
                                               textStyle: const TextStyle(
                                                   fontWeight: FontWeight.w600,
@@ -392,7 +392,7 @@ class _MyPageState extends State<MyPage> {
           Navigator.push(context,
               MaterialPageRoute(builder: ((context) => const AddEvent())));
         }),
-        child: Icon(
+        child: const Icon(
           Icons.add,
           size: 20,
           color: Colors.white,

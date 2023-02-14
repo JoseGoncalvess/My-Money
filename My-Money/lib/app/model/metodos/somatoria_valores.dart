@@ -1,8 +1,4 @@
-import 'dart:developer';
-
-import 'package:flutter/cupertino.dart';
 import 'package:my_money/app/valores/user_info.dart';
-
 import '../evento_model.dart';
 
 /// CAUCULANDO OS VALORES DE TODOS OS ITENS DA LISTA

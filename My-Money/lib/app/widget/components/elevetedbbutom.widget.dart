@@ -2,19 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ElevetedbbutomWidget extends StatefulWidget {
-  const ElevetedbbutomWidget(
-      {super.key,
-      required this.largura,
-      required this.altura,
-      required this.fonte,
-      required this.texto,
-      this.funcao});
+  const ElevetedbbutomWidget({
+    super.key,
+    required this.largura,
+    required this.altura,
+    required this.texto,
+  });
   final double largura;
   final double altura;
-  final double? fonte;
+
   final String texto;
   final primerycolor = const Color(0xFF2E4159);
-  final funcao;
 
   @override
   State<ElevetedbbutomWidget> createState() => _ElevetedbbutomWidgetState();
@@ -34,7 +32,7 @@ class _ElevetedbbutomWidgetState extends State<ElevetedbbutomWidget> {
         widget.texto,
         style: GoogleFonts.fredoka(
           textStyle: TextStyle(
-            fontSize: widget.fonte,
+            fontSize: 12,
             color: Colors.white,
             fontWeight: FontWeight.bold,
           ),

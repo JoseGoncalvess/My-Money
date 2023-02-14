@@ -1,10 +1,8 @@
 import 'dart:developer';
-
+import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/app/model/editor_data.dart';
-import 'package:my_money/app/model/metodos/showDialoganimated.dart';
 
 class ItemeEventListWidget extends StatefulWidget {
   const ItemeEventListWidget(
@@ -34,15 +32,53 @@ class _ItemeEventListWidgetState extends State<ItemeEventListWidget> {
         onLongPress: () {
           log('CLIQEI KRAIII');
           showAnimatedDialog(
+              animationType: DialogTransitionType.fade,
+              curve: Curves.bounceInOut,
+              duration: const Duration(milliseconds: 200),
               context: context,
               builder: (BuildContext context) {
                 return AlertDialog(
-                  backgroundColor: Colors.red,
-                  title: const Text('sla'),
-                  content: const Text('textando uams aprada aqui'),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(22)),
+                  backgroundColor: const Color(0xFF494F56),
+                  icon: const Icon(
+                    Icons.delete_rounded,
+                    size: 30,
+                    color: const Color(0xFF5F5DA6),
+                  ),
+                  title: Text(
+                    'Atenção',
+                    style: GoogleFonts.fredoka(
+                        fontSize: 16, fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center,
+                  ),
+                  content: Text(
+                    'Deseja excluir este evento?',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.fredoka(
+                        fontSize: 16, fontWeight: FontWeight.normal),
+                  ),
                   actions: [
-                    ElevatedButton(
-                        onPressed: () {}, child: const Text('vlica ai'))
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Center(
+                          child: ElevatedButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Text('Sim'),
+                          ),
+                        ),
+                        Center(
+                          child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: const Text('Não')),
+                        )
+                      ],
+                    )
                   ],
                 );
               });

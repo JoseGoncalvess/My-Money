@@ -36,7 +36,6 @@ class _SelectedAvatrState extends State<SelectedAvatr> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     Future.delayed(const Duration(milliseconds: 100)).then((value) {
