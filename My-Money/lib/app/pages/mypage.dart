@@ -58,7 +58,8 @@ class _MyPageState extends State<MyPage> {
     });
 
     super.initState();
-    EventosUSerPreference().loadList();
+    //
+
     DataUser().loadUserData().then((value) => {
           setState(() {
             DataUser.userData = value;
@@ -77,6 +78,7 @@ class _MyPageState extends State<MyPage> {
           await SharedPreferences.getInstance();
 
       int contlist = sharedPreferences.getInt('conterList') ?? 0;
+      log(' o numeor de coisas são exatamenre' + contlist.toString());
 
       setState(() {
         eventoC = value;

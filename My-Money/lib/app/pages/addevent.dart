@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_money/app/formartter/formartt_date.dart';
 import 'package:my_money/app/model/evento_model.dart';
 import 'mypage.dart';
 
@@ -18,12 +19,14 @@ class _AddEventState extends State<AddEvent> {
   TextEditingController evetocontroller = TextEditingController();
 
   TextEditingController valorcontroller = TextEditingController();
+  //================
 
   ///VAriaveis de controle de seleção
   int indexTag = 0;
   int indexPag = 0;
   int indexAlert = 0;
-  String dataController = '';
+  String dataController = FormartterDate().formartterdate(DateTime.now());
+  final _keyparcelas = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -165,6 +168,10 @@ class _AddEventState extends State<AddEvent> {
                                               setState(() {
                                                 dataController = dataValue;
                                               });
+                                            }).catchError((onError) {
+                                              dataController = FormartterDate()
+                                                  .formartterdate(
+                                                      DateTime.now());
                                             });
                                           },
                                           child: Container(
@@ -589,20 +596,74 @@ class _AddEventState extends State<AddEvent> {
                                                 color: const Color(0xFF2E4159),
                                                 borderRadius:
                                                     BorderRadius.circular(12)),
-                                            child: TextField(
-                                              onSubmitted: (value) {
-                                                validatePArcel();
-                                              },
-                                              textAlign: TextAlign.center,
-                                              decoration: const InputDecoration(
-                                                  counterText: '',
-                                                  border: InputBorder.none,
-                                                  focusedBorder:
-                                                      InputBorder.none),
-                                              controller: parcelController,
-                                              keyboardType:
-                                                  TextInputType.number,
-                                              maxLength: 2,
+                                            child: Form(
+                                              key: _keyparcelas,
+                                              child: TextFormField(
+                                                maxLines: 1,
+                                                onEditingComplete: () {
+                                                  if (!_keyparcelas
+                                                      .currentState!
+                                                      .validate()) {
+                                                    parcelController.text
+                                                        .trim();
+                                                    ScaffoldMessenger.of(
+                                                            context)
+                                                        .showSnackBar(SnackBar(
+                                                      backgroundColor:
+                                                          Colors.red,
+                                                      content: const Text(
+                                                        'Numero de Parcelas Incorreto, até 12x!',
+                                                        style: TextStyle(
+                                                            color:
+                                                                Colors.white),
+                                                      ),
+                                                      action: SnackBarAction(
+                                                          label: 'Ajustar',
+                                                          textColor:
+                                                              Colors.white,
+                                                          onPressed: () {}),
+                                                    ));
+                                                  }
+                                                },
+                                                validator: (value) {
+                                                  if (value!.length == 2) {
+                                                    int parcela =
+                                                        int.parse(value);
+                                                    if (parcela > 12) {
+                                                      return ' Numero de Parcelas Incorreto, até 12x!';
+                                                    }
+                                                  } else {
+                                                    return '';
+                                                  }
+                                                  return '';
+                                                },
+                                                onChanged: (value) {
+                                                  log(
+                                                    value.toString(),
+                                                  );
+                                                  if (value.length > 1) {
+                                                    int parcela =
+                                                        int.parse(value);
+                                                    if (parcela > 12) {
+                                                      setState(() {
+                                                        parcelController.text =
+                                                            '12';
+                                                      });
+                                                    }
+                                                  }
+                                                },
+                                                textAlign: TextAlign.center,
+                                                decoration:
+                                                    const InputDecoration(
+                                                        counterText: '',
+                                                        border:
+                                                            InputBorder.none,
+                                                        focusedBorder:
+                                                            InputBorder.none),
+                                                controller: parcelController,
+                                                keyboardType:
+                                                    TextInputType.number,
+                                              ),
                                             )),
                                         Row(
                                           children: [
@@ -678,10 +739,8 @@ class _AddEventState extends State<AddEvent> {
                                       log('Deu merda em salvar as paradas');
                                     });
                                     log(EventosUSerPreference()
-                                        .eventosC
-                                        .length
+                                        .contList
                                         .toString());
-                                    EventosUSerPreference().loadList();
                                   },
                                   style: ElevatedButton.styleFrom(
                                     fixedSize: const Size(255, 45),
@@ -736,15 +795,6 @@ class _AddEventState extends State<AddEvent> {
 
     if (indexPag == 1) {
       if (parcela < 1 || parcela > 12 || parcela == null) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          backgroundColor: Colors.red,
-          content: const Text(
-            'Numero de Parcelas Incorreto, até 12x!',
-            style: TextStyle(color: Colors.white),
-          ),
-          action: SnackBarAction(
-              label: 'Ajustar', textColor: Colors.white, onPressed: () {}),
-        ));
         parcelController.clear();
       } else {
         return parcela = 0;

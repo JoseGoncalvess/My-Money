@@ -105,6 +105,7 @@ class SomatoriaValores {
 
   Future<double> getperc() async {
     double patrimonio = double.parse(DataUser.userData.patrimonio);
+
     var fatura = await SomatoriaValores().getValor();
 
     double porcent = ((fatura * 100) / patrimonio) / 100;

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Evento {
@@ -62,6 +64,15 @@ class EventosUSerPreference {
 
     contList++;
 
+    log('item_evento_name_$index ${evento.evento}');
+    log('item_evento_data_$index ${evento.data}');
+    log('item_evento_valor_$index ${evento.valor}');
+    log('item_evento_pag_$index ${evento.pag}');
+    log('item_evento_tag_$index ${evento.tag}');
+    log('item_evento_alert_$index ${evento.alert}');
+//salvadmp o conter da lista
+    log('conterList $contList');
+
     //salavdno os caracteres do evento
     sharedPreferences.setString('item_evento_name_$index', evento.evento);
     sharedPreferences.setString('item_evento_data_$index', evento.data);
@@ -71,6 +82,7 @@ class EventosUSerPreference {
     sharedPreferences.setString('item_evento_alert_$index', evento.alert);
 //salvadmp o conter da lista
     sharedPreferences.setInt('conterList', contList);
+    log(contList.toString());
   }
 
   ///função qu carrega  aa lsita coms o eventos salvos anteriormente
@@ -105,8 +117,10 @@ class EventosUSerPreference {
   Future deletItemList(int index) async {
     final SharedPreferences sharedPreferences =
         await SharedPreferences.getInstance();
-
-    contList--;
+//essa peste tava apagando minhas coisa
+    if (contList >= 1) {
+      contList--;
+    } else {}
 
     //salavdno os caracteres do evento
     sharedPreferences.remove('item_evento_name_$index');
