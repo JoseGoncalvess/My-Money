@@ -27,6 +27,7 @@ class _MyPageState extends State<MyPage> {
 
   //valor fat total
   String valorFat = '';
+  //VALOR COMPLETO DA FATURA
   getvaluefat() async {
     SomatoriaValores().getValor().then((value) {
       setState(() {
@@ -35,10 +36,45 @@ class _MyPageState extends State<MyPage> {
     });
   }
 
-  //valor fat mês
-  String fatMP = SomatoriaValores().getvalorMesP().toString();
+//VALOR DA FATURA DO MÊS ATUAL
+  getFatMonth() async {
+    SomatoriaValores().getvalorMes().then((value) {
+      setState(() {
+        valorFat = value.toString();
+      });
+    });
+  }
+
+//VALOR DOS GATOS DO DIA ATUAL
+
+  getFatDay() async {
+    SomatoriaValores().getvalorday().then((value) {
+      setState(() {
+        valorFat = value.toString();
+      });
+    });
+  }
+
+  //FATURA DO MÊS PASSADO
+  String fatMP = '0.0';
+  Future getFatMp() async {
+    await SomatoriaValores().getvalorMesP().then((value) {
+      setState(() {
+        fatMP = value.toString();
+      });
+    });
+  }
+
   //VALOR DAS PROXIMAS FATURAS
-  String fatPM = SomatoriaValores().getvalorPmes().toString();
+  String fatPM = '0.0';
+  Future getFatPm() async {
+    await SomatoriaValores().getvalorPmes().then((value) {
+      setState(() {
+        fatPM = value.toString();
+      });
+      return value;
+    });
+  }
 
   ///CARREGANDO OS DADOS DE USER
   Future<String> loadPhoto() async {
@@ -49,12 +85,15 @@ class _MyPageState extends State<MyPage> {
   List<Evento> eventoC = [];
   @override
   void initState() {
+    getFatMp();
+    getFatPm();
+
     setState(() {
       getvaluefat();
     });
 
     setState(() {
-      getvalue();
+      Future.delayed(const Duration(seconds: 1)).then((value) => getvalue());
     });
 
     super.initState();
@@ -69,7 +108,6 @@ class _MyPageState extends State<MyPage> {
       // O VALUE É O RETORNO DA FUNÇÃO loadPhoto
       if (value.isNotEmpty) {
         AvatarInfo.retrato = value;
-        log('o retarato não esta vazio');
       }
     });
 
@@ -78,7 +116,7 @@ class _MyPageState extends State<MyPage> {
           await SharedPreferences.getInstance();
 
       int contlist = sharedPreferences.getInt('conterList') ?? 0;
-      log(' o numeor de coisas são exatamenre' + contlist.toString());
+      log(' o numeor de coisas são exatamenre ' + contlist.toString());
 
       setState(() {
         eventoC = value;
@@ -139,26 +177,34 @@ class _MyPageState extends State<MyPage> {
                         Column(
                           children: [
                             SizedBox(
-                              child: Text('Saldo em Conta',
-                                  style: GoogleFonts.fredoka(
-                                      textStyle: const TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 20,
-                                          color: Colors.white))),
+                              child: Text(
+                                'Saldo em Conta',
+                                style: GoogleFonts.fredoka(
+                                  textStyle: const TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 20,
+                                      color: Colors.white),
+                                ),
+                              ),
                             ),
                             Container(
                               alignment: Alignment.center,
                               width: 140,
                               height: 35,
                               decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(20)),
-                              child: Text('R\$ ${DataUser.userData.patrimonio}',
-                                  style: GoogleFonts.fredoka(
-                                      textStyle: const TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 20,
-                                          color: Color(0xFF5F5DA6)))),
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Text(
+                                'R\$ ${DataUser.userData.patrimonio}',
+                                style: GoogleFonts.fredoka(
+                                  textStyle: const TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 20,
+                                    color: Color(0xFF5F5DA6),
+                                  ),
+                                ),
+                              ),
                             )
                           ],
                         ),
@@ -215,32 +261,34 @@ class _MyPageState extends State<MyPage> {
                                   GestureDetector(
                                     onTap: (() {
                                       setState(() {
-                                        valorFat = SomatoriaValores()
-                                            .getvalorday()
-                                            .toString();
+                                        getFatDay();
                                       });
                                     }),
-                                    child: Text('Dia',
-                                        style: GoogleFonts.fredoka(
-                                            textStyle: const TextStyle(
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 15,
-                                                color: Colors.white))),
+                                    child: Text(
+                                      'Dia',
+                                      style: GoogleFonts.fredoka(
+                                        textStyle: const TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 15,
+                                            color: Colors.white),
+                                      ),
+                                    ),
                                   ),
                                   GestureDetector(
                                     onTap: (() {
                                       setState(() {
-                                        valorFat = SomatoriaValores()
-                                            .getvalorMes()
-                                            .toString();
+                                        getFatMonth();
                                       });
                                     }),
-                                    child: Text('Mês',
-                                        style: GoogleFonts.fredoka(
-                                            textStyle: const TextStyle(
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 15,
-                                                color: Colors.white))),
+                                    child: Text(
+                                      'Mês',
+                                      style: GoogleFonts.fredoka(
+                                        textStyle: const TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 15,
+                                            color: Colors.white),
+                                      ),
+                                    ),
                                   ),
                                 ],
                               ),
@@ -254,8 +302,7 @@ class _MyPageState extends State<MyPage> {
                           radius: 95.0,
                           lineWidth: 38.0,
                           animation: true,
-                          percent:
-                              DataUser.userData.patrimonio == '' ? 0.0 : slivre,
+                          percent: slivre == '' ? 0.0 : slivre,
                           center: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
@@ -263,26 +310,34 @@ class _MyPageState extends State<MyPage> {
                               GestureDetector(
                                 onTap: () {
                                   setState(() {
-                                    valorFat = SomatoriaValores()
-                                        .getValor()
-                                        .toString();
+                                    log('CLiquei no circulo e deu nisso!');
+                                    setState(() {
+                                      getvalue();
+                                      getvaluefat();
+                                    });
                                   });
                                 },
                                 child: SizedBox(
                                   child: Column(
                                     children: [
-                                      Text('Fatura atual',
-                                          style: GoogleFonts.fredoka(
-                                              textStyle: const TextStyle(
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 18,
-                                                  color: Colors.white))),
-                                      Text('R\$' ' $valorFat',
-                                          style: GoogleFonts.fredoka(
-                                              textStyle: const TextStyle(
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 22,
-                                                  color: Colors.white))),
+                                      Text(
+                                        'Fatura atual',
+                                        style: GoogleFonts.fredoka(
+                                          textStyle: const TextStyle(
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 18,
+                                              color: Colors.white),
+                                        ),
+                                      ),
+                                      Text(
+                                        'R\$' ' $valorFat',
+                                        style: GoogleFonts.fredoka(
+                                          textStyle: const TextStyle(
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 22,
+                                              color: Colors.white),
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -302,18 +357,21 @@ class _MyPageState extends State<MyPage> {
                               children: [
                                 IconButton(
                                     onPressed: () {
-                                      SomatoriaValores().getvalorMesP();
+                                      getFatMp();
                                     },
                                     icon: const Icon(
                                       Icons.wallet_rounded,
                                       size: 40,
                                     )),
-                                Text('Ultima Fatura',
-                                    style: GoogleFonts.fredoka(
-                                        textStyle: const TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 15,
-                                            color: Colors.white))),
+                                Text(
+                                  'Ultima Fatura',
+                                  style: GoogleFonts.fredoka(
+                                    textStyle: const TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 15,
+                                        color: Colors.white),
+                                  ),
+                                ),
                                 Container(
                                   alignment: Alignment.center,
                                   width: 80,
@@ -335,7 +393,7 @@ class _MyPageState extends State<MyPage> {
                               children: [
                                 IconButton(
                                     onPressed: () {
-                                      SomatoriaValores().getperc();
+                                      getFatPm();
                                     },
                                     icon: const Icon(
                                       Icons.wallet_rounded,
@@ -354,12 +412,16 @@ class _MyPageState extends State<MyPage> {
                                   decoration: BoxDecoration(
                                       color: Colors.white,
                                       borderRadius: BorderRadius.circular(20)),
-                                  child: Text('R\$ ' "$fatPM",
-                                      style: GoogleFonts.fredoka(
-                                          textStyle: const TextStyle(
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 15,
-                                              color: Color(0xFF5F5DA6)))),
+                                  child: Text(
+                                    'R\$ ' '$fatPM',
+                                    style: GoogleFonts.fredoka(
+                                      textStyle: const TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 15,
+                                        color: Color(0xFF5F5DA6),
+                                      ),
+                                    ),
+                                  ),
                                 )
                               ],
                             )
@@ -376,10 +438,17 @@ class _MyPageState extends State<MyPage> {
                     itemBuilder: (BuildContext context, index) {
                       return ItemeEventListWidget(
                           onPressed: () {
+                            log('CLIQUEI EM ALGUMA COISA');
                             setState(() {
                               eventoC.remove(eventoC[index]);
                             });
-                            EventosUSerPreference().deletItemList(index);
+                            EventosUSerPreference()
+                                .deletItemList(index)
+                                .then((value) {
+                              setState(() {
+                                getvalue();
+                              });
+                            });
 
                             Navigator.of(context).pop();
                           },

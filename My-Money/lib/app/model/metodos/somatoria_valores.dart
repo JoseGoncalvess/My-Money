@@ -13,34 +13,36 @@ class SomatoriaValores {
     return result;
   }
 
-  ///Soma valores do meu atual
-  double getvalorMes() {
+  ///CALCULA  A FATURA DO M~ES ATUAL
+  Future<double> getvalorMes() async {
     double resultMp = 0;
     var datetime = DateTime.now().month;
-
-    for (int i = 0; i < EventosUSerPreference().eventosC.length; i++) {
-      if (int.parse(EventosUSerPreference().eventosC[i].data.split('/')[1]) ==
-          datetime) {
-        resultMp =
-            resultMp + double.parse(EventosUSerPreference().eventosC[i].valor);
-      } else {}
-    }
+    await EventosUSerPreference().loadList().then((value) => {
+          for (int i = 0; i < value.length; i++)
+            {
+              if (int.parse(value[i].data.split('/')[1]) == datetime)
+                {resultMp = resultMp + double.parse(value[i].valor)}
+              else
+                {}
+            }
+        });
 
     return resultMp;
   }
 
-  ///soma valores gastos no dia
-  double getvalorday() {
+  ///CAUCULA OS GATOS DO DIA ATUAL
+  Future<double> getvalorday() async {
     double resultday = 0;
     var datetime = DateTime.now().day;
-
-    for (int i = 0; i < EventosUSerPreference().eventosC.length; i++) {
-      if (int.parse(EventosUSerPreference().eventosC[i].data.split('/')[0]) ==
-          datetime) {
-        resultday =
-            resultday + double.parse(EventosUSerPreference().eventosC[i].valor);
-      } else {}
-    }
+    await EventosUSerPreference().loadList().then((value) => {
+          for (int i = 0; i < value.length; i++)
+            {
+              if (int.parse(value[i].data.split('/')[0]) == datetime)
+                {resultday = resultday + double.parse(value[i].valor)}
+              else
+                {}
+            }
+        });
 
     return resultday;
   }
@@ -61,27 +63,30 @@ class SomatoriaValores {
     return resultday;
   }
 
-  double getvalorMesP() {
+//VALOR DA FATUR AD M~ES PASSADO
+  Future<double> getvalorMesP() async {
     double resultMp = 0;
-    var datetime = DateTime.now().month;
+    dynamic datetime = DateTime.now().month;
     if (datetime == 1) {
       datetime = 12;
     } else {
       datetime = datetime - 1;
     }
-
-    for (int i = 0; i < EventosUSerPreference().eventosC.length; i++) {
-      if (int.parse(EventosUSerPreference().eventosC[i].data.split('/')[1]) ==
-          datetime) {
-        resultMp =
-            resultMp + double.parse(EventosUSerPreference().eventosC[i].valor);
-      } else {}
-    }
+    await EventosUSerPreference().loadList().then((value) => {
+          for (int i = 0; i < value.length; i++)
+            {
+              if (int.parse(value[i].data.split('/')[1]) == datetime)
+                {resultMp = resultMp + double.parse(value[i].valor)}
+              else
+                {}
+            }
+        });
 
     return resultMp;
   }
 
-  double getvalorPmes() {
+// VALOD DA FATURA DO PROXIMO MÊS
+  Future<double> getvalorPmes() async {
     double resultPM = 0;
     var datetime = DateTime.now().month;
     if (datetime == 12) {
@@ -90,13 +95,15 @@ class SomatoriaValores {
       datetime = datetime + 1;
     }
 
-    for (int i = 0; i < EventosUSerPreference().eventosC.length; i++) {
-      if (int.parse(EventosUSerPreference().eventosC[i].data.split('/')[1]) ==
-          datetime) {
-        resultPM =
-            resultPM + double.parse(EventosUSerPreference().eventosC[i].valor);
-      } else {}
-    }
+    await EventosUSerPreference().loadList().then((value) => {
+          for (int i = 0; i < value.length; i++)
+            {
+              if (int.parse(value[i].data.split('/')[1]) == datetime)
+                {resultPM = resultPM + double.parse(value[i].valor)}
+              else
+                {}
+            }
+        });
 
     return resultPM;
   }
@@ -104,7 +111,9 @@ class SomatoriaValores {
   ///percentual do patrimonio
 
   Future<double> getperc() async {
-    double patrimonio = double.parse(DataUser.userData.patrimonio);
+    double patrimonio = double.parse(DataUser.userData.patrimonio.isEmpty
+        ? '0'
+        : DataUser.userData.patrimonio);
 
     var fatura = await SomatoriaValores().getValor();
 

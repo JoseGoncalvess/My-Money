@@ -21,6 +21,15 @@ class _DetalhesPageState extends State<DetalhesPage> {
 
   List<Evento> efiltro = [];
   double slivre = 0;
+
+  filtrolist() {
+    FiltroList().filtermes(month).then((value) {
+      setState(() {
+        efiltro = value;
+      });
+    });
+  }
+
   @override
 
   //Atualiza a tela pasadno p´ra lista o valor do mes e mudando conforme o atual
@@ -29,13 +38,8 @@ class _DetalhesPageState extends State<DetalhesPage> {
       log('qualquer merda');
     });
     super.initState();
-
+    filtrolist();
     getvalor();
-    FiltroList().filtermes(month).then((value) {
-      setState(() {
-        efiltro = value;
-      });
-    });
 
     log(efiltro.toString());
   }
@@ -99,8 +103,9 @@ class _DetalhesPageState extends State<DetalhesPage> {
                                         } else {
                                           month--;
                                         }
+                                        filtrolist();
                                       });
-                                      print(month);
+                                      log('OO MÊS AGORA É $month');
                                       log('ERA  PRA VOLTAR PARA O MÊS ANTERIO, FOI ?');
                                     },
                                     icon: const Icon(
@@ -119,8 +124,11 @@ class _DetalhesPageState extends State<DetalhesPage> {
                                         } else {
                                           month++;
                                         }
+
+                                        filtrolist();
                                       });
                                       log('ERA  PRA IR POR PROXIMO MÊS, FOI ?');
+                                      log('O MÊS AGORA É $month');
                                     },
                                     icon: const Icon(
                                         Icons.arrow_circle_right_rounded)),

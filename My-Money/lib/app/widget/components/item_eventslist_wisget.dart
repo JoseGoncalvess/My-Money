@@ -21,18 +21,16 @@ class ItemeEventListWidget extends StatefulWidget {
 }
 
 class _ItemeEventListWidgetState extends State<ItemeEventListWidget> {
-  bool animation = true;
-
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(5),
       child: InkWell(
         onTap: () {
-          log('CLICOU PORRA, AGORA COMO EXCLUIR ?');
+          log('CLICOU PORRA,ANIMOU ALGUMA COISA ?');
         },
         onLongPress: () {
-          log('CLIQEI KRAIII');
+          log('VAI EXCLUIR O ITEM VIUUU');
           showAnimatedDialog(
               animationType: DialogTransitionType.fade,
               curve: Curves.bounceInOut,
@@ -66,6 +64,7 @@ class _ItemeEventListWidgetState extends State<ItemeEventListWidget> {
                       children: [
                         Center(
                           child: ElevatedButton(
+                            //AQUI TOU PASSADO A FUNÇAÕA POR HERANÇA
                             onPressed: widget.onPressed,
                             child: const Text('Sim'),
                           ),

@@ -1,8 +1,3 @@
-import 'dart:ffi';
-
-import 'package:my_money/app/model/evento_model.dart';
-import 'package:my_money/app/model/metodos/Function_mother.dart';
-
 class EditorData {
   dateEvent(int data) {
     if (data == 1) {

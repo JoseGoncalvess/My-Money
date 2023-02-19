@@ -5,7 +5,7 @@ class UserDatePreference {
   String name = '';
   String patrimonio = '';
 
-  saveUserDate(name, patrimonio) async {
+  saveUserDate({required name, required patrimonio}) async {
     final prefs = await SharedPreferences.getInstance();
 
     prefs.setString('name', name);
