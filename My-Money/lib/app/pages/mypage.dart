@@ -232,7 +232,7 @@ class _MyPageState extends State<MyPage> {
                 ],
               ),
               Container(
-                height: MediaQuery.of(context).size.height * 0.50,
+                height: MediaQuery.of(context).size.height * 0.52,
                 width: MediaQuery.of(context).size.width,
                 decoration: const BoxDecoration(
                     color: Color(0xFF2E4159),
@@ -386,7 +386,7 @@ class _MyPageState extends State<MyPage> {
                                   decoration: BoxDecoration(
                                       color: Colors.white,
                                       borderRadius: BorderRadius.circular(22)),
-                                  child: Text('R\$' '$fatMP',
+                                  child: Text('R\$ ' '$fatMP',
                                       style: GoogleFonts.fredoka(
                                           textStyle: const TextStyle(
                                               fontWeight: FontWeight.w600,
@@ -441,10 +441,26 @@ class _MyPageState extends State<MyPage> {
               ),
               Expanded(
                 child: eventoC.isEmpty
-                    ? const Icon(
-                        Icons.note_add_rounded,
-                        size: 60,
-                        color: Color(0xFF5F5DA6),
+                    ? SizedBox(
+                        child: Column(
+                          children: [
+                            const Icon(
+                              Icons.note_add_rounded,
+                              size: 130,
+                              color: Color(0xFF2E4159),
+                            ),
+                            Text(
+                              'Adicione Novos  Eventos',
+                              style: GoogleFonts.fredoka(
+                                textStyle: const TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 20,
+                                  color: Color(0xFF2E4159),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
                       )
                     : ListView.builder(
                         itemCount: eventoC.length + 1,
