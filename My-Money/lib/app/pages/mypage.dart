@@ -82,7 +82,6 @@ class _MyPageState extends State<MyPage> {
     return prefs.getString("foto") ?? "";
   }
 
-  List<Evento> eventoC = [];
   @override
   void initState() {
     getFatMp();
@@ -93,7 +92,8 @@ class _MyPageState extends State<MyPage> {
     });
 
     setState(() {
-      Future.delayed(const Duration(seconds: 1)).then((value) => getvalue());
+      Future.delayed(const Duration(seconds: 1))
+          .then((value) => getvaluepercent());
     });
 
     super.initState();
@@ -111,6 +111,12 @@ class _MyPageState extends State<MyPage> {
       }
     });
 
+    loadEvent();
+  }
+
+//função pra carregar o evento
+  List<Evento> eventoC = [];
+  loadEvent() {
     EventosUSerPreference().loadList().then((value) async {
       final SharedPreferences sharedPreferences =
           await SharedPreferences.getInstance();
@@ -126,7 +132,8 @@ class _MyPageState extends State<MyPage> {
     });
   }
 
-  getvalue() async {
+//carregar porcentagem
+  getvaluepercent() async {
     await SomatoriaValores().getperc().then((value) {
       setState(() {
         slivre = value;
@@ -312,7 +319,7 @@ class _MyPageState extends State<MyPage> {
                                   setState(() {
                                     log('CLiquei no circulo e deu nisso!');
                                     setState(() {
-                                      getvalue();
+                                      getvaluepercent();
                                       getvaluefat();
                                     });
                                   });
@@ -437,8 +444,9 @@ class _MyPageState extends State<MyPage> {
                     itemCount: eventoC.length,
                     itemBuilder: (BuildContext context, index) {
                       return ItemeEventListWidget(
+                          //FUNÇÃO DE EXCLUIR
                           onPressed: () {
-                            log('CLIQUEI EM ALGUMA COISA');
+                            log('EXCLUIR ITEM DA LISTA COISA');
                             setState(() {
                               eventoC.remove(eventoC[index]);
                             });
@@ -446,7 +454,7 @@ class _MyPageState extends State<MyPage> {
                                 .deletItemList(index)
                                 .then((value) {
                               setState(() {
-                                getvalue();
+                                getvaluepercent();
                               });
                             });
 
