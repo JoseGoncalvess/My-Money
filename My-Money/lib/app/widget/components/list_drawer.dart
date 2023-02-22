@@ -13,7 +13,10 @@ import '../../valores/avatar_info.dart';
 import '../../valores/user_info.dart';
 
 class ListDrawer extends StatefulWidget {
-  const ListDrawer({Key? key, required this.versioApp}) : super(key: key);
+  const ListDrawer({
+    Key? key,
+    required this.versioApp,
+  }) : super(key: key);
 
   final String versioApp;
 
@@ -157,8 +160,16 @@ class _ListDrawerState extends State<ListDrawer> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Text(
+              'Versão ' + widget.versioApp,
+              style: GoogleFonts.fredoka(
+                textStyle: const TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 15,
+                    color: Colors.white),
+              ),
+            ),
             const Icon(Icons.verified_user_rounded),
-            Text(widget.versioApp)
           ],
         )
       ],

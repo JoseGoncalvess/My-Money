@@ -83,9 +83,19 @@ class _MyPageState extends State<MyPage> {
     return prefs.getString("foto") ?? "";
   }
 
-  String versionapp = '';
+  String version = '';
   @override
   void initState() {
+    Future.delayed(const Duration()).then(
+      (value) async {
+        await PackageInfo.fromPlatform().then((value) {
+          setState(() {
+            version = value.version;
+            log(version);
+          });
+        });
+      },
+    );
     //FUNCION DE FATURAS
     getFatMp();
     getFatPm();
@@ -152,9 +162,11 @@ class _MyPageState extends State<MyPage> {
     return Scaffold(
       key: _key,
       backgroundColor: const Color(0xFF2E4159),
-      drawer: const Drawer(
-        backgroundColor: Color(0xFF2E4159),
-        child: ListDrawer(versioApp: '1.0.0'),
+      drawer: Drawer(
+        backgroundColor: const Color(0xFF2E4159),
+        child: ListDrawer(
+          versioApp: version,
+        ),
       ),
       body: SafeArea(
         child: Container(
