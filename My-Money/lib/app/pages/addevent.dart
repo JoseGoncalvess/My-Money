@@ -226,7 +226,7 @@ class _AddEventState extends State<AddEvent> {
                                                   FloatingLabelAlignment.center,
                                               floatingLabelBehavior:
                                                   FloatingLabelBehavior.never,
-                                              hintText: "Ex: R\$100,00",
+                                              hintText: "R\$100,00",
                                               hintStyle: const TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 15,

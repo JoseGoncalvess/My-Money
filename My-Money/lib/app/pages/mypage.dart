@@ -440,30 +440,40 @@ class _MyPageState extends State<MyPage> {
                 ),
               ),
               Expanded(
-                child: ListView.builder(
-                    itemCount: eventoC.length,
-                    itemBuilder: (BuildContext context, index) {
-                      return ItemeEventListWidget(
-                          //FUNÇÃO DE EXCLUIR
-                          onPressed: () {
-                            log('EXCLUIR ITEM DA LISTA COISA');
-                            setState(() {
-                              eventoC.remove(eventoC[index]);
-                            });
-                            EventosUSerPreference()
-                                .deletItemList(index)
-                                .then((value) {
-                              setState(() {
-                                getvaluepercent();
-                              });
-                            });
+                child: eventoC.isEmpty
+                    ? const Icon(
+                        Icons.note_add_rounded,
+                        size: 60,
+                        color: Color(0xFF5F5DA6),
+                      )
+                    : ListView.builder(
+                        itemCount: eventoC.length + 1,
+                        itemBuilder: (BuildContext context, index) {
+                          return index == eventoC.length
+                              ? Container(
+                                  height: 80,
+                                )
+                              : ItemeEventListWidget(
+                                  //FUNÇÃO DE EXCLUIR
+                                  onPressed: () {
+                                    log('EXCLUIR ITEM DA LISTA COISA');
+                                    setState(() {
+                                      eventoC.remove(eventoC[index]);
+                                    });
+                                    EventosUSerPreference()
+                                        .deletItemList(index)
+                                        .then((value) {
+                                      setState(() {
+                                        getvaluepercent();
+                                      });
+                                    });
 
-                            Navigator.of(context).pop();
-                          },
-                          evento: eventoC[index].evento,
-                          data: eventoC[index].data,
-                          valor: eventoC[index].valor);
-                    }),
+                                    Navigator.of(context).pop();
+                                  },
+                                  evento: eventoC[index].evento,
+                                  data: eventoC[index].data,
+                                  valor: eventoC[index].valor);
+                        }),
               ),
             ],
           ),
