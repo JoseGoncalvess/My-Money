@@ -27,6 +27,7 @@ class _AddEventState extends State<AddEvent> {
   int indexAlert = 0;
   String dataController = FormartterDate().formartterdate(DateTime.now());
   final _keyparcelas = GlobalKey<FormState>();
+  final _valorkey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -66,720 +67,722 @@ class _AddEventState extends State<AddEvent> {
                           ),
                         ),
                       ),
-                      Container(
-                        height: 699,
-                        width: MediaQuery.of(context).size.width,
-                        decoration: const BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(40),
-                                topRight: Radius.circular(40))),
-                        child: Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text('Detalhes da dispesa',
-                                  style: GoogleFonts.fredoka(
-                                      textStyle: const TextStyle(
-                                    fontSize: 35,
-                                    color: Color(0xFF5F5DA6),
-                                    fontWeight: FontWeight.bold,
-                                  ))),
-                            ),
-                            Text("Nome do Evento",
-                                style: GoogleFonts.fredoka(
-                                    textStyle: const TextStyle(
-                                  fontSize: 20,
-                                  color: Color(0xFF2E4159),
-                                  fontWeight: FontWeight.bold,
-                                ))),
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width * .95,
-                              height: 90,
-                              child: TextField(
-                                  controller: evetocontroller,
-                                  keyboardType: TextInputType.text,
-                                  textAlign: TextAlign.center,
-                                  decoration: InputDecoration(
-                                      filled: true,
-                                      fillColor: const Color(0xFF8F8EBF),
-                                      border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(12),
-                                      ),
-                                      floatingLabelAlignment:
-                                          FloatingLabelAlignment.center,
-                                      floatingLabelBehavior:
-                                          FloatingLabelBehavior.never,
-                                      hintText: "Ex: Churrasco em Família",
-                                      hintStyle: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                      labelText: 'Ex: Churrasco em Família',
-                                      labelStyle: const TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.bold),
-                                      disabledBorder: InputBorder.none)),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      Column(
+                        children: [
+                          Container(
+                            height: 699,
+                            width: MediaQuery.of(context).size.width,
+                            decoration: const BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(40),
+                                    topRight: Radius.circular(40))),
+                            child: Column(
                               children: [
-                                Column(
-                                  children: [
-                                    Text(
-                                      "Data:",
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text('Detalhes da dispesa',
                                       style: GoogleFonts.fredoka(
-                                        textStyle: const TextStyle(
-                                          fontSize: 20,
-                                          color: Color(0xFF2E4159),
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 150,
-                                      height: 60,
-                                      child: InkWell(
-                                          onTap: () {
-                                            //lembre que ele recebe o SDK também não so a depedence.
-                                            showDatePicker(
-                                                    context: context,
-                                                    initialDate: DateTime.now(),
-                                                    firstDate: DateTime(2000),
-                                                    lastDate: DateTime(2035),
-                                                    locale: const Locale(
-                                                        'pt', 'BR'))
-                                                .then((value) {
-                                              String informat = value
-                                                  .toString()
-                                                  .split(' ')[0];
-                                              String day =
-                                                  informat.split('-')[2];
-                                              String month =
-                                                  informat.split('-')[1];
-                                              String year =
-                                                  informat.split('-')[0];
-
-                                              String dataValue =
-                                                  '$day/$month/$year';
-
-                                              setState(() {
-                                                dataController = dataValue;
-                                              });
-                                            }).catchError((onError) {
-                                              dataController = FormartterDate()
-                                                  .formartterdate(
-                                                      DateTime.now());
-                                            });
-                                          },
-                                          child: Container(
-                                            alignment: Alignment.center,
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(12),
-                                              color: const Color(0xFF8F8EBF),
-                                            ),
-                                            child: Text(dataController,
-                                                style: GoogleFonts.fredoka(
-                                                    textStyle: const TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 10,
-                                                  fontWeight: FontWeight.bold,
-                                                ))),
-                                          )),
-                                    ),
-                                    const SizedBox(
-                                      height: 30,
-                                    )
-                                  ],
+                                          textStyle: const TextStyle(
+                                        fontSize: 35,
+                                        color: Color(0xFF5F5DA6),
+                                        fontWeight: FontWeight.bold,
+                                      ))),
                                 ),
-                                Column(
-                                  children: [
-                                    Text(
-                                      "Gastou:",
-                                      style: GoogleFonts.fredoka(
+                                Text("Nome do Evento",
+                                    style: GoogleFonts.fredoka(
                                         textStyle: const TextStyle(
-                                          fontSize: 20,
-                                          color: Color(0xFF2E4159),
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 150,
-                                      height: 90,
-                                      child: TextField(
-                                          controller: valorcontroller,
-                                          keyboardType: TextInputType.number,
-                                          textAlign: TextAlign.center,
-                                          decoration: InputDecoration(
-                                              filled: true,
-                                              fillColor:
-                                                  const Color(0xFF8F8EBF),
-                                              border: OutlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(12),
-                                              ),
-                                              floatingLabelAlignment:
-                                                  FloatingLabelAlignment.center,
-                                              floatingLabelBehavior:
-                                                  FloatingLabelBehavior.never,
-                                              hintText: "R\$100,00",
-                                              hintStyle: const TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                              labelText: 'R\$100,00',
-                                              labelStyle: const TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 10,
-                                                  fontWeight: FontWeight.bold),
-                                              disabledBorder:
-                                                  InputBorder.none)),
-                                    )
-                                  ],
-                                )
-                              ],
-                            ),
-
-                            Text(
-                              "Tag",
-                              style: GoogleFonts.fredoka(
-                                textStyle: const TextStyle(
-                                  fontSize: 30,
-                                  color: Color(0xFF2E4159),
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-
-                            ///Categorias da dispesa
-                            SingleChildScrollView(
-                              scrollDirection: Axis.horizontal,
-                              child: Row(
-                                children: [
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
-                                  Column(
-                                    children: [
-                                      Container(
-                                          height: 80,
-                                          width: 80,
-                                          decoration: BoxDecoration(
-                                              color: indexTag == 1
-                                                  ? const Color(0xFF2E4159)
-                                                  : const Color(0xFF5F5DA6),
-                                              borderRadius:
-                                                  BorderRadius.circular(50)),
-                                          child: IconButton(
-                                            onPressed: () {
-                                              setState(() {
-                                                indexTag = 1;
-                                              });
-                                            },
-                                            icon: const Icon(
-                                              Icons.medical_services_rounded,
-                                              size: 40,
-                                            ),
-                                          )),
-                                      Text("saúde",
-                                          style: GoogleFonts.fredoka(
-                                              textStyle: const TextStyle(
-                                            fontSize: 20,
-                                            color: Color(0xFF2E4159),
-                                            fontWeight: FontWeight.bold,
-                                          ))),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
-                                  SizedBox(
-                                      child: Column(
-                                    children: [
-                                      Container(
-                                          height: 80,
-                                          width: 80,
-                                          decoration: BoxDecoration(
-                                              color: indexTag == 2
-                                                  ? const Color(0xFF2E4159)
-                                                  : const Color(0xFF5F5DA6),
-                                              borderRadius:
-                                                  BorderRadius.circular(50)),
-                                          child: IconButton(
-                                            onPressed: () {
-                                              setState(() {
-                                                indexTag = 2;
-                                              });
-                                            },
-                                            icon: const Icon(
-                                              Icons.restaurant_rounded,
-                                              size: 40,
-                                            ),
-                                          )),
-                                      Text("Alimentação",
-                                          style: GoogleFonts.fredoka(
-                                              textStyle: const TextStyle(
-                                            fontSize: 20,
-                                            color: Color(0xFF2E4159),
-                                            fontWeight: FontWeight.bold,
-                                          ))),
-                                    ],
-                                  )),
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
-                                  SizedBox(
-                                      child: Column(
-                                    children: [
-                                      Container(
-                                          height: 80,
-                                          width: 80,
-                                          decoration: BoxDecoration(
-                                              color: indexTag == 3
-                                                  ? const Color(0xFF2E4159)
-                                                  : const Color(0xFF5F5DA6),
-                                              borderRadius:
-                                                  BorderRadius.circular(50)),
-                                          child: IconButton(
-                                            onPressed: () {
-                                              setState(() {
-                                                indexTag = 3;
-                                              });
-                                            },
-                                            icon: const Icon(
-                                              Icons.park_rounded,
-                                              size: 40,
-                                            ),
-                                          )),
-                                      Text("Lazer",
-                                          style: GoogleFonts.fredoka(
-                                              textStyle: const TextStyle(
-                                            fontSize: 20,
-                                            color: Color(0xFF2E4159),
-                                            fontWeight: FontWeight.bold,
-                                          ))),
-                                    ],
-                                  )),
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
-                                  SizedBox(
-                                      child: Column(
-                                    children: [
-                                      Container(
-                                          height: 80,
-                                          width: 80,
-                                          decoration: BoxDecoration(
-                                              color: indexTag == 4
-                                                  ? const Color(0xFF2E4159)
-                                                  : const Color(0xFF5F5DA6),
-                                              borderRadius:
-                                                  BorderRadius.circular(50)),
-                                          child: IconButton(
-                                            onPressed: () {
-                                              setState(() {
-                                                indexTag = 4;
-                                              });
-                                            },
-                                            icon: const Icon(
-                                              Icons.work,
-                                              size: 40,
-                                            ),
-                                          )),
-                                      Text("Trabalho",
-                                          style: GoogleFonts.fredoka(
-                                              textStyle: const TextStyle(
-                                            fontSize: 20,
-                                            color: Color(0xFF2E4159),
-                                            fontWeight: FontWeight.bold,
-                                          ))),
-                                    ],
-                                  )),
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
-                                  SizedBox(
-                                      child: Column(
-                                    children: [
-                                      Container(
-                                          height: 80,
-                                          width: 80,
-                                          decoration: BoxDecoration(
-                                              color: indexTag == 5
-                                                  ? const Color(0xFF2E4159)
-                                                  : const Color(0xFF5F5DA6),
-                                              borderRadius:
-                                                  BorderRadius.circular(50)),
-                                          child: IconButton(
-                                            onPressed: () {
-                                              setState(() {
-                                                indexTag = 5;
-                                              });
-                                            },
-                                            icon: const Icon(
-                                              Icons.luggage_rounded,
-                                              size: 40,
-                                            ),
-                                          )),
-                                      Text("Ferias",
-                                          style: GoogleFonts.fredoka(
-                                              textStyle: const TextStyle(
-                                            fontSize: 20,
-                                            color: Color(0xFF2E4159),
-                                            fontWeight: FontWeight.bold,
-                                          ))),
-                                    ],
-                                  )),
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
-                                  SizedBox(
-                                      child: Column(
-                                    children: [
-                                      Container(
-                                          height: 80,
-                                          width: 80,
-                                          decoration: BoxDecoration(
-                                              color: indexTag == 6
-                                                  ? const Color(0xFF2E4159)
-                                                  : const Color(0xFF5F5DA6),
-                                              borderRadius:
-                                                  BorderRadius.circular(50)),
-                                          child: IconButton(
-                                            onPressed: () {
-                                              setState(() {
-                                                indexTag = 6;
-                                              });
-                                            },
-                                            icon: const Icon(
-                                              Icons.flight_rounded,
-                                              size: 40,
-                                            ),
-                                          )),
-                                      Text("Viagem",
-                                          style: GoogleFonts.fredoka(
-                                              textStyle: const TextStyle(
-                                            fontSize: 15,
-                                            color: Color(0xFF2E4159),
-                                            fontWeight: FontWeight.bold,
-                                          ))),
-                                    ],
-                                  ))
-                                ],
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 5),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: [
-                                      Text("Pagamento:",
-                                          style: GoogleFonts.fredoka(
-                                              textStyle: const TextStyle(
-                                            fontSize: 30,
-                                            color: Color(0xFF2E4159),
-                                            fontWeight: FontWeight.bold,
-                                          ))),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        children: [
-                                          SizedBox(
-                                              child: Column(
-                                            children: [
-                                              Container(
-                                                  height: 50,
-                                                  width: 50,
-                                                  decoration: BoxDecoration(
-                                                      color: indexPag == 1
-                                                          ? const Color(
-                                                              0xFF2E4159)
-                                                          : const Color(
-                                                              0xFF5F5DA6),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              20)),
-                                                  child: IconButton(
-                                                    onPressed: () {
-                                                      setState(() {
-                                                        indexPag = 1;
-                                                      });
-                                                    },
-                                                    icon: const Icon(
-                                                      Icons.payments_rounded,
-                                                      size: 25,
-                                                    ),
-                                                  )),
-                                              Text("Dinheiro",
-                                                  style: GoogleFonts.fredoka(
-                                                      textStyle:
-                                                          const TextStyle(
-                                                    fontSize: 15,
-                                                    color: Color(0xFF2E4159),
-                                                    fontWeight: FontWeight.w400,
-                                                  ))),
-                                            ],
-                                          )),
-                                          Container(
-                                            width: 30,
+                                      fontSize: 20,
+                                      color: Color(0xFF2E4159),
+                                      fontWeight: FontWeight.bold,
+                                    ))),
+                                SizedBox(
+                                  width:
+                                      MediaQuery.of(context).size.width * .95,
+                                  height: 90,
+                                  child: TextField(
+                                      controller: evetocontroller,
+                                      keyboardType: TextInputType.text,
+                                      textAlign: TextAlign.center,
+                                      decoration: InputDecoration(
+                                          filled: true,
+                                          fillColor: const Color(0xFF8F8EBF),
+                                          border: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(12),
                                           ),
-                                          SizedBox(
-                                              child: Column(
-                                            children: [
-                                              Container(
-                                                  height: 50,
-                                                  width: 50,
-                                                  decoration: BoxDecoration(
-                                                      color: indexPag == 2
-                                                          ? const Color(
-                                                              0xFF2E4159)
-                                                          : const Color(
-                                                              0xFF5F5DA6),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              20)),
-                                                  child: IconButton(
-                                                    onPressed: () {
-                                                      setState(() {
-                                                        indexPag = 2;
-                                                      });
-                                                    },
-                                                    icon: const Icon(
-                                                      Icons.credit_card_rounded,
-                                                      size: 25,
-                                                    ),
-                                                  )),
-                                              Text("Cartão",
-                                                  style: GoogleFonts.fredoka(
-                                                      textStyle:
-                                                          const TextStyle(
-                                                    fontSize: 15,
-                                                    color: Color(0xFF2E4159),
-                                                    fontWeight: FontWeight.w400,
-                                                  ))),
-                                            ],
-                                          ))
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
+                                          floatingLabelAlignment:
+                                              FloatingLabelAlignment.center,
+                                          floatingLabelBehavior:
+                                              FloatingLabelBehavior.never,
+                                          hintText: "Ex: Churrasco em Família",
+                                          hintStyle: const TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                          disabledBorder: InputBorder.none)),
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Column(
                                       children: [
-                                        Text("Parcelas:",
-                                            style: GoogleFonts.fredoka(
-                                                textStyle: const TextStyle(
-                                              fontSize: 30,
+                                        Text(
+                                          "Data:",
+                                          style: GoogleFonts.fredoka(
+                                            textStyle: const TextStyle(
+                                              fontSize: 20,
                                               color: Color(0xFF2E4159),
                                               fontWeight: FontWeight.bold,
-                                            ))),
-                                        Container(
-                                            alignment: Alignment.center,
-                                            height: 25,
-                                            width: 100,
-                                            decoration: BoxDecoration(
-                                                color: const Color(0xFF2E4159),
-                                                borderRadius:
-                                                    BorderRadius.circular(12)),
-                                            child: Form(
-                                              key: _keyparcelas,
-                                              child: TextFormField(
-                                                maxLines: 1,
-                                                onEditingComplete: () {
-                                                  if (!_keyparcelas
-                                                      .currentState!
-                                                      .validate()) {
-                                                    parcelController.text
-                                                        .trim();
-                                                    ScaffoldMessenger.of(
-                                                            context)
-                                                        .showSnackBar(SnackBar(
-                                                      backgroundColor:
-                                                          Colors.red,
-                                                      content: const Text(
-                                                        'Numero de Parcelas Incorreto, até 12x!',
-                                                        style: TextStyle(
-                                                            color:
-                                                                Colors.white),
-                                                      ),
-                                                      action: SnackBarAction(
-                                                          label: 'Ajustar',
-                                                          textColor:
-                                                              Colors.white,
-                                                          onPressed: () {}),
-                                                    ));
-                                                  }
-                                                },
-                                                validator: (value) {
-                                                  if (value!.length == 2) {
-                                                    int parcela =
-                                                        int.parse(value);
-                                                    if (parcela > 12) {
-                                                      return ' Numero de Parcelas Incorreto, até 12x!';
-                                                    }
-                                                  } else {
-                                                    return '';
-                                                  }
-                                                  return '';
-                                                },
-                                                onChanged: (value) {
-                                                  log(
-                                                    value.toString(),
-                                                  );
-                                                  if (value.length > 1) {
-                                                    int parcela =
-                                                        int.parse(value);
-                                                    if (parcela > 12) {
-                                                      setState(() {
-                                                        parcelController.text =
-                                                            '12';
-                                                      });
-                                                    }
-                                                  }
-                                                },
-                                                textAlign: TextAlign.center,
-                                                decoration:
-                                                    const InputDecoration(
-                                                        counterText: '',
-                                                        border:
-                                                            InputBorder.none,
-                                                        focusedBorder:
-                                                            InputBorder.none),
-                                                controller: parcelController,
-                                                keyboardType:
-                                                    TextInputType.number,
-                                              ),
-                                            )),
-                                        Row(
-                                          children: [
-                                            Text("Alerta:",
-                                                style: GoogleFonts.fredoka(
-                                                    textStyle: const TextStyle(
-                                                  fontSize: 20,
-                                                  color: Color(0xFF2E4159),
-                                                  fontWeight: FontWeight.bold,
-                                                ))),
-                                            IconButton(
-                                              onPressed: () {
-                                                setState(() {
-                                                  indexAlert = 1;
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 150,
+                                          height: 60,
+                                          child: InkWell(
+                                              onTap: () {
+                                                //lembre que ele recebe o SDK também não so a depedence.
+                                                showDatePicker(
+                                                        context: context,
+                                                        initialDate:
+                                                            DateTime.now(),
+                                                        firstDate:
+                                                            DateTime(2000),
+                                                        lastDate:
+                                                            DateTime(2035),
+                                                        locale: const Locale(
+                                                            'pt', 'BR'))
+                                                    .then((value) {
+                                                  String informat = value
+                                                      .toString()
+                                                      .split(' ')[0];
+                                                  String day =
+                                                      informat.split('-')[2];
+                                                  String month =
+                                                      informat.split('-')[1];
+                                                  String year =
+                                                      informat.split('-')[0];
+
+                                                  String dataValue =
+                                                      '$day/$month/$year';
+
+                                                  setState(() {
+                                                    dataController = dataValue;
+                                                  });
+                                                }).catchError((onError) {
+                                                  dataController =
+                                                      FormartterDate()
+                                                          .formartterdate(
+                                                              DateTime.now());
                                                 });
                                               },
-                                              icon: Icon(
-                                                Icons.notifications_rounded,
-                                                size: 20,
-                                                color: indexAlert == 1
-                                                    ? const Color(0xFF2E4159)
-                                                    : const Color(0xFF5F5DA6),
-                                              ),
-                                            ),
-                                            Container(
-                                              child: IconButton(
-                                                onPressed: () {
-                                                  setState(() {
-                                                    indexAlert = 2;
-                                                  });
-                                                },
-                                                icon: Icon(
-                                                  Icons
-                                                      .notifications_active_rounded,
-                                                  size: 20,
-                                                  color: indexAlert == 2
-                                                      ? const Color(0xFF2E4159)
-                                                      : const Color(0xFF5F5DA6),
+                                              child: Container(
+                                                alignment: Alignment.center,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(12),
+                                                  color:
+                                                      const Color(0xFF8F8EBF),
                                                 ),
-                                              ),
-                                            )
-                                          ],
+                                                child: Text(dataController,
+                                                    style: GoogleFonts.fredoka(
+                                                        textStyle:
+                                                            const TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 10,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ))),
+                                              )),
+                                        ),
+                                        const SizedBox(
+                                          height: 30,
                                         )
                                       ],
                                     ),
-                                  )
-                                ],
-                              ),
-                            ),
-                            Column(
-                              children: [
-                                ElevatedButton(
-                                  onPressed: () {
-                                    EventosUSerPreference()
-                                        .saveEvento(
-                                            alert: indexAlert.toString(),
-                                            data: dataController,
-                                            evento: evetocontroller.text,
-                                            pag: indexPag.toString(),
-                                            tag: indexTag.toString(),
-                                            valor: valorcontroller.text)
-                                        .then(
-                                      (value) {
-                                        Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: ((context) =>
-                                                const MyPage()),
+                                    Column(
+                                      children: [
+                                        Text(
+                                          "Gastou:",
+                                          style: GoogleFonts.fredoka(
+                                            textStyle: const TextStyle(
+                                              fontSize: 20,
+                                              color: Color(0xFF2E4159),
+                                              fontWeight: FontWeight.bold,
+                                            ),
                                           ),
-                                        );
-                                      },
-                                    ).catchError((onError) {
-                                      log('Deu merda em salvar as paradas');
-                                    });
-                                    log(EventosUSerPreference()
-                                        .contList
-                                        .toString());
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                    fixedSize: const Size(255, 45),
-                                    shape: const StadiumBorder(),
-                                    backgroundColor: const Color(0xFF5F5DA6),
-                                  ),
-                                  child: Text('SALVAR',
-                                      style: GoogleFonts.fredoka(
-                                          textStyle: const TextStyle(
-                                        fontSize: 30,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                      ))),
+                                        ),
+                                        SizedBox(
+                                          width: 150,
+                                          height: 90,
+                                          child: Form(
+                                            key: _valorkey,
+                                            child: TextFormField(
+                                                controller: valorcontroller,
+                                                keyboardType:
+                                                    TextInputType.number,
+                                                textAlign: TextAlign.center,
+                                                decoration: InputDecoration(
+                                                    filled: true,
+                                                    fillColor:
+                                                        const Color(0xFF8F8EBF),
+                                                    border: OutlineInputBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              12),
+                                                    ),
+                                                    floatingLabelAlignment:
+                                                        FloatingLabelAlignment
+                                                            .center,
+                                                    floatingLabelBehavior:
+                                                        FloatingLabelBehavior
+                                                            .never,
+                                                    hintText: "R\$100,00",
+                                                    hintStyle: const TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 15,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                                    disabledBorder:
+                                                        InputBorder.none)),
+                                          ),
+                                        )
+                                      ],
+                                    )
+                                  ],
                                 ),
-                                ElevatedButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: ((context) =>
-                                                const MyPage())));
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                    fixedSize: const Size(150, 40),
-                                    shape: const StadiumBorder(),
-                                    backgroundColor: const Color(0xFF2E4159),
+
+                                Text(
+                                  "Tag",
+                                  style: GoogleFonts.fredoka(
+                                    textStyle: const TextStyle(
+                                      fontSize: 30,
+                                      color: Color(0xFF2E4159),
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
-                                  child: Text('CANCELAR',
-                                      style: GoogleFonts.fredoka(
-                                          textStyle: const TextStyle(
-                                        fontSize: 20,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                      ))),
+                                ),
+
+                                ///Categorias da dispesa
+                                SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child: Row(
+                                    children: [
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      Column(
+                                        children: [
+                                          Container(
+                                              height: 80,
+                                              width: 80,
+                                              decoration: BoxDecoration(
+                                                  color: indexTag == 1
+                                                      ? const Color(0xFF2E4159)
+                                                      : const Color(0xFF5F5DA6),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          50)),
+                                              child: IconButton(
+                                                onPressed: () {
+                                                  setState(() {
+                                                    indexTag = 1;
+                                                  });
+                                                },
+                                                icon: const Icon(
+                                                  Icons
+                                                      .medical_services_rounded,
+                                                  size: 40,
+                                                ),
+                                              )),
+                                          Text("saúde",
+                                              style: GoogleFonts.fredoka(
+                                                  textStyle: const TextStyle(
+                                                fontSize: 20,
+                                                color: Color(0xFF2E4159),
+                                                fontWeight: FontWeight.bold,
+                                              ))),
+                                        ],
+                                      ),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      SizedBox(
+                                          child: Column(
+                                        children: [
+                                          Container(
+                                              height: 80,
+                                              width: 80,
+                                              decoration: BoxDecoration(
+                                                  color: indexTag == 2
+                                                      ? const Color(0xFF2E4159)
+                                                      : const Color(0xFF5F5DA6),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          50)),
+                                              child: IconButton(
+                                                onPressed: () {
+                                                  setState(() {
+                                                    indexTag = 2;
+                                                  });
+                                                },
+                                                icon: const Icon(
+                                                  Icons.restaurant_rounded,
+                                                  size: 40,
+                                                ),
+                                              )),
+                                          Text("Alimentação",
+                                              style: GoogleFonts.fredoka(
+                                                  textStyle: const TextStyle(
+                                                fontSize: 20,
+                                                color: Color(0xFF2E4159),
+                                                fontWeight: FontWeight.bold,
+                                              ))),
+                                        ],
+                                      )),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      SizedBox(
+                                          child: Column(
+                                        children: [
+                                          Container(
+                                              height: 80,
+                                              width: 80,
+                                              decoration: BoxDecoration(
+                                                  color: indexTag == 3
+                                                      ? const Color(0xFF2E4159)
+                                                      : const Color(0xFF5F5DA6),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          50)),
+                                              child: IconButton(
+                                                onPressed: () {
+                                                  setState(() {
+                                                    indexTag = 3;
+                                                  });
+                                                },
+                                                icon: const Icon(
+                                                  Icons.park_rounded,
+                                                  size: 40,
+                                                ),
+                                              )),
+                                          Text("Lazer",
+                                              style: GoogleFonts.fredoka(
+                                                  textStyle: const TextStyle(
+                                                fontSize: 20,
+                                                color: Color(0xFF2E4159),
+                                                fontWeight: FontWeight.bold,
+                                              ))),
+                                        ],
+                                      )),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      SizedBox(
+                                          child: Column(
+                                        children: [
+                                          Container(
+                                              height: 80,
+                                              width: 80,
+                                              decoration: BoxDecoration(
+                                                  color: indexTag == 4
+                                                      ? const Color(0xFF2E4159)
+                                                      : const Color(0xFF5F5DA6),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          50)),
+                                              child: IconButton(
+                                                onPressed: () {
+                                                  setState(() {
+                                                    indexTag = 4;
+                                                  });
+                                                },
+                                                icon: const Icon(
+                                                  Icons.work,
+                                                  size: 40,
+                                                ),
+                                              )),
+                                          Text("Trabalho",
+                                              style: GoogleFonts.fredoka(
+                                                  textStyle: const TextStyle(
+                                                fontSize: 20,
+                                                color: Color(0xFF2E4159),
+                                                fontWeight: FontWeight.bold,
+                                              ))),
+                                        ],
+                                      )),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      SizedBox(
+                                          child: Column(
+                                        children: [
+                                          Container(
+                                              height: 80,
+                                              width: 80,
+                                              decoration: BoxDecoration(
+                                                  color: indexTag == 5
+                                                      ? const Color(0xFF2E4159)
+                                                      : const Color(0xFF5F5DA6),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          50)),
+                                              child: IconButton(
+                                                onPressed: () {
+                                                  setState(() {
+                                                    indexTag = 5;
+                                                  });
+                                                },
+                                                icon: const Icon(
+                                                  Icons.luggage_rounded,
+                                                  size: 40,
+                                                ),
+                                              )),
+                                          Text("Ferias",
+                                              style: GoogleFonts.fredoka(
+                                                  textStyle: const TextStyle(
+                                                fontSize: 20,
+                                                color: Color(0xFF2E4159),
+                                                fontWeight: FontWeight.bold,
+                                              ))),
+                                        ],
+                                      )),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      SizedBox(
+                                          child: Column(
+                                        children: [
+                                          Container(
+                                              height: 80,
+                                              width: 80,
+                                              decoration: BoxDecoration(
+                                                  color: indexTag == 6
+                                                      ? const Color(0xFF2E4159)
+                                                      : const Color(0xFF5F5DA6),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          50)),
+                                              child: IconButton(
+                                                onPressed: () {
+                                                  setState(() {
+                                                    indexTag = 6;
+                                                  });
+                                                },
+                                                icon: const Icon(
+                                                  Icons.flight_rounded,
+                                                  size: 40,
+                                                ),
+                                              )),
+                                          Text("Viagem",
+                                              style: GoogleFonts.fredoka(
+                                                  textStyle: const TextStyle(
+                                                fontSize: 15,
+                                                color: Color(0xFF2E4159),
+                                                fontWeight: FontWeight.bold,
+                                              ))),
+                                        ],
+                                      ))
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 5),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Text("Pagamento:",
+                                              style: GoogleFonts.fredoka(
+                                                  textStyle: const TextStyle(
+                                                fontSize: 30,
+                                                color: Color(0xFF2E4159),
+                                                fontWeight: FontWeight.bold,
+                                              ))),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceAround,
+                                            children: [
+                                              SizedBox(
+                                                  child: Column(
+                                                children: [
+                                                  Container(
+                                                      height: 50,
+                                                      width: 50,
+                                                      decoration: BoxDecoration(
+                                                          color: indexPag == 1
+                                                              ? const Color(
+                                                                  0xFF2E4159)
+                                                              : const Color(
+                                                                  0xFF5F5DA6),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      20)),
+                                                      child: IconButton(
+                                                        onPressed: () {
+                                                          setState(() {
+                                                            indexPag = 1;
+                                                          });
+                                                        },
+                                                        icon: const Icon(
+                                                          Icons
+                                                              .payments_rounded,
+                                                          size: 25,
+                                                        ),
+                                                      )),
+                                                  Text("Dinheiro",
+                                                      style:
+                                                          GoogleFonts.fredoka(
+                                                              textStyle:
+                                                                  const TextStyle(
+                                                        fontSize: 15,
+                                                        color:
+                                                            Color(0xFF2E4159),
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                      ))),
+                                                ],
+                                              )),
+                                              Container(
+                                                width: 30,
+                                              ),
+                                              SizedBox(
+                                                  child: Column(
+                                                children: [
+                                                  Container(
+                                                      height: 50,
+                                                      width: 50,
+                                                      decoration: BoxDecoration(
+                                                          color: indexPag == 2
+                                                              ? const Color(
+                                                                  0xFF2E4159)
+                                                              : const Color(
+                                                                  0xFF5F5DA6),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      20)),
+                                                      child: IconButton(
+                                                        onPressed: () {
+                                                          setState(() {
+                                                            indexPag = 2;
+                                                          });
+                                                        },
+                                                        icon: const Icon(
+                                                          Icons
+                                                              .credit_card_rounded,
+                                                          size: 25,
+                                                        ),
+                                                      )),
+                                                  Text("Cartão",
+                                                      style:
+                                                          GoogleFonts.fredoka(
+                                                              textStyle:
+                                                                  const TextStyle(
+                                                        fontSize: 15,
+                                                        color:
+                                                            Color(0xFF2E4159),
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                      ))),
+                                                ],
+                                              ))
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        child: Column(
+                                          children: [
+                                            Text(
+                                              "Parcelas:",
+                                              style: GoogleFonts.fredoka(
+                                                textStyle: const TextStyle(
+                                                  fontSize: 30,
+                                                  color: Color(0xFF2E4159),
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                            ),
+                                            const SizedBox(
+                                              height: 5,
+                                            ),
+                                            Container(
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .height *
+                                                    0.06,
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.45,
+                                                decoration: BoxDecoration(
+                                                    color:
+                                                        const Color(0xFF2E4159),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            12)),
+                                                child: Form(
+                                                  key: _keyparcelas,
+                                                  child: TextFormField(
+                                                    maxLines: 1,
+                                                    onEditingComplete: () {
+                                                      if (!_keyparcelas
+                                                          .currentState!
+                                                          .validate()) {
+                                                        parcelController.text
+                                                            .trim();
+                                                        ScaffoldMessenger.of(
+                                                                context)
+                                                            .showSnackBar(
+                                                                SnackBar(
+                                                          backgroundColor:
+                                                              Colors.red,
+                                                          content: const Text(
+                                                            'Numero de Parcelas Incorreto, até 12x!',
+                                                            style: TextStyle(
+                                                                color: Colors
+                                                                    .white),
+                                                          ),
+                                                          action: SnackBarAction(
+                                                              label: 'Ajustar',
+                                                              textColor:
+                                                                  Colors.white,
+                                                              onPressed: () {}),
+                                                        ));
+                                                      }
+                                                    },
+                                                    validator: (value) {
+                                                      if (int.parse(value!) >
+                                                          12) {
+                                                        return 'Numero de Parcelas Incorreto, até 12x!';
+                                                      } else {
+                                                        FocusScope.of(context)
+                                                            .requestFocus(
+                                                                FocusNode());
+                                                      }
+                                                      return null;
+                                                    },
+                                                    onChanged: (value) {
+                                                      log(
+                                                        value.toString(),
+                                                      );
+                                                      if (value.length > 1) {
+                                                        if (int.parse(value) >
+                                                            12) {
+                                                          setState(() {
+                                                            parcelController
+                                                                .text = '12';
+                                                          });
+                                                        }
+                                                      }
+                                                    },
+                                                    textAlign: TextAlign.center,
+                                                    decoration:
+                                                        const InputDecoration(
+                                                            counterText: '',
+                                                            border: InputBorder
+                                                                .none,
+                                                            focusedBorder:
+                                                                InputBorder
+                                                                    .none),
+                                                    controller:
+                                                        parcelController,
+                                                    keyboardType:
+                                                        TextInputType.number,
+                                                  ),
+                                                )),
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                Column(
+                                  children: [
+                                    ElevatedButton(
+                                      onPressed: () {
+                                        validateValor();
+                                        EventosUSerPreference()
+                                            .saveEvento(
+                                                alert: indexAlert.toString(),
+                                                data: dataController,
+                                                evento: evetocontroller.text,
+                                                pag: indexPag.toString(),
+                                                tag: indexTag.toString(),
+                                                valor: valorcontroller.text)
+                                            .then(
+                                          (value) {
+                                            Navigator.pushReplacement(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: ((context) =>
+                                                    const MyPage()),
+                                              ),
+                                            );
+                                          },
+                                        ).catchError((onError) {
+                                          log('Deu merda em salvar as paradas');
+                                        });
+                                        log(EventosUSerPreference()
+                                            .contList
+                                            .toString());
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        fixedSize: const Size(255, 45),
+                                        shape: const StadiumBorder(),
+                                        backgroundColor:
+                                            const Color(0xFF5F5DA6),
+                                      ),
+                                      child: Text('SALVAR',
+                                          style: GoogleFonts.fredoka(
+                                              textStyle: const TextStyle(
+                                            fontSize: 30,
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                          ))),
+                                    ),
+                                    ElevatedButton(
+                                      onPressed: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: ((context) =>
+                                                    const MyPage())));
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        fixedSize: const Size(150, 40),
+                                        shape: const StadiumBorder(),
+                                        backgroundColor:
+                                            const Color(0xFF2E4159),
+                                      ),
+                                      child: Text('VOLTAR',
+                                          style: GoogleFonts.fredoka(
+                                              textStyle: const TextStyle(
+                                            fontSize: 20,
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                          ))),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ],
                   )),
@@ -799,6 +802,15 @@ class _AddEventState extends State<AddEvent> {
       } else {
         return parcela = 0;
       }
+    }
+  }
+
+  validateValor() {
+    if (valorcontroller.text.isEmpty) {
+      valorcontroller.text = '0';
+    }
+    {
+      valorcontroller.text = valorcontroller.text;
     }
   }
 }

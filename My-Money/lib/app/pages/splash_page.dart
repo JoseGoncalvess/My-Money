@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../valores/user_info.dart';
 import 'HomePage.dart';
 import 'mypage.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 class Splashpage extends StatefulWidget {
   const Splashpage({super.key});
@@ -21,6 +22,9 @@ Future<String> loadPhoto() async {
 class _SplashpageState extends State<Splashpage> {
   @override
   void initState() {
+//carregando as infomrações
+    WidgetsFlutterBinding.ensureInitialized();
+
     super.initState();
 //CARREGA OS DADOS A SEREM EXIBIDOS
     DataUser().loadUserData().then((value) => {

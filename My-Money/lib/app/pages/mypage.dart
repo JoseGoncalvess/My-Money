@@ -5,6 +5,7 @@ import 'package:my_money/app/model/evento_model.dart';
 import 'package:my_money/app/model/metodos/somatoria_valores.dart';
 import 'package:my_money/app/valores/avatar_info.dart';
 import 'package:my_money/app/widget/components/list_drawer.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -82,8 +83,10 @@ class _MyPageState extends State<MyPage> {
     return prefs.getString("foto") ?? "";
   }
 
+  String versionapp = '';
   @override
   void initState() {
+    //FUNCION DE FATURAS
     getFatMp();
     getFatPm();
 
@@ -143,6 +146,7 @@ class _MyPageState extends State<MyPage> {
 
 //======================================================================
   final GlobalKey<ScaffoldState> _key = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -150,7 +154,7 @@ class _MyPageState extends State<MyPage> {
       backgroundColor: const Color(0xFF2E4159),
       drawer: const Drawer(
         backgroundColor: Color(0xFF2E4159),
-        child: ListDrawer(),
+        child: ListDrawer(versioApp: '1.0.0'),
       ),
       body: SafeArea(
         child: Container(
@@ -304,7 +308,7 @@ class _MyPageState extends State<MyPage> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(5.0),
+                        padding: const EdgeInsets.all(6.0),
                         child: CircularPercentIndicator(
                           radius: 95.0,
                           lineWidth: 38.0,

@@ -349,7 +349,21 @@ class _UserCardState extends State<UserCard> {
                         ),
                         ElevatedButton(
                           onPressed: () {
-                            log('salvou ?');
+                            log('CANCELOU?');
+                            Future.delayed(const Duration(milliseconds: 200))
+                                .then((value) => {
+                                      DataUser().loadUserData().then((value) {
+                                        // O VALUE É O RETORNO DA FUNÇÃO loadPhoto
+                                        if (value.patrimonio.isEmpty) {
+                                          Navigator.of(context).pop();
+                                        } else {
+                                          Navigator.of(context).pushReplacement(
+                                              CupertinoPageRoute(
+                                                  builder: (context) =>
+                                                      const MyPage()));
+                                        }
+                                      })
+                                    });
                           },
                           style: ElevatedButton.styleFrom(
                             fixedSize: const Size(110, 40),
