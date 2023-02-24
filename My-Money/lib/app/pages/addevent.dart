@@ -27,7 +27,8 @@ class _AddEventState extends State<AddEvent> {
   int indexAlert = 0;
   String dataController = FormartterDate().formartterdate(DateTime.now());
   final _keyparcelas = GlobalKey<FormState>();
-  final _valorkey = GlobalKey<FormState>();
+  final _eventoKey = GlobalKey<FormState>();
+  final _valorKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -100,28 +101,40 @@ class _AddEventState extends State<AddEvent> {
                                   width:
                                       MediaQuery.of(context).size.width * .95,
                                   height: 90,
-                                  child: TextField(
-                                      controller: evetocontroller,
-                                      keyboardType: TextInputType.text,
-                                      textAlign: TextAlign.center,
-                                      decoration: InputDecoration(
-                                          filled: true,
-                                          fillColor: const Color(0xFF8F8EBF),
-                                          border: OutlineInputBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(12),
-                                          ),
-                                          floatingLabelAlignment:
-                                              FloatingLabelAlignment.center,
-                                          floatingLabelBehavior:
-                                              FloatingLabelBehavior.never,
-                                          hintText: "Ex: Churrasco em Família",
-                                          hintStyle: const TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                          disabledBorder: InputBorder.none)),
+                                  child: Form(
+                                    key: _eventoKey,
+                                    child: TextFormField(
+                                        controller: evetocontroller,
+                                        keyboardType: TextInputType.text,
+                                        validator: (value) {
+                                          if (value == '') {
+                                            return 'Seu Evento Precisa de um nome!';
+                                          } else if (value!.length < 5) {
+                                            return 'Que tal um nome mais detalhado pro Evento?';
+                                          }
+                                          return null;
+                                        },
+                                        textAlign: TextAlign.center,
+                                        decoration: InputDecoration(
+                                            filled: true,
+                                            fillColor: const Color(0xFF8F8EBF),
+                                            border: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(12),
+                                            ),
+                                            floatingLabelAlignment:
+                                                FloatingLabelAlignment.center,
+                                            floatingLabelBehavior:
+                                                FloatingLabelBehavior.never,
+                                            hintText:
+                                                "Ex: Churrasco em Família",
+                                            hintStyle: const TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                            disabledBorder: InputBorder.none)),
+                                  ),
                                 ),
                                 Row(
                                   mainAxisAlignment:
@@ -219,36 +232,46 @@ class _AddEventState extends State<AddEvent> {
                                           width: 150,
                                           height: 90,
                                           child: Form(
-                                            key: _valorkey,
+                                            key: _valorKey,
                                             child: TextFormField(
-                                                controller: valorcontroller,
-                                                keyboardType:
-                                                    TextInputType.number,
-                                                textAlign: TextAlign.center,
-                                                decoration: InputDecoration(
-                                                    filled: true,
-                                                    fillColor:
-                                                        const Color(0xFF8F8EBF),
-                                                    border: OutlineInputBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              12),
-                                                    ),
-                                                    floatingLabelAlignment:
-                                                        FloatingLabelAlignment
-                                                            .center,
-                                                    floatingLabelBehavior:
-                                                        FloatingLabelBehavior
-                                                            .never,
-                                                    hintText: "R\$100,00",
-                                                    hintStyle: const TextStyle(
-                                                      color: Colors.white,
-                                                      fontSize: 15,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                    ),
-                                                    disabledBorder:
-                                                        InputBorder.none)),
+                                              maxLength: 10,
+                                              minLines: 1,
+                                              validator: (value) {
+                                                if (value == '') {
+                                                  return 'Ouu! Faltou infomrar o valor';
+                                                } else if (value!.length > 10) {
+                                                  return 'Que tal um nome mais detalhado pro Evento?';
+                                                }
+                                                return null;
+                                              },
+                                              controller: valorcontroller,
+                                              keyboardType:
+                                                  TextInputType.number,
+                                              textAlign: TextAlign.center,
+                                              decoration: InputDecoration(
+                                                  filled: true,
+                                                  fillColor:
+                                                      const Color(0xFF8F8EBF),
+                                                  border: OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            12),
+                                                  ),
+                                                  floatingLabelAlignment:
+                                                      FloatingLabelAlignment
+                                                          .center,
+                                                  floatingLabelBehavior:
+                                                      FloatingLabelBehavior
+                                                          .never,
+                                                  hintText: "R\$100,00",
+                                                  hintStyle: const TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 15,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                  disabledBorder:
+                                                      InputBorder.none),
+                                            ),
                                           ),
                                         )
                                       ],
@@ -351,26 +374,26 @@ class _AddEventState extends State<AddEvent> {
                                           child: Column(
                                         children: [
                                           Container(
-                                              height: 80,
-                                              width: 80,
-                                              decoration: BoxDecoration(
-                                                  color: indexTag == 3
-                                                      ? const Color(0xFF2E4159)
-                                                      : const Color(0xFF5F5DA6),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          50)),
-                                              child: IconButton(
-                                                onPressed: () {
-                                                  setState(() {
-                                                    indexTag = 3;
-                                                  });
-                                                },
-                                                icon: const Icon(
-                                                  Icons.park_rounded,
-                                                  size: 40,
-                                                ),
-                                              )),
+                                            height: 80,
+                                            width: 80,
+                                            decoration: BoxDecoration(
+                                                color: indexTag == 3
+                                                    ? const Color(0xFF2E4159)
+                                                    : const Color(0xFF5F5DA6),
+                                                borderRadius:
+                                                    BorderRadius.circular(50)),
+                                            child: IconButton(
+                                              onPressed: () {
+                                                setState(() {
+                                                  indexTag = 3;
+                                                });
+                                              },
+                                              icon: const Icon(
+                                                Icons.park_rounded,
+                                                size: 40,
+                                              ),
+                                            ),
+                                          ),
                                           Text("Lazer",
                                               style: GoogleFonts.fredoka(
                                                   textStyle: const TextStyle(
@@ -715,31 +738,47 @@ class _AddEventState extends State<AddEvent> {
                                   children: [
                                     ElevatedButton(
                                       onPressed: () {
-                                        validateValor();
-                                        EventosUSerPreference()
-                                            .saveEvento(
-                                                alert: indexAlert.toString(),
-                                                data: dataController,
-                                                evento: evetocontroller.text,
-                                                pag: indexPag.toString(),
-                                                tag: indexTag.toString(),
-                                                valor: valorcontroller.text)
-                                            .then(
-                                          (value) {
-                                            Navigator.pushReplacement(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: ((context) =>
-                                                    const MyPage()),
-                                              ),
-                                            );
-                                          },
-                                        ).catchError((onError) {
-                                          log('Deu merda em salvar as paradas');
-                                        });
-                                        log(EventosUSerPreference()
-                                            .contList
-                                            .toString());
+                                        if (_validateValue() == true) {
+                                          EventosUSerPreference()
+                                              .saveEvento(
+                                                  alert: indexAlert.toString(),
+                                                  data: dataController,
+                                                  evento: evetocontroller.text,
+                                                  pag: indexPag.toString(),
+                                                  tag: indexTag.toString(),
+                                                  valor: valorcontroller.text)
+                                              .then(
+                                            (value) {
+                                              Navigator.pushReplacement(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: ((context) =>
+                                                      const MyPage()),
+                                                ),
+                                              );
+                                            },
+                                          ).catchError((onError) {
+                                            log('Deu merda em salvar as paradas');
+                                          });
+                                          log(EventosUSerPreference()
+                                              .contList
+                                              .toString());
+                                        } else {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(SnackBar(
+                                            backgroundColor: Colors.red,
+                                            content: const Text(
+                                              'Achoque falta Alguma infomração!',
+                                              style: TextStyle(
+                                                  color: Colors.white),
+                                            ),
+                                            action: SnackBarAction(
+                                                label: 'Ajustar',
+                                                textColor: Colors.white,
+                                                onPressed: () {}),
+                                          ));
+                                          log('Deu merda em ');
+                                        }
                                       },
                                       style: ElevatedButton.styleFrom(
                                         fixedSize: const Size(255, 45),
@@ -757,11 +796,13 @@ class _AddEventState extends State<AddEvent> {
                                     ),
                                     ElevatedButton(
                                       onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: ((context) =>
-                                                    const MyPage())));
+                                        Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: ((context) =>
+                                                const MyPage()),
+                                          ),
+                                        );
                                       },
                                       style: ElevatedButton.styleFrom(
                                         fixedSize: const Size(150, 40),
@@ -805,12 +846,12 @@ class _AddEventState extends State<AddEvent> {
     }
   }
 
-  validateValor() {
-    if (valorcontroller.text.isEmpty) {
-      valorcontroller.text = '0';
-    }
-    {
-      valorcontroller.text = valorcontroller.text;
+  _validateValue() {
+    if (_eventoKey.currentState!.validate() &&
+        _valorKey.currentState!.validate()) {
+      return true;
+    } else {
+      return false;
     }
   }
 }

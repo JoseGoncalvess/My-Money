@@ -169,7 +169,7 @@ class _UserCardState extends State<UserCard> {
                                           iconSize: 70,
                                         ),
                                   Text(
-                                    'Foto',
+                                    AvatarInfo.retrato.isNotEmpty ? '' : 'Foto',
                                     style: GoogleFonts.fredoka(
                                         textStyle: const TextStyle(
                                       fontSize: 15,
@@ -280,7 +280,7 @@ class _UserCardState extends State<UserCard> {
                                       'Muito Importante',
                                     ),
                                     content: const Text(
-                                      "Olá, Seja Muito ebm vindo, antes de seguirmos, todas as Informações estão corretas?",
+                                      "Olá, Seja Muito bem vindo, antes de seguirmos, todas as Informações estão corretas?",
                                       textAlign: TextAlign.center,
                                     ),
                                     actions: [
