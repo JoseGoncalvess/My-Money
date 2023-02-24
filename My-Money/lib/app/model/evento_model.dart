@@ -87,10 +87,9 @@ class EventosUSerPreference {
 
   ///função qu carrega  aa lsita coms o eventos salvos anteriormente
   Future<List<Evento>> loadList() async {
-    List<Evento> getList = [];
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     int conterlist = sharedPreferences.getInt('conterList') ?? 0;
-
+    List<Evento> getList = [];
 //o for efetua o loop buscando os eventos pelo numeor do indice passado pelo i
     for (var i = 0; i < conterlist; i++) {
       String evento = sharedPreferences.getString('item_evento_name_$i') ?? '';
@@ -115,14 +114,14 @@ class EventosUSerPreference {
 
 //deletando o item atraves do index
   Future deletItemList(int index) async {
+    log('O Index Quando chega na função é $index');
     final SharedPreferences sharedPreferences =
         await SharedPreferences.getInstance();
 //essa peste tava apagando minhas coisa
     if (contList >= 1) {
       contList--;
     } else {}
-
-    //salavdno os caracteres do evento
+    //deletando os caracteres do evento
     sharedPreferences.remove('item_evento_name_$index');
     sharedPreferences.remove('item_evento_data_$index');
     sharedPreferences.remove('item_evento_valor_$index');

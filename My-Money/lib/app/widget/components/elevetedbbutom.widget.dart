@@ -31,7 +31,7 @@ class _ElevetedbbutomWidgetState extends State<ElevetedbbutomWidget> {
       child: Text(
         widget.texto,
         style: GoogleFonts.fredoka(
-          textStyle: TextStyle(
+          textStyle: const TextStyle(
             fontSize: 12,
             color: Colors.white,
             fontWeight: FontWeight.bold,

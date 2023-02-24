@@ -108,7 +108,7 @@ class _AddEventState extends State<AddEvent> {
                                         keyboardType: TextInputType.text,
                                         validator: (value) {
                                           if (value == '') {
-                                            return 'Vamos da um nome a esse evento!!';
+                                            return 'Vamos da um nome a esse evento!';
                                           } else if (value!.length < 4) {
                                             return 'Que tal um nome mais detalhado pro Evento?';
                                           }

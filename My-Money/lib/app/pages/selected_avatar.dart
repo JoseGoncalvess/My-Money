@@ -59,15 +59,6 @@ class _SelectedAvatrState extends State<SelectedAvatr> {
         ),
       ),
       body: Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: (() {}),
-          child: const Icon(
-            Icons.help_outline_rounded,
-            color: Colors.white,
-            size: 35,
-          ),
-          backgroundColor: const Color(0xFF5F5DA6),
-        ),
         body: SingleChildScrollView(
             child: Container(
           decoration: const BoxDecoration(color: Color(0xFF2E4159)),

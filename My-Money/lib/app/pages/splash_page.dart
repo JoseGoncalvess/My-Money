@@ -1,11 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:my_money/app/model/evento_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../valores/user_info.dart';
 import 'HomePage.dart';
 import 'mypage.dart';
-import 'package:package_info_plus/package_info_plus.dart';
 
 class Splashpage extends StatefulWidget {
   const Splashpage({super.key});

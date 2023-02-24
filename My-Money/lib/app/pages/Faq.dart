@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:my_money/app/valores/Perguntas_Frequente.dart';
+import 'package:my_money/app/valores/perguntas_frequente.dart';
 
-class Faq extends StatelessWidget {
+class Faq extends StatefulWidget {
   const Faq({Key? key}) : super(key: key);
 
+  @override
+  State<Faq> createState() => _FaqState();
+}
+
+class _FaqState extends State<Faq> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -26,11 +26,7 @@ class _ItemeEventListWidgetState extends State<ItemeEventListWidget> {
     return Padding(
       padding: const EdgeInsets.all(5),
       child: InkWell(
-        onTap: () {
-          log('CLICOU PORRA,ANIMOU ALGUMA COISA ?');
-        },
         onLongPress: () {
-          log('VAI EXCLUIR O ITEM VIUUU');
           showAnimatedDialog(
               animationType: DialogTransitionType.fade,
               curve: Curves.bounceInOut,
@@ -44,7 +40,7 @@ class _ItemeEventListWidgetState extends State<ItemeEventListWidget> {
                   icon: const Icon(
                     Icons.delete_rounded,
                     size: 30,
-                    color: const Color(0xFF5F5DA6),
+                    color: Color(0xFF5F5DA6),
                   ),
                   title: Text(
                     'Atenção',

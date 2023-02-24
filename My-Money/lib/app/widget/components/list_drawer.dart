@@ -158,7 +158,7 @@ class _ListDrawerState extends State<ListDrawer> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Versão ' + widget.versioApp,
+                'Versão ${widget.versioApp}',
                 style: GoogleFonts.fredoka(
                   textStyle: const TextStyle(
                       fontWeight: FontWeight.w600,

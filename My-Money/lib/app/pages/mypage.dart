@@ -135,7 +135,7 @@ class _MyPageState extends State<MyPage> {
           await SharedPreferences.getInstance();
 
       int contlist = sharedPreferences.getInt('conterList') ?? 0;
-      log(' o numeor de coisas são exatamenre ' + contlist.toString());
+      log(' o numeor de coisas são exatamenre $contlist');
 
       setState(() {
         eventoC = value;
@@ -488,16 +488,14 @@ class _MyPageState extends State<MyPage> {
                               : ItemeEventListWidget(
                                   //FUNÇÃO DE EXCLUIR
                                   onPressed: () {
-                                    log('EXCLUIR ITEM DA LISTA COISA');
-                                    setState(() {
-                                      eventoC.remove(eventoC[index]);
-                                    });
+                                    log('EXCLUIR ITEM DA LISTA COISA $index');
+                                    eventoC.remove(eventoC[index]);
                                     EventosUSerPreference()
-                                        .deletItemList(index)
-                                        .then((value) {
-                                      getvaluepercent();
-                                      getvaluefat();
-                                    });
+                                        .deletItemList(index);
+                                    Future.delayed(
+                                        const Duration(milliseconds: 100));
+                                    getvaluepercent();
+                                    getvaluefat();
 
                                     Navigator.of(context).pop();
                                   },
