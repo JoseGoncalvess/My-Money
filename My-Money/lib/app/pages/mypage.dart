@@ -495,9 +495,8 @@ class _MyPageState extends State<MyPage> {
                                     EventosUSerPreference()
                                         .deletItemList(index)
                                         .then((value) {
-                                      setState(() {
-                                        getvaluepercent();
-                                      });
+                                      getvaluepercent();
+                                      getvaluefat();
                                     });
 
                                     Navigator.of(context).pop();
