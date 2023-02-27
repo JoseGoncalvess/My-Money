@@ -487,23 +487,21 @@ class _MyPageState extends State<MyPage> {
                                 )
                               : ItemeEventListWidget(
                                   //FUNÇÃO DE EXCLUIR
-                                  onPressed: () {
+                                  onPressed: () async {
                                     log('EXCLUIR ITEM DA LISTA COISA $index');
 
                                     EventosUSerPreference()
                                         .deletItemList(index)
                                         .then((value) async {
-                                      //
+                                      setState(() {
+                                        eventoC.remove(eventoC[index]);
+                                      });
                                     });
 
-                                    // EventosUSerPreference()
-                                    //     .deletItemList(index)
-                                    //     .then((value) {
-                                    //   eventoC.remove(eventoC[index]);
-                                    //   loadEvent();
-                                    //   getvaluepercent();
-                                    //   getvaluefat();
-                                    // });
+                                    setState(() {
+                                      getvaluepercent();
+                                      getvaluefat();
+                                    });
 
                                     Navigator.of(context).pop();
                                   },
