@@ -117,18 +117,24 @@ class EventosUSerPreference {
     log('O Index Quando chega na função é $index');
     final SharedPreferences sharedPreferences =
         await SharedPreferences.getInstance();
+
+    int contList = sharedPreferences.getInt('conterList') ?? 0;
+    log(' o contlist é $contList');
 //essa peste tava apagando minhas coisa
     if (contList >= 1) {
       contList--;
-    } else {}
-    //deletando os caracteres do evento
-    sharedPreferences.remove('item_evento_name_$index');
-    sharedPreferences.remove('item_evento_data_$index');
-    sharedPreferences.remove('item_evento_valor_$index');
-    sharedPreferences.remove('item_evento_pag_$index');
-    sharedPreferences.remove('item_evento_tag_$index');
-    sharedPreferences.remove('item_evento_alert_$index');
+      //deletando os caracteres do evento
+      sharedPreferences.remove('item_evento_name_$index');
+      sharedPreferences.remove('item_evento_data_$index');
+      sharedPreferences.remove('item_evento_valor_$index');
+      sharedPreferences.remove('item_evento_pag_$index');
+      sharedPreferences.remove('item_evento_tag_$index');
+      sharedPreferences.remove('item_evento_alert_$index');
 //salvadmp o conter da lista
-    sharedPreferences.setInt('conterList', contList);
+      sharedPreferences.setInt('conterList', contList);
+      log(' Agora o contlist é $contList');
+    } else {
+      log('Erro ao exluir o item da lista');
+    }
   }
 }

@@ -489,13 +489,21 @@ class _MyPageState extends State<MyPage> {
                                   //FUNÇÃO DE EXCLUIR
                                   onPressed: () {
                                     log('EXCLUIR ITEM DA LISTA COISA $index');
-                                    eventoC.remove(eventoC[index]);
+
                                     EventosUSerPreference()
-                                        .deletItemList(index);
-                                    Future.delayed(
-                                        const Duration(milliseconds: 100));
-                                    getvaluepercent();
-                                    getvaluefat();
+                                        .deletItemList(index)
+                                        .then((value) async {
+                                      //
+                                    });
+
+                                    // EventosUSerPreference()
+                                    //     .deletItemList(index)
+                                    //     .then((value) {
+                                    //   eventoC.remove(eventoC[index]);
+                                    //   loadEvent();
+                                    //   getvaluepercent();
+                                    //   getvaluefat();
+                                    // });
 
                                     Navigator.of(context).pop();
                                   },
