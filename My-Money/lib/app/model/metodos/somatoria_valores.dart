@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:my_money/app/valores/user_info.dart';
 import '../evento_model.dart';
 
@@ -6,6 +8,7 @@ class SomatoriaValores {
   Future<double> getValor() async {
     double result = 0;
     await EventosUSerPreference().loadList().then((value) {
+      // log('o valor qu eu queria ver era ${value.first.valor}');
       for (int i = 0; i < value.length; i++) {
         result = result + double.parse(value[i].valor.replaceAll(',', '.'));
       }
@@ -92,7 +95,7 @@ class SomatoriaValores {
     if (datetime == 12) {
       datetime = 1;
     } else {
-      datetime = datetime + 1;
+      datetime++;
     }
 
     await EventosUSerPreference().loadList().then((value) => {
@@ -100,8 +103,8 @@ class SomatoriaValores {
             {
               if (int.parse(value[i].data.split('/')[1]) == datetime)
                 {resultPM = resultPM + double.parse(value[i].valor)}
-              else
-                {}
+              else if ((int.parse(value[i].data.split('/')[1]) > datetime))
+                {resultPM = resultPM + double.parse(value[i].valor)}
             }
         });
 

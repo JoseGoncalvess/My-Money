@@ -495,12 +495,13 @@ class _MyPageState extends State<MyPage> {
                                         .then((value) async {
                                       setState(() {
                                         eventoC.remove(eventoC[index]);
-                                      });
-                                    });
 
-                                    setState(() {
-                                      getvaluepercent();
-                                      getvaluefat();
+                                        getvaluepercent();
+                                        getvaluefat();
+
+                                        getFatMp();
+                                        getFatPm();
+                                      });
                                     });
 
                                     Navigator.of(context).pop();
