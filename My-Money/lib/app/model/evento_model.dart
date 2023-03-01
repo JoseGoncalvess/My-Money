@@ -49,9 +49,12 @@ class EventosUSerPreference {
         await SharedPreferences.getInstance();
 
     contList = sharedPreferences.getInt('conterList') ?? 0;
-    int i = contList;
+    int index = contList;
 
-    saveItemList(item, i);
+    saveItemList(
+      item,
+      index,
+    );
   }
 
   List<Evento> eventosC = [];
@@ -62,7 +65,35 @@ class EventosUSerPreference {
     final SharedPreferences sharedPreferences =
         await SharedPreferences.getInstance();
 
-    contList++;
+    log('conterList $contList');
+    int numparcel = 1;
+    if (evento.pag == "2") {
+      for (var i = 0; i < numparcel; i++) {
+        contList++;
+        //salavdno os caracteres do evento
+        sharedPreferences.setString('item_evento_name_$index', evento.evento);
+        sharedPreferences.setString('item_evento_data_$index', evento.data);
+        sharedPreferences.setString('item_evento_valor_$index', evento.valor);
+        sharedPreferences.setString('item_evento_pag_$index', evento.pag);
+        sharedPreferences.setString('item_evento_tag_$index', evento.tag);
+        sharedPreferences.setString('item_evento_alert_$index', evento.alert);
+//salvadmp o conter da lista
+        sharedPreferences.setInt('conterList', contList);
+        log(contList.toString());
+      }
+    } else {
+      contList++;
+      //salavdno os caracteres do evento
+      sharedPreferences.setString('item_evento_name_$index', evento.evento);
+      sharedPreferences.setString('item_evento_data_$index', evento.data);
+      sharedPreferences.setString('item_evento_valor_$index', evento.valor);
+      sharedPreferences.setString('item_evento_pag_$index', evento.pag);
+      sharedPreferences.setString('item_evento_tag_$index', evento.tag);
+      sharedPreferences.setString('item_evento_alert_$index', evento.alert);
+//salvadmp o conter da lista
+      sharedPreferences.setInt('conterList', contList);
+      log(contList.toString());
+    }
 
     log('item_evento_name_$index ${evento.evento}');
     log('item_evento_data_$index ${evento.data}');
@@ -71,18 +102,6 @@ class EventosUSerPreference {
     log('item_evento_tag_$index ${evento.tag}');
     log('item_evento_alert_$index ${evento.alert}');
 //salvadmp o conter da lista
-    log('conterList $contList');
-
-    //salavdno os caracteres do evento
-    sharedPreferences.setString('item_evento_name_$index', evento.evento);
-    sharedPreferences.setString('item_evento_data_$index', evento.data);
-    sharedPreferences.setString('item_evento_valor_$index', evento.valor);
-    sharedPreferences.setString('item_evento_pag_$index', evento.pag);
-    sharedPreferences.setString('item_evento_tag_$index', evento.tag);
-    sharedPreferences.setString('item_evento_alert_$index', evento.alert);
-//salvadmp o conter da lista
-    sharedPreferences.setInt('conterList', contList);
-    log(contList.toString());
   }
 
   ///função qu carrega  aa lsita coms o eventos salvos anteriormente

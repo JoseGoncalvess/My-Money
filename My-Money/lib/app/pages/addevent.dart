@@ -5,8 +5,6 @@ import 'package:my_money/app/formartter/formartt_date.dart';
 import 'package:my_money/app/model/evento_model.dart';
 import 'mypage.dart';
 
-final parcelController = TextEditingController();
-
 class AddEvent extends StatefulWidget {
   const AddEvent({super.key});
 
@@ -19,6 +17,8 @@ class _AddEventState extends State<AddEvent> {
   TextEditingController evetocontroller = TextEditingController();
 
   TextEditingController valorcontroller = TextEditingController();
+
+  TextEditingController parcelController = TextEditingController();
   //================
 
   ///VAriaveis de controle de seleção
@@ -672,6 +672,8 @@ class _AddEventState extends State<AddEvent> {
                                                       child: Form(
                                                         key: _keyparcelas,
                                                         child: TextFormField(
+                                                          controller:
+                                                              parcelController,
                                                           maxLines: 1,
                                                           onEditingComplete:
                                                               () {
@@ -748,8 +750,6 @@ class _AddEventState extends State<AddEvent> {
                                                                   focusedBorder:
                                                                       InputBorder
                                                                           .none),
-                                                          controller:
-                                                              parcelController,
                                                           keyboardType:
                                                               TextInputType
                                                                   .number,
