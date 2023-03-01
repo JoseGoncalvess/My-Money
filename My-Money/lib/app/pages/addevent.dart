@@ -518,22 +518,26 @@ class _AddEventState extends State<AddEvent> {
                                   height: 20,
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(top: 5),
+                                  padding:
+                                      const EdgeInsets.only(top: 7, bottom: 7),
                                   child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Column(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceAround,
                                         children: [
-                                          Text("Pagamento:",
-                                              style: GoogleFonts.fredoka(
-                                                  textStyle: const TextStyle(
-                                                fontSize: 30,
-                                                color: Color(0xFF2E4159),
-                                                fontWeight: FontWeight.bold,
-                                              ))),
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                bottom: 3),
+                                            child: Text("Pagamento:",
+                                                style: GoogleFonts.fredoka(
+                                                    textStyle: const TextStyle(
+                                                  fontSize: 30,
+                                                  color: Color(0xFF2E4159),
+                                                  fontWeight: FontWeight.bold,
+                                                ))),
+                                          ),
                                           Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceAround,
@@ -628,108 +632,132 @@ class _AddEventState extends State<AddEvent> {
                                         ],
                                       ),
                                       SizedBox(
-                                        child: Column(
-                                          children: [
-                                            Text(
-                                              "Parcelas:",
-                                              style: GoogleFonts.fredoka(
-                                                textStyle: const TextStyle(
-                                                  fontSize: 30,
-                                                  color: Color(0xFF2E4159),
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                              ),
-                                            ),
-                                            const SizedBox(
-                                              height: 5,
-                                            ),
-                                            Container(
-                                                height: MediaQuery.of(context)
-                                                        .size
-                                                        .height *
-                                                    0.06,
-                                                width: MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    0.45,
-                                                decoration: BoxDecoration(
-                                                    color:
-                                                        const Color(0xFF2E4159),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12)),
-                                                child: Form(
-                                                  key: _keyparcelas,
-                                                  child: TextFormField(
-                                                    maxLines: 1,
-                                                    onEditingComplete: () {
-                                                      if (!_keyparcelas
-                                                          .currentState!
-                                                          .validate()) {
-                                                        parcelController.text
-                                                            .trim();
-                                                        ScaffoldMessenger.of(
-                                                                context)
-                                                            .showSnackBar(
-                                                                SnackBar(
-                                                          backgroundColor:
-                                                              Colors.red,
-                                                          content: const Text(
-                                                            'Numero de Parcelas Incorreto, até 12x!',
-                                                            style: TextStyle(
-                                                                color: Colors
-                                                                    .white),
-                                                          ),
-                                                          action: SnackBarAction(
-                                                              label: 'Ajustar',
-                                                              textColor:
-                                                                  Colors.white,
-                                                              onPressed: () {}),
-                                                        ));
-                                                      }
-                                                    },
-                                                    validator: (value) {
-                                                      if (int.parse(value!) >
-                                                          12) {
-                                                        return 'Numero de Parcelas Incorreto, até 12x!';
-                                                      } else {
-                                                        FocusScope.of(context)
-                                                            .requestFocus(
-                                                                FocusNode());
-                                                      }
-                                                      return null;
-                                                    },
-                                                    onChanged: (value) {
-                                                      log(
-                                                        value.toString(),
-                                                      );
-                                                      if (value.length > 1) {
-                                                        if (int.parse(value) >
-                                                            12) {
-                                                          setState(() {
-                                                            parcelController
-                                                                .text = '12';
-                                                          });
-                                                        }
-                                                      }
-                                                    },
-                                                    textAlign: TextAlign.center,
-                                                    decoration:
-                                                        const InputDecoration(
-                                                            counterText: '',
-                                                            border: InputBorder
-                                                                .none,
-                                                            focusedBorder:
-                                                                InputBorder
-                                                                    .none),
-                                                    controller:
-                                                        parcelController,
-                                                    keyboardType:
-                                                        TextInputType.number,
+                                        child: indexPag == 2
+                                            ? Column(
+                                                children: [
+                                                  Text(
+                                                    "Parcelas:",
+                                                    style: GoogleFonts.fredoka(
+                                                      textStyle:
+                                                          const TextStyle(
+                                                        fontSize: 30,
+                                                        color:
+                                                            Color(0xFF2E4159),
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
+                                                    ),
                                                   ),
-                                                )),
-                                          ],
-                                        ),
+                                                  const SizedBox(
+                                                    height: 5,
+                                                  ),
+                                                  Container(
+                                                      height:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .height *
+                                                              0.06,
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width *
+                                                              0.45,
+                                                      decoration: BoxDecoration(
+                                                          color: const Color(
+                                                              0xFF2E4159),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      12)),
+                                                      child: Form(
+                                                        key: _keyparcelas,
+                                                        child: TextFormField(
+                                                          maxLines: 1,
+                                                          onEditingComplete:
+                                                              () {
+                                                            if (!_keyparcelas
+                                                                .currentState!
+                                                                .validate()) {
+                                                              parcelController
+                                                                  .text
+                                                                  .trim();
+                                                              ScaffoldMessenger
+                                                                      .of(
+                                                                          context)
+                                                                  .showSnackBar(
+                                                                      SnackBar(
+                                                                backgroundColor:
+                                                                    Colors.red,
+                                                                content:
+                                                                    const Text(
+                                                                  'Numero de Parcelas Incorreto, até 12x!',
+                                                                  style: TextStyle(
+                                                                      color: Colors
+                                                                          .white),
+                                                                ),
+                                                                action: SnackBarAction(
+                                                                    label:
+                                                                        'Ajustar',
+                                                                    textColor:
+                                                                        Colors
+                                                                            .white,
+                                                                    onPressed:
+                                                                        () {}),
+                                                              ));
+                                                            }
+                                                          },
+                                                          validator: (value) {
+                                                            if (int.parse(
+                                                                    value!) >
+                                                                12) {
+                                                              return 'Numero de Parcelas Incorreto, até 12x!';
+                                                            } else {
+                                                              FocusScope.of(
+                                                                      context)
+                                                                  .requestFocus(
+                                                                      FocusNode());
+                                                            }
+                                                            return null;
+                                                          },
+                                                          onChanged: (value) {
+                                                            log(
+                                                              value.toString(),
+                                                            );
+                                                            if (value.length >
+                                                                1) {
+                                                              if (int.parse(
+                                                                      value) >
+                                                                  12) {
+                                                                setState(() {
+                                                                  parcelController
+                                                                          .text =
+                                                                      '12';
+                                                                });
+                                                              }
+                                                            }
+                                                          },
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          decoration:
+                                                              const InputDecoration(
+                                                                  counterText:
+                                                                      '',
+                                                                  border:
+                                                                      InputBorder
+                                                                          .none,
+                                                                  focusedBorder:
+                                                                      InputBorder
+                                                                          .none),
+                                                          controller:
+                                                              parcelController,
+                                                          keyboardType:
+                                                              TextInputType
+                                                                  .number,
+                                                        ),
+                                                      )),
+                                                ],
+                                              )
+                                            : Container(),
                                       )
                                     ],
                                   ),
