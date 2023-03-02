@@ -66,9 +66,10 @@ class EventosUSerPreference {
         await SharedPreferences.getInstance();
 
     log('conterList $contList');
-    int numparcel = 1;
+    int numparcel = 3;
     if (evento.pag == "2") {
       for (var i = 0; i < numparcel; i++) {
+        index = contList;
         contList++;
         //salavdno os caracteres do evento
         sharedPreferences.setString('item_evento_name_$index', evento.evento);
