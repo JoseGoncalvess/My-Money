@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:my_money/app/formartter/formartt_date.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Evento {
@@ -28,15 +29,16 @@ class EventosUSerPreference {
   String tag = '';
   String pag = '';
   String alert = '';
+  int parcela = 0;
 
-  Future saveEvento({
-    required evento,
-    required data,
-    required valor,
-    required tag,
-    required pag,
-    required alert,
-  }) async {
+  Future saveEvento(
+      {required evento,
+      required data,
+      required valor,
+      required tag,
+      required pag,
+      required alert,
+      required parcela}) async {
     Evento item = Evento(
         evento: evento,
         data: data,
@@ -51,25 +53,43 @@ class EventosUSerPreference {
     contList = sharedPreferences.getInt('conterList') ?? 0;
     int index = contList;
 
-    saveItemList(
-      item,
-      index,
-    );
+    saveItemList(item, index, parcela);
   }
 
   List<Evento> eventosC = [];
   int contList = 0;
 
 //metodo que efetua o salvamento do item an lista
-  Future saveItemList(Evento evento, int index) async {
+  Future saveItemList(Evento evento, int index, int parcela) async {
     final SharedPreferences sharedPreferences =
         await SharedPreferences.getInstance();
 
     log('conterList $contList');
-    int numparcel = 3;
+    int numparcel = parcela;
+
+    //para SALVAR MULTIPLOS ELE PRECISAR TER O INDEXPAG = 2
     if (evento.pag == "2") {
-      for (var i = 0; i < numparcel; i++) {
-        index = contList;
+      //PRECISA TER TAMVEM O NUMRO D EPARCELAS MAIOR QUE 2
+      if (numparcel > 1) {
+        for (var i = 0; i < numparcel; i++) {
+          index = contList;
+          contList++;
+
+          //DESCOBRI COMO ALTERA O VALOR DO MES E PASSAR PRA FUNÇÃO
+          data = FormartterDate().formaterdataparcel(evento.data, i);
+
+          //salavdno os caracteres do evento
+          sharedPreferences.setString('item_evento_name_$index', evento.evento);
+          sharedPreferences.setString('item_evento_data_$index', data);
+          sharedPreferences.setString('item_evento_valor_$index', evento.valor);
+          sharedPreferences.setString('item_evento_pag_$index', evento.pag);
+          sharedPreferences.setString('item_evento_tag_$index', evento.tag);
+          sharedPreferences.setString('item_evento_alert_$index', evento.alert);
+//salvadmp o conter da lista
+          sharedPreferences.setInt('conterList', contList);
+          log(contList.toString());
+        }
+      } else {
         contList++;
         //salavdno os caracteres do evento
         sharedPreferences.setString('item_evento_name_$index', evento.evento);

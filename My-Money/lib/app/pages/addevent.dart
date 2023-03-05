@@ -774,7 +774,15 @@ class _AddEventState extends State<AddEvent> {
                                                   evento: evetocontroller.text,
                                                   pag: indexPag.toString(),
                                                   tag: indexTag.toString(),
-                                                  valor: valorcontroller.text)
+                                                  valor: valorcontroller.text,
+                                                  parcela:
+                                                      int.parse(
+                                                          parcelController
+                                                                  .text.isEmpty
+                                                              ? parcelController
+                                                                  .text = '0'
+                                                              : parcelController
+                                                                  .text))
                                               .then(
                                             (value) {
                                               Navigator.pushReplacement(
