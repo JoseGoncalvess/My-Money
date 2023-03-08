@@ -41,6 +41,7 @@ dependencies:
   swipe_deck: ^1.1.0
   percent_indicator: ^4.2.2
   package_info_plus: ^1.4.2
+  url_launcher: ^6.1.10
 
   flutter_localizations:
     sdk: flutter

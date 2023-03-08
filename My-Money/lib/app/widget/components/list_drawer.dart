@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../pages/Faq.dart';
+import '../../pages/feedback._page.dart';
 import '../../pages/selected_avatar.dart';
 import '../../pages/user.dart';
 import '../../valores/avatar_info.dart';
@@ -122,7 +123,12 @@ class _ListDrawerState extends State<ListDrawer> {
                               color: Colors.white))),
                 ),
                 ListTile(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: ((constex) => FeedbackPage())));
+                  },
                   leading: const Icon(
                     Icons.support_agent_rounded,
                     size: 28,
