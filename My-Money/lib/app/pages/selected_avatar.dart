@@ -2,7 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/app/valores/avatar_info.dart';
-import 'package:my_money/app/model/metodos/showDialoganimated.dart';
+import 'package:my_money/app/model/metodos/show_Dialoganimated.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
