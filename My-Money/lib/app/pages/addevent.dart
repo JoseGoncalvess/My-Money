@@ -870,18 +870,6 @@ class _AddEventState extends State<AddEvent> {
     );
   }
 
-  validatePArcel() {
-    var parcela = int.parse(parcelController.text);
-
-    if (indexPag == 1) {
-      if (parcela < 1 || parcela > 12 || parcela == null) {
-        parcelController.clear();
-      } else {
-        return parcela = 0;
-      }
-    }
-  }
-
   _validateValue() {
     if (_eventoKey.currentState!.validate() &&
         _valorKey.currentState!.validate()) {

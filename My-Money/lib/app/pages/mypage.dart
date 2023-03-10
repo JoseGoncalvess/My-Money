@@ -10,7 +10,7 @@ import 'package:percent_indicator/percent_indicator.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../valores/user_info.dart';
-import 'Details_view.dart';
+import 'details_view.dart';
 import '../widget/components/item_eventslist_wisget.dart';
 import 'addevent.dart';
 

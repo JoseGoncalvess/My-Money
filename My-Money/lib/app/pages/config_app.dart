@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_money/app/valores/user_info.dart';
@@ -75,7 +77,7 @@ class _ConfigAppState extends State<ConfigApp> {
                           color: Colors.white,
                           fontWeight: FontWeight.w600,
                         ))),
-                    Container(
+                    SizedBox(
                       width: MediaQuery.of(context).size.width * 0.25,
                       height: 100,
                       child: Column(
@@ -100,7 +102,7 @@ class _ConfigAppState extends State<ConfigApp> {
                         children: [
                           IconButton(
                               onPressed: () {
-                                print('BRASIL PORRA!!');
+                                log('BRASIL PORRA!!');
                               },
                               icon: const Icon(Icons.dark_mode_rounded)),
                           Text('Dark Modo',
@@ -135,7 +137,7 @@ class _ConfigAppState extends State<ConfigApp> {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        print('BRASIL PORRA!!');
+                        log('BRASIL PORRA!!');
                       },
                       child: SizedBox(
                         width: MediaQuery.of(context).size.width * 0.5,
@@ -163,7 +165,7 @@ class _ConfigAppState extends State<ConfigApp> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        print('XIAOMI MELHOR QUE IPHONE');
+                        log('XIAOMI MELHOR QUE IPHONE');
                       },
                       child: SizedBox(
                         width: MediaQuery.of(context).size.width * 0.5,
@@ -173,7 +175,7 @@ class _ConfigAppState extends State<ConfigApp> {
                               height: 100,
                               width: 120,
                               decoration: BoxDecoration(
-                                  image: DecorationImage(
+                                  image: const DecorationImage(
                                       fit: BoxFit.cover,
                                       image: AssetImage('assets/img/us.png')),
                                   borderRadius: BorderRadius.circular(22)),

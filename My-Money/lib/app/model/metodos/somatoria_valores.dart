@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:my_money/app/valores/user_info.dart';
 import '../evento_model.dart';
 
