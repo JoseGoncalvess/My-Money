@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:my_money/app/formartter/formartt_date.dart';
@@ -65,64 +66,74 @@ class EventosUSerPreference {
         await SharedPreferences.getInstance();
 
     log('conterList $contList');
-    int numparcel = parcela;
+    // int numparcel = parcela;
 
-    //para SALVAR MULTIPLOS ELE PRECISAR TER O INDEXPAG = 2
-    if (evento.pag == "2") {
-      //PRECISA TER TAMVEM O NUMRO D EPARCELAS MAIOR QUE 2
-      if (numparcel > 1) {
-        for (var i = 0; i < numparcel; i++) {
-          index = contList;
-          contList++;
+    eventosC.add(Evento(
+        evento: evento.evento,
+        data: data,
+        valor: valor,
+        tag: tag,
+        pag: pag,
+        alert: alert));
 
-          //DESCOBRI COMO ALTERA O VALOR DO MES E PASSAR PRA FUNÇÃO
-          data = FormartterDate().formaterdataparcel(evento.data, i);
+    sharedPreferences.setString('lista_eventos', eventosC.toString());
 
-          //salavdno os caracteres do evento
-          sharedPreferences.setString('item_evento_name_$index', evento.evento);
-          sharedPreferences.setString('item_evento_data_$index', data);
-          sharedPreferences.setString('item_evento_valor_$index', evento.valor);
-          sharedPreferences.setString('item_evento_pag_$index', evento.pag);
-          sharedPreferences.setString('item_evento_tag_$index', evento.tag);
-          sharedPreferences.setString('item_evento_alert_$index', evento.alert);
-//salvadmp o conter da lista
-          sharedPreferences.setInt('conterList', contList);
-          log(contList.toString());
-        }
-      } else {
-        contList++;
-        //salavdno os caracteres do evento
-        sharedPreferences.setString('item_evento_name_$index', evento.evento);
-        sharedPreferences.setString('item_evento_data_$index', evento.data);
-        sharedPreferences.setString('item_evento_valor_$index', evento.valor);
-        sharedPreferences.setString('item_evento_pag_$index', evento.pag);
-        sharedPreferences.setString('item_evento_tag_$index', evento.tag);
-        sharedPreferences.setString('item_evento_alert_$index', evento.alert);
-//salvadmp o conter da lista
-        sharedPreferences.setInt('conterList', contList);
-        log(contList.toString());
-      }
-    } else {
-      contList++;
-      //salavdno os caracteres do evento
-      sharedPreferences.setString('item_evento_name_$index', evento.evento);
-      sharedPreferences.setString('item_evento_data_$index', evento.data);
-      sharedPreferences.setString('item_evento_valor_$index', evento.valor);
-      sharedPreferences.setString('item_evento_pag_$index', evento.pag);
-      sharedPreferences.setString('item_evento_tag_$index', evento.tag);
-      sharedPreferences.setString('item_evento_alert_$index', evento.alert);
-//salvadmp o conter da lista
-      sharedPreferences.setInt('conterList', contList);
-      log(contList.toString());
-    }
+//     //para SALVAR MULTIPLOS ELE PRECISAR TER O INDEXPAG = 2
+//     if (evento.pag == "2") {
+//       //PRECISA TER TAMVEM O NUMRO D EPARCELAS MAIOR QUE 2
+//       if (numparcel > 1) {
+//         for (var i = 0; i < numparcel; i++) {
+//           index = contList;
+//           contList++;
 
-    log('item_evento_name_$index ${evento.evento}');
-    log('item_evento_data_$index ${evento.data}');
-    log('item_evento_valor_$index ${evento.valor}');
-    log('item_evento_pag_$index ${evento.pag}');
-    log('item_evento_tag_$index ${evento.tag}');
-    log('item_evento_alert_$index ${evento.alert}');
-//salvadmp o conter da lista
+//           //DESCOBRI COMO ALTERA O VALOR DO MES E PASSAR PRA FUNÇÃO
+//           data = FormartterDate().formaterdataparcel(evento.data, i);
+
+//           //salavdno os caracteres do evento
+//           sharedPreferences.setString('item_evento_name_$index', evento.evento);
+//           sharedPreferences.setString('item_evento_data_$index', data);
+//           sharedPreferences.setString('item_evento_valor_$index', evento.valor);
+//           sharedPreferences.setString('item_evento_pag_$index', evento.pag);
+//           sharedPreferences.setString('item_evento_tag_$index', evento.tag);
+//           sharedPreferences.setString('item_evento_alert_$index', evento.alert);
+// //salvadmp o conter da lista
+//           sharedPreferences.setInt('conterList', contList);
+//           log(contList.toString());
+//         }
+//       } else {
+//         contList++;
+//         //salavdno os caracteres do evento
+//         sharedPreferences.setString('item_evento_name_$index', evento.evento);
+//         sharedPreferences.setString('item_evento_data_$index', evento.data);
+//         sharedPreferences.setString('item_evento_valor_$index', evento.valor);
+//         sharedPreferences.setString('item_evento_pag_$index', evento.pag);
+//         sharedPreferences.setString('item_evento_tag_$index', evento.tag);
+//         sharedPreferences.setString('item_evento_alert_$index', evento.alert);
+// //salvadmp o conter da lista
+//         sharedPreferences.setInt('conterList', contList);
+//         log(contList.toString());
+//       }
+//     } else {
+//       contList++;
+//       //salavdno os caracteres do evento
+//       sharedPreferences.setString('item_evento_name_$index', evento.evento);
+//       sharedPreferences.setString('item_evento_data_$index', evento.data);
+//       sharedPreferences.setString('item_evento_valor_$index', evento.valor);
+//       sharedPreferences.setString('item_evento_pag_$index', evento.pag);
+//       sharedPreferences.setString('item_evento_tag_$index', evento.tag);
+//       sharedPreferences.setString('item_evento_alert_$index', evento.alert);
+// //salvadmp o conter da lista
+//       sharedPreferences.setInt('conterList', contList);
+//       log(contList.toString());
+//     }
+
+//     log('item_evento_name_$index ${evento.evento}');
+//     log('item_evento_data_$index ${evento.data}');
+//     log('item_evento_valor_$index ${evento.valor}');
+//     log('item_evento_pag_$index ${evento.pag}');
+//     log('item_evento_tag_$index ${evento.tag}');
+//     log('item_evento_alert_$index ${evento.alert}');
+// //salvadmp o conter da lista
   }
 
   ///função qu carrega  aa lsita coms o eventos salvos anteriormente
@@ -130,26 +141,28 @@ class EventosUSerPreference {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     int conterlist = sharedPreferences.getInt('conterList') ?? 0;
     List<Evento> getList = [];
-//o for efetua o loop buscando os eventos pelo numeor do indice passado pelo i
-    for (var i = 0; i < conterlist; i++) {
-      String evento = sharedPreferences.getString('item_evento_name_$i') ?? '';
-      String valor = sharedPreferences.getString('item_evento_valor_$i') ?? '';
-      String data = sharedPreferences.getString('item_evento_data_$i') ?? '';
-      String pag = sharedPreferences.getString('item_evento_pag_$i') ?? '';
-      String tag = sharedPreferences.getString('item_evento_tag_$i') ?? '';
-      String alert = sharedPreferences.getString('item_evento_alert_$i') ?? '';
 
-      getList.add(
-        Evento(
-            evento: evento,
-            data: data,
-            valor: valor,
-            tag: tag,
-            pag: pag,
-            alert: alert),
-      );
-    }
-    return getList;
+    String lista = sharedPreferences.getString('lista_eventos') ?? '';
+//o for efetua o loop buscando os eventos pelo numeor do indice passado pelo i
+    // for (var i = 0; i < conterlist; i++) {
+    //   String evento = sharedPreferences.getString('item_evento_name_$i') ?? '';
+    //   String valor = sharedPreferences.getString('item_evento_valor_$i') ?? '';
+    //   String data = sharedPreferences.getString('item_evento_data_$i') ?? '';
+    //   String pag = sharedPreferences.getString('item_evento_pag_$i') ?? '';
+    //   String tag = sharedPreferences.getString('item_evento_tag_$i') ?? '';
+    //   String alert = sharedPreferences.getString('item_evento_alert_$i') ?? '';
+
+    //   getList.add(
+    //     Evento(
+    //         evento: evento,
+    //         data: data,
+    //         valor: valor,
+    //         tag: tag,
+    //         pag: pag,
+    //         alert: alert),
+    //   );
+    // }
+    return getList = jsonDecode(lista);
   }
 
 //deletando o item atraves do index

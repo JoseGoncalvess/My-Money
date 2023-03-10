@@ -12,8 +12,10 @@ class FeedbackPage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: const Color.fromRGBO(95, 93, 166, 1),
-          title: const Text('Contate o Suporte'),
+          backgroundColor: const Color(0xFF5F5DA6),
+          title: const Text(
+            'Contate o Suporte',
+          ),
         ),
         body: Container(
           color: Color.fromARGB(201, 73, 79, 86),
@@ -27,31 +29,58 @@ class FeedbackPage extends StatelessWidget {
                     width: MediaQuery.of(context).size.width,
                     child: const Align(
                         alignment: Alignment.center,
-                        child: Text('Posso te ajuar em algo ?'))),
-                Container(
+                        child: Text('Posso te ajuar em algo ?',
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold)))),
+                SizedBox(
                   height: MediaQuery.of(context).size.height * 0.35,
                   width: MediaQuery.of(context).size.width * 0.55,
                   child: const Image(
                     image: AssetImage('assets/img/sup.png'),
                   ),
                 ),
-                const Text('Sua Opinião nos ajuda a ser melhores!'),
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text('Sua Opinião nos ajuda a ser melhores!'),
+                ),
                 Container(
-                  color: Colors.amber,
-                  height: MediaQuery.of(context).size.height * 0.05,
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(10)),
+                  height: MediaQuery.of(context).size.height * 0.08,
                   width: MediaQuery.of(context).size.width * 0.5,
                   child: TextField(
+                    decoration: const InputDecoration(
+                      border: InputBorder.none,
+                      label: Text('Titulo'),
+                      floatingLabelAlignment: FloatingLabelAlignment.center,
+                      labelStyle: TextStyle(
+                          color: Colors.white,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600),
+                      filled: true,
+                      fillColor: Color(0xFF5F5DA6),
+                    ),
                     controller: assunto,
                   ),
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.03,
                 ),
-                Container(
-                  color: Colors.amber,
+                SizedBox(
                   height: MediaQuery.of(context).size.height * 0.15,
                   width: MediaQuery.of(context).size.width * 0.8,
                   child: TextField(
+                    decoration: const InputDecoration(
+                      border: InputBorder.none,
+                      label: Text('Assunto'),
+                      floatingLabelAlignment: FloatingLabelAlignment.center,
+                      labelStyle: TextStyle(
+                          color: Colors.white,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600),
+                      filled: true,
+                      fillColor: Color(0xFF5F5DA6),
+                    ),
                     keyboardType: TextInputType.multiline,
                     controller: corpor,
                   ),

@@ -33,8 +33,12 @@ class _UserCardState extends State<UserCard> {
           actions: [
             MaterialButton(
               onPressed: () => {
-                Navigator.push(context,
-                    CupertinoPageRoute(builder: ((context) => const MyPage())))
+                Navigator.push(
+                  context,
+                  CupertinoPageRoute(
+                    builder: ((context) => const MyPage()),
+                  ),
+                )
               },
               child: const Text('Sim!'),
             ),
